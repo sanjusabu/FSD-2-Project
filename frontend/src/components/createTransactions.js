@@ -1,75 +1,156 @@
-import { useRequest } from "../../hooks/request-hook";
-import useInput from "../../hooks/useInput";
-import { useEffect,useState } from "react";
 import useInput from "../hooks/useInput";
+import { useEffect, useState, useContext } from "react";
+import { Detailscontext } from "../details-context/details";
 const isNotEmpty = (value) => value.trim() !== "";
+const CreateTransactions = (props) => {
+  const dets = useContext(Detailscontext);
+  const [formValid, setformValid] = useState(false);
+  const {
+    value: Ticker,
+    valueChangeHandler: taskChange,
+    reset: resetTask,
+  } = useInput(isNotEmpty);
+  const {
+    value: actionvalue,
+    valueChangeHandler: actionChange,
+    reset: resetAction,
+  } = useInput(isNotEmpty);
+  const {
+    value: quantity,
+    valueChangeHandler: quanChange,
+    reset: resetQuantity,
+  } = useInput(isNotEmpty);
+  const {
+    value: startDate,
+    valueChangeHandler: startChange,
+    reset: resetStart,
+  } = useInput(isNotEmpty);
+  const {
+    value: price,
+    valueChangeHandler: priceChange,
+    reset: resetPrice,
+  } = useInput(isNotEmpty);
 
-const CreateTasks = () => {
-
-  const [formValid,setformValid] = useState(false) 
-  const { value: taskname,valueChangeHandler:taskChange,reset:resetTask } = useInput(isNotEmpty);
-  const { value: taskdescription,valueChangeHandler:desChange,reset:resetDesc } = useInput(isNotEmpty);
-  const { value: startDate,valueChangeHandler:startChange,reset:resetStart } = useInput(isNotEmpty);
-  const { value: endDate,valueChangeHandler:endChange,reset:resetEnd } = useInput(isNotEmpty);
-  const { value: priorityvalue,valueChangeHandler:priorityChange,reset:resetPriority,BlurHandler:blur } = useInput(isNotEmpty);
-  const { value: statusvalue,valueChangeHandler:statusChange,reset:resetStatus} = useInput(isNotEmpty);
+  const { valueChangeHandler: totalChange, reset: resetTotal } =
+    useInput(isNotEmpty);
+  useEffect(() => {
+    if (Ticker && startDate && quantity && price && actionvalue) {
+      setformValid(true);
+    } else {
+      setformValid(false);
+    }
+  }, [Ticker, startDate, quantity, price, actionvalue]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    
-      // console.log(response)
-      resetTask()
-      resetDesc()
-      resetEnd()
-      resetStart()
-      resetPriority()
-      resetStatus()
-    }
-  
+    // dets.details.push({ Ticker });
+    // console.log(dets);
+    props.takedetails({
+      Ticker: Ticker,
+      Date: startDate,
+      quantity: quantity,
+      price: price,
+      action: actionvalue,
+      total: quantity * price,
+    });
+    resetTask();
+    resetStart();
+    resetTotal();
+    resetPrice();
+    resetQuantity();
+    resetAction();
+  };
+  // date of trans,name,action,quantity,price,total
   return (
     <>
       <form onSubmit={submitHandler} className="form">
-      <div className="input-container ic3">
-        <label for="name" style={{color:"black"}}>Task Name</label>
-        <input id="name" className="input" type="text" value={taskname} onChange={taskChange}/>
-      </div>
         <div className="input-container ic3">
-        <label for="description"  style={{color:"black"}}>Task Description</label>
-        <input id="description" type="text" className="input" value={taskdescription} onChange={desChange}/>
+          <label for="name" style={{ color: "black" }}>
+            Ticker
+          </label>
+          <input
+            id="name"
+            className="input"
+            type="text"
+            value={Ticker}
+            onChange={taskChange}
+          />
+        </div>
+
+        <div className="input-container ic3">
+          <label for="start" style={{ color: "black" }}>
+            Date
+          </label>
+          <input
+            id="start"
+            type="date"
+            className="input"
+            value={startDate}
+            onChange={startChange}
+          />
+        </div>
+
+        <div className="input-container ic3">
+          <label for="Priority" style={{ color: "black" }}>
+            Action
+          </label>
+          <select
+            name="Priority"
+            className="input"
+            id="Priority"
+            value={actionvalue}
+            onChange={actionChange}
+          >
+            <option> Select--an--option</option>
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
+        </div>
+
+        <div className="input-container ic3">
+          <label for="name" style={{ color: "black" }}>
+            Quantity
+          </label>
+          <input
+            id="name"
+            className="input"
+            type="text"
+            value={quantity}
+            onChange={quanChange}
+          />
+        </div>
+
+        <div className="input-container ic3">
+          <label for="name" style={{ color: "black" }}>
+            Price
+          </label>
+          <input
+            id="name"
+            className="input"
+            type="text"
+            value={price}
+            onChange={priceChange}
+          />
         </div>
         <div className="input-container ic3">
-          <label for="start" style={{color:"black"}}>Start Date</label>
-        <input id="start" type="date" className="input" value={startDate} onChange={startChange}/>
+          <label for="name" style={{ color: "black" }}>
+            Total
+          </label>
+          <input
+            id="name"
+            className="input"
+            type="text"
+            value={quantity * price}
+            onChange={totalChange}
+          />
         </div>
-        <div className="input-container ic3">
-        <label for="end" style={{color:"black"}}>End Date</label>
-        <input id="end" type="date" className="input" value={endDate} onChange={endChange}/>
-        </div>
-        <div className="input-container ic3">
-        <label for="Priority" style={{color:"black"}}>Choose the Priority</label>
-        <select name="Priority" className="input" id="Priority" value={priorityvalue} onChange={priorityChange} >
-          <option> Select--an--option</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-        </div>
-        <div className="input-container ic3">
-        <label for="status" style={{color:"black"}}>Task Status</label>
-        <select name="status" className="input" id="status" value={statusvalue} onChange={statusChange} >
-         
-                    <option>Select Status</option>
-                    <option value="Planned">Planned</option>
-                    <option value ="Doing">Doing</option>
-                    <option value ="Done">Done</option>
-        </select>
-        </div>
-        
-        <button className="button-87" disabled={!formValid} type="submit">Submit Task</button>
-        
+
+        <button className="button-87" disabled={!formValid} type="submit">
+          Submit Task
+        </button>
       </form>
     </>
   );
 };
 
-export default CreateTasks;
+export default CreateTransactions;
