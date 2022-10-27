@@ -2,7 +2,7 @@ import CreateTransactions from "./createTransactions";
 import { useContext, useState, useEffect } from "react";
 import { Detailscontext } from "../details-context/details";
 
-const Profile = () => {
+const Transactions = () => {
   // const dets = useContext(Detailscontext);
 
   const [data, setdata] = useState([]);
@@ -51,4 +51,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Transactions;

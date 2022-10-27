@@ -114,7 +114,7 @@ const CreateTransactions = (props) => {
           <input
             id="name"
             className="input"
-            type="text"
+            type="number"
             value={quantity}
             onChange={quanChange}
           />
@@ -127,7 +127,7 @@ const CreateTransactions = (props) => {
           <input
             id="name"
             className="input"
-            type="text"
+            type="number"
             value={price}
             onChange={priceChange}
           />
@@ -139,7 +139,7 @@ const CreateTransactions = (props) => {
           <input
             id="name"
             className="input"
-            type="text"
+            type="number"
             value={quantity * price}
             onChange={totalChange}
           />
