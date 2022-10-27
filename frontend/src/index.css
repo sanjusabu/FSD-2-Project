@@ -10,3 +10,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home{
+  background: url('../public/homebackground.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+}
+
+@font-face {
+  font-family: "FuzzyBubbles-Regular";   /*Can be any text*/
+  src: local("FuzzyBubbles-Regular"), url("./fonts/FuzzyBubbles-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FuzzyBubbles-Bold";   /*Can be any text*/
+  src: local("FuzzyBubbles-Bold"), url("./fonts/FuzzyBubbles-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Freehand-Regular";   /*Can be any text*/
+  src: local("Freehand-Regular"), url("./fonts/Freehand-Regular.ttf") format("truetype");
+}

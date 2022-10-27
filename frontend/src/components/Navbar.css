@@ -1,0 +1,13 @@
+.text{
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+.logo{
+    color: #000;
+    position: relative;
+    left: 38vw;
+    font-family: FuzzyBubbles-Bold;
+    font-size: 3rem;
+}
