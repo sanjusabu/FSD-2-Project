@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../context/authcontext";
 import { useContext } from "react";
+import "./Navbar.css";
+
 const NavBar = () => {
   //   const auth = useContext(AuthContext);
   const navigate = useNavigate();
@@ -14,10 +16,10 @@ const NavBar = () => {
   //   };
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-*">
         <div className="container-fluid">
           <Link className="navbar-brand" to="#">
-            SPD
+            <span className="logo">S.P.D</span>
           </Link>
           <button
             className="navbar-toggler"
@@ -43,7 +45,7 @@ const NavBar = () => {
                   </Link> */}
 
                 <Link className="nav-link active" aria-current="page" to="/">
-                  Home
+                  <span className="text">Home</span>
                 </Link>
               </li>
               {/* <li className="nav-item">
