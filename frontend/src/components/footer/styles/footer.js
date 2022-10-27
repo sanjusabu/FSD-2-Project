@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 80px 60px;
-  background: radial-gradient(circle, rgba(246,247,221,1) 0%, rgba(222,207,172,1) 100%);
+  background: radial-gradient(circle, rgba(164,255,236,1) 0%, rgba(100,238,250,1) 100%);
 
   @media (max-width: 1000px) {
     padding: 70px 30px;
@@ -42,7 +42,7 @@ export const Link = styled.a`
   text-decoration: none;
 
   &:hover {
-      color: #ff9c00;
+      color: #1677C5;
       transition: 200ms ease-in;
   }
 `;

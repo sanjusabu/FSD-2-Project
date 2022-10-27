@@ -35,7 +35,7 @@ const Home = () => {
         <div style={homecss}>
           <div style={homecss1}>
             <h2>Stock Portfolio Dashboard</h2><br/><br/>
-            <h1>Stock Portfolio Management Now At Your Fingertips</h1>
+            <h1><b>Stock Portfolio Management Now At Your Fingertips</b></h1>
           </div>
           <div style={homecss2}>
             <img src="./stocks1.jpg" />
@@ -56,7 +56,7 @@ const Home = () => {
           showNavs={true}
         />
       </div> */}
-        <h1>Features and Advantages</h1>
+        <h1><b>Features and Advantages</b></h1>
         <br />
         <br />
         <CardGroup>
@@ -85,7 +85,7 @@ const Home = () => {
             <img src="./homestocks.jpg" />
           </div>
           <div style={homecss2}>
-            <h1>Best Investment Application</h1><br/><br/>
+            <h1><b>Best Investment Application</b></h1><br/><br/>
             <p>
               Stock Portfolio Dashboard (SPD) is intended to help the user keep
               account of his/her money invested in Share Market. This part is
