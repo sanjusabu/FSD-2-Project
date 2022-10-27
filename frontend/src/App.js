@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Transactions from "./components/transactions";
+import Profile from "./components/Profile";
 import { Detailscontext } from "./details-context/details";
 import Portfolio from "./components/portfolio/portfolio";
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/transactions" element={<Transactions />}></Route>
         <Route path="/portfolio" element={<Portfolio />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         {/* <Route path='/login' element={<Home />}></Route> */}
         {/* <Route path='/register' element={<Home />}></Route> */}
       </Routes>
