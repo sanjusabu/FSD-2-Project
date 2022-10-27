@@ -5,6 +5,7 @@ const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);
   const [formValid, setformValid] = useState(false);
+
   const {
     value: Ticker,
     valueChangeHandler: taskChange,
