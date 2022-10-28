@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import PortfolioForm from "./portfolioForm";
 import PortfolioTable from "./portfolioTable";
 import TempNavbar from "../tempNavbar";
-import { Detailscontext } from "../../details-context/details";
+import { Detailscontext } from "../../context/details";
 const Portfolio = () => {
   const dets = useContext(Detailscontext);
   console.log(dets.details);

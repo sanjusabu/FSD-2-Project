@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../context/authcontext";
+import { AuthContext } from "../context/auth-context";
 import { useContext } from "react";
 import "./Navbar.css";
 
 const NavBar = () => {
-  //   const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
   //   const logoutHandler = () => {
   //     if (auth.isLoggedIn) {
@@ -18,7 +18,7 @@ const NavBar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-*">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand" to="/">
             <span className="logo">S.P.D</span>
           </Link>
           <button
@@ -34,31 +34,48 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                {/*                 
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    <span className="text">Home</span>
+                  </Link>
+                </li>
+              )}
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/Landingpage"
+                    to="/login"
                   >
-                    Home
-                  </Link> */}
-
-                <Link className="nav-link active" aria-current="page" to="/">
-                  <span className="text">Home</span>
-                </Link>
-              </li>
-              {/* <li className="nav-item">
+                    <span className="text">Login</span>
+                  </Link>
+                </li>
+              )}
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/register"
+                  >
+                    <span className="text">Register</span>
+                  </Link>
+                </li>
+              )}
+              {/* {auth.isLoggedIn &&  <li className="nav-item">
                 <Link className="nav-link active" to="/profile">
                   Profile
                 </Link>
-              </li> */}
+              </li>} */}
             </ul>
-            {/* <li className="nav-item loggout">
-              <button className="btn btn-danger logg" onClick={logoutHandler}>
-                Logout
-              </button>
-            </li> */}
+            {/* {auth.isLoggedIn && (
+              <li className="nav-item loggout">
+                <button className="btn btn-danger logg" onClick={logoutHandler}>
+                  Logout
+                </button>
+              </li>
+            )} */}
           </div>
         </div>
       </nav>

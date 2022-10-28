@@ -1,25 +1,25 @@
 import CreateTransactions from "./createTransactions";
 import { useContext, useState, useEffect } from "react";
-import { Detailscontext } from "../details-context/details";
+import { Detailscontext } from "../context/details";
 import TempNavbar from "./tempNavbar.js";
 const Transactions = () => {
   const dets = useContext(Detailscontext);
 
-  const [data, setdata] = useState([]);
-  const [send, setSend] = useState([dets.details]);
-  const [show, setShow] = useState(false);
+  // const [data, setdata] = useState([]);
+  // const [send, setSend] = useState([dets.details]);
+  // const [show, setShow] = useState(false);
 
   const getdetails = (dat) => {
-    console.log(data, "hreghj");
+    // console.log(data, "hreghj");
     dets.details.push(dat);
-    if (dat) {
-      setdata((prevstate) => {
-        const newState = [...prevstate];
-        newState.unshift(dat);
-        console.log(newState);
-        return newState;
-      });
-    }
+    // if (dat) {
+    //   setdata((prevstate) => {
+    //     const newState = [...prevstate];
+    //     newState.unshift(dat);
+    //     console.log(newState);
+    //     return newState;
+    //   });
+    // }
   };
 
   console.log(dets.details);
@@ -38,7 +38,7 @@ const Transactions = () => {
           <th>Price</th>
           <th>Total</th>
         </tr>
-        {data.map((item) => {
+        {dets.details.map((item) => {
           return (
             <tr>
               <td>{item.Ticker}</td>

@@ -1,16 +1,16 @@
 import { useState, useContext } from "react";
 import "./tempNavbar.css";
 import { Link } from "react-router-dom";
-// import { AuthContext } from "../../context/authcontext";
+import { AuthContext } from "../context/auth-context";
 import { useNavigate } from "react-router-dom";
 const TempNavbar = () => {
   const navigate = useNavigate();
-  //   const auth = useContext(AuthContext);
-  //   const logoutHandler = () => {
-  //     auth.logout();
-  //     localStorage.removeItem("userid");
-  //     navigate("/");
-  //   };
+  const auth = useContext(AuthContext);
+  const logoutHandler = () => {
+    auth.logout();
+    localStorage.removeItem("user");
+    navigate("/");
+  };
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (
@@ -73,9 +73,9 @@ const TempNavbar = () => {
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }
       >
-        {/* <button className="button-20" onClick={logoutHandler}>
+        <button className="button-20" onClick={logoutHandler}>
           Logout
-        </button> */}
+        </button>
       </div>
     </nav>
   );

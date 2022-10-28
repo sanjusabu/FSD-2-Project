@@ -1,6 +1,6 @@
 import useInput from "../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
-import { Detailscontext } from "../details-context/details";
+import { Detailscontext } from "../context/details";
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);

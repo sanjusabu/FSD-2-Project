@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Detailscontext } from "../../details-context/details";
+import { Detailscontext } from "../../context/details";
 const Check = (props) => {
   console.log(props.details, props.count);
   const dets = useContext(Detailscontext);
@@ -9,12 +9,19 @@ const Check = (props) => {
     e.preventDefault();
     setShow(true);
   };
+  const CloseHandler = (e) => {
+    e.preventDefault();
+    setShow(false);
+  };
   return (
     <div style={{ backgroundColor: "black" }}>
       <h2>{props.details.portfolio}</h2>
       <h2>{props.details.platform}</h2>
       <button onClick={TableHandler} className="button-20" value={props.count}>
         Show Table
+      </button>
+      <button onClick={CloseHandler} className="button-20" value={props.count}>
+        Close
       </button>
       {show && (
         <div className="table-responsive">

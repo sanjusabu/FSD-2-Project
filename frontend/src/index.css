@@ -17,8 +17,7 @@ body{
 }
 .error-text {
   color: #b40e0e;
-  height: 1vh;
-
+  /* height: 1vh; */
 }
 .auto{
   text-align: center;
