@@ -1,7 +1,7 @@
 import ProfileGrowth from "./ProfileGrowth";
 import ProfileBreakdown from "./ProfileBreakdown";
 import ProfileTable from "./ProfileTable";
-import TempNavbar from "./tempNavbar";
+import TempNavbar from "../tempNavbar";
 import "./Profile.css";
 
 const Profile = () => {

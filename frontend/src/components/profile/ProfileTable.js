@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Detailscontext } from "../details-context/details";
+import { Detailscontext } from "../../details-context/details";
 const ProfileTable = () => {
   const dets = useContext(Detailscontext);
   console.log(dets.details);
