@@ -3,6 +3,7 @@ import "./tempNavbar.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 import { useNavigate } from "react-router-dom";
+
 const TempNavbar = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
