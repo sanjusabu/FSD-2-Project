@@ -17,6 +17,8 @@ const Check = (props) => {
     <div style={{ backgroundColor: "black" }}>
       <h2>{props.details.portfolio}</h2>
       <h2>{props.details.platform}</h2>
+      <h2>{props.details.type}</h2>
+      <h2>{props.details.openingDate}</h2>
       <button onClick={TableHandler} className="button-20" value={props.count}>
         Show Table
       </button>

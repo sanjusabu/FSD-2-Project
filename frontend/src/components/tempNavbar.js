@@ -21,8 +21,8 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "large",
-          margin: "0.2rem",
+          fontSize: "1.5rem",
+          margin: "1rem",
         }}
       >
         Portfolio
@@ -32,8 +32,8 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "large",
-          margin: "0.2rem",
+          fontSize: "1.5rem",
+          margin: "1rem",
         }}
       >
         Profile
@@ -43,8 +43,8 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "large",
-          margin: "0.2rem",
+          fontSize: "1.5rem",
+          margin: "1rem",
         }}
       >
         Transactions

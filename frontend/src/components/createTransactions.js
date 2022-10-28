@@ -7,6 +7,12 @@ const CreateTransactions = (props) => {
   const [formValid, setformValid] = useState(false);
 
   const {
+    value: Portfolio,
+    valueChangeHandler: PortfolioChange,
+    reset: resetPortfolio,
+  } = useInput(isNotEmpty);
+
+  const {
     value: Ticker,
     valueChangeHandler: taskChange,
     reset: resetTask,
@@ -35,18 +41,19 @@ const CreateTransactions = (props) => {
   const { valueChangeHandler: totalChange, reset: resetTotal } =
     useInput(isNotEmpty);
   useEffect(() => {
-    if (Ticker && startDate && quantity && price && actionvalue) {
+    if (Portfolio && Ticker && startDate && quantity && price && actionvalue) {
       setformValid(true);
     } else {
       setformValid(false);
     }
-  }, [Ticker, startDate, quantity, price, actionvalue]);
+  }, [Portfolio, Ticker, startDate, quantity, price, actionvalue]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     // dets.details.push({ Ticker });
     // console.log(dets);
     props.takedetails({
+      Portfolio: Portfolio,
       Ticker: Ticker,
       Date: startDate,
       quantity: quantity,
@@ -54,6 +61,7 @@ const CreateTransactions = (props) => {
       action: actionvalue,
       total: quantity * price,
     });
+    resetPortfolio();
     resetTask();
     resetStart();
     resetTotal();
@@ -65,6 +73,22 @@ const CreateTransactions = (props) => {
   return (
     <>
       <form onSubmit={submitHandler} className="form">
+        <div className="input-container ic3">
+          <label for="Portfolio" style={{ color: "black" }}>
+            Portfolio
+          </label>
+          <select
+            name="Portfolio"
+            className="input"
+            id="Portfolio"
+            value={Portfolio}
+            onChange={PortfolioChange}
+          >
+            <option> Select--an--option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
         <div className="input-container ic3">
           <label for="name" style={{ color: "black" }}>
             Ticker
