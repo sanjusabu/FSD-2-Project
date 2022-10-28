@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import PortfolioForm from "./portfolioForm";
 import PortfolioTable from "./portfolioTable";
+import TempNavbar from "../tempNavbar";
+import { Detailscontext } from "../../details-context/details";
 const Portfolio = () => {
+  const dets = useContext(Detailscontext);
+  console.log(dets.details);
   const [render, setRender] = useState([]);
   const getPortfolio = (data) => {
     // console.log(data);
@@ -13,6 +17,7 @@ const Portfolio = () => {
   console.log(render);
   return (
     <>
+      <TempNavbar />
       <PortfolioForm formdets={getPortfolio} />
       <PortfolioTable table={render} />
     </>

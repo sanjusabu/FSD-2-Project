@@ -1,16 +1,17 @@
 import CreateTransactions from "./createTransactions";
 import { useContext, useState, useEffect } from "react";
 import { Detailscontext } from "../details-context/details";
-
+import TempNavbar from "./tempNavbar.js";
 const Transactions = () => {
-  // const dets = useContext(Detailscontext);
+  const dets = useContext(Detailscontext);
 
   const [data, setdata] = useState([]);
-  // const newdetails =[]
+  const [send, setSend] = useState([dets.details]);
   const [show, setShow] = useState(false);
 
   const getdetails = (dat) => {
     console.log(data, "hreghj");
+    dets.details.push(dat);
     if (dat) {
       setdata((prevstate) => {
         const newState = [...prevstate];
@@ -20,9 +21,12 @@ const Transactions = () => {
       });
     }
   };
-  console.log(data);
+
+  console.log(dets.details);
+
   return (
     <>
+      <TempNavbar />
       <CreateTransactions takedetails={getdetails} />
       <br></br>
       <table className="container">

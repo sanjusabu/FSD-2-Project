@@ -1,4 +1,8 @@
+import { useState, useContext } from "react";
+import { Detailscontext } from "../details-context/details";
 const ProfileTable = () => {
+  const dets = useContext(Detailscontext);
+  console.log(dets.details);
   return (
     <div className="row">
       <div className="col-md-12 mb-3">
@@ -16,16 +20,16 @@ const ProfileTable = () => {
                     <th>Total</th>
                   </tr>
 
-                  {/* <% data.forEach((i)=> { %>
-                                                            <tr>
-                                                                <td><%= i.trans_Date %></td>
-                                                                <td><%= i.ticker %></td>
-                                                                <td><%= i.action %></td>
-                                                                <td><%= i.quantity %></td>
-                                                                <td><%= i.price %></td>
-                                                                <td><%= i.total %></td>
-                                                            </tr>
-                                                            <% }); %> */}
+                  {dets.details.map((i) => (
+                    <tr>
+                      <td>{i.Date}</td>
+                      <td>{i.Ticker}</td>
+                      <td>{i.action}</td>
+                      <td>{i.quantity}</td>
+                      <td>{i.price}</td>
+                      <td>{i.total}</td>
+                    </tr>
+                  ))}
                 </thead>
                 <tbody></tbody>
               </table>

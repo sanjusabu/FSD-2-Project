@@ -1,10 +1,12 @@
 import ProfileGrowth from "./ProfileGrowth";
 import ProfileBreakdown from "./ProfileBreakdown";
 import ProfileTable from "./ProfileTable";
+import TempNavbar from "./tempNavbar";
 
 const Profile = () => {
   return (
     <>
+      <TempNavbar />
       <main className="mt-5 pt-3" id="dashboard">
         <div className="container-fluid">
           <div className="row">
