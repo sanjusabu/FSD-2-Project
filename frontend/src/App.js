@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Transactions from "./components/transactions";
-import Profile from "./components/Profile";
+import Profile from "./components/profile/Profile";
 import { Detailscontext } from "./details-context/details";
 import Portfolio from "./components/portfolio/portfolio";
 function App() {
