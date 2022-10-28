@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import './Cards.css';
 
 const Cards = (props) => {
   return (
