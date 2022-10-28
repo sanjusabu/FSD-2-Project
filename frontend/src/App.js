@@ -10,6 +10,7 @@ import Register from "./components/auth/Register";
 import { AuthContext } from "./context/auth-context";
 import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
+import Help from "./components/Help";
 
 function App() {
   const details = [];
@@ -44,6 +45,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/help" element={<Help />}></Route>
         </Routes>
       </Router>
     );
