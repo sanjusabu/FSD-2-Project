@@ -1,7 +1,11 @@
 import useInput from "../../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
+import { Portfoliocontext } from "../../context/portfolio-context";
+
 const isNotEmpty = (value) => value.trim() !== "";
 const PortfolioForm = (props) => {
+  const port = useContext(Portfoliocontext);
+
   const [formValid, setformValid] = useState(false);
   const {
     value: portName,
@@ -36,6 +40,15 @@ const PortfolioForm = (props) => {
   }, [platformName, portName, type, openingDate]);
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    port.portfolio.push({
+      portfolio: portName,
+      platform: platformName,
+      type: type,
+      openingDate: openingDate,
+    });
+    console.log(port);
+
     props.formdets({
       portfolio: portName,
       platform: platformName,
@@ -68,12 +81,10 @@ const PortfolioForm = (props) => {
         />
       </div>
       <div>
-        <label for="type" style={{ color: "black" }}>Type Of Portfolio</label>
-      <select
-          id="type"
-          value={type}
-          onChange={typeChange}
-        >
+        <label for="type" style={{ color: "black" }}>
+          Type Of Portfolio
+        </label>
+        <select id="type" value={type} onChange={typeChange}>
           <option>Select Type Of Portfolio</option>
           <option value="Equity">Equity</option>
           <option value="Cryptocurrency">Cryptocurrency</option>
@@ -90,9 +101,9 @@ const PortfolioForm = (props) => {
           onChange={openingDateChange}
         />
       </div>
-        <button disabled={!formValid} className="button-20" type="submit">
-          Submit
-        </button>
+      <button disabled={!formValid} className="button-20" type="submit">
+        Submit
+      </button>
     </form>
   );
 };

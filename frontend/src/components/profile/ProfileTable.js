@@ -12,6 +12,7 @@ const ProfileTable = () => {
               <table id="example" className="table table-striped data-table">
                 <thead>
                   <tr>
+                    <th>Portfolio</th>
                     <th>Date of Transaction </th>
                     <th>Ticker</th>
                     <th>Action</th>
@@ -22,6 +23,7 @@ const ProfileTable = () => {
 
                   {dets.details.map((i) => (
                     <tr>
+                      <td>{i.Portfolio}</td>
                       <td>{i.Date}</td>
                       <td>{i.Ticker}</td>
                       <td>{i.action}</td>

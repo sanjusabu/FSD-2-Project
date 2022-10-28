@@ -1,10 +1,16 @@
 import { useState, useContext } from "react";
 import { Detailscontext } from "../../context/details";
+import { Portfoliocontext } from "../../context/portfolio-context";
+import { useEffect } from "react";
 const Check = (props) => {
-  console.log(props.details, props.count);
+  // console.log(props.details, props.count);
+
+  const port = useContext(Portfoliocontext);
   const dets = useContext(Detailscontext);
-  console.log(dets.details);
   const [show, setShow] = useState(false);
+  const [match, setMatch] = useState(false);
+  console.log(port.portfolio, "portfolio");
+  console.log(dets.details, "details");
   const TableHandler = (e) => {
     e.preventDefault();
     setShow(true);
@@ -15,10 +21,11 @@ const Check = (props) => {
   };
   return (
     <div style={{ backgroundColor: "black" }}>
-      <h2>{props.details.portfolio}</h2>
-      <h2>{props.details.platform}</h2>
-      <h2>{props.details.type}</h2>
-      <h2>{props.details.openingDate}</h2>
+      <h2 style={{ color: "white" }}>{props.details.portfolio}</h2>
+      <h2 style={{ color: "white" }}>{props.details.platform}</h2>
+      <h2 style={{ color: "white" }}>{props.details.type}</h2>
+      <h2 style={{ color: "white" }}>{props.details.openingDate}</h2>
+
       <button onClick={TableHandler} className="button-20" value={props.count}>
         Show Table
       </button>
@@ -30,6 +37,7 @@ const Check = (props) => {
           <table id="example" className="table table-striped data-table">
             <thead>
               <tr>
+                <th>Portfolio</th>
                 <th>Date of Transaction</th>
                 <th>Ticker</th>
                 <th>Action</th>
@@ -37,16 +45,24 @@ const Check = (props) => {
                 <th>Price</th>
                 <th>Total</th>
               </tr>
-              {dets.details.map((i) => (
-                <tr>
-                  <td>{i.Date}</td>
-                  <td>{i.Ticker}</td>
-                  <td>{i.action}</td>
-                  <td>{i.quantity}</td>
-                  <td>{i.price}</td>
-                  <td>{i.total}</td>
-                </tr>
-              ))}
+              {dets.details.map((i) => {
+                port.portfolio.map((j) => {
+                  if (i.Portfolio === j.portfolio) {
+                    return (
+                      <tr>
+                        <td>{i.Portfolio}</td>
+                        <td>{i.Date}</td>
+                        <td>{i.Ticker}</td>
+                        <td>{i.action}</td>
+                        <td>{i.quantity}</td>
+                        <td>{i.price}</td>
+                        <td>{i.total}</td>
+                      </tr>
+                    );
+                  }
+                });
+              })}
+              ;
             </thead>
             <tbody></tbody>
           </table>

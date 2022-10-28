@@ -1,10 +1,15 @@
 import useInput from "../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
 import { Detailscontext } from "../context/details";
+import { Portfoliocontext } from "../context/portfolio-context";
+
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);
   const [formValid, setformValid] = useState(false);
+  const port = useContext(Portfoliocontext);
+
+  // console.log(port.portfolio);
 
   const {
     value: Portfolio,
@@ -85,8 +90,9 @@ const CreateTransactions = (props) => {
             onChange={PortfolioChange}
           >
             <option> Select--an--option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            {port.portfolio.map((data) => {
+              return <option value={data.portfolio}>{data.portfolio}</option>;
+            })}
           </select>
         </div>
         <div className="input-container ic3">
