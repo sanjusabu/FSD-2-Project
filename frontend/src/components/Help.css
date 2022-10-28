@@ -1,0 +1,110 @@
+* {
+    color: #212529;
+}
+
+h1 {
+    font-size: xx-large;
+    font-style: bold;
+}
+
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.loginin {
+    padding: 20px;
+	box-shadow: 0 15px 30px 1px grey;
+	border-radius:35px;
+	border-radius: 5px;
+	margin-top: 2%;
+	margin-left:4%;
+	margin-right:4%;
+}
+
+.FAQ {
+    margin-top: 10px;
+    padding: 30px;
+}
+
+#container{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: relative;
+	border-radius: 25px;
+	overflow: hidden;
+	margin-top: 5%;
+	margin-left: 3em;
+	margin-right: 5%;
+	height: 350px;
+	width: 600px;
+  
+	
+}
+
+.product-details {
+	position: relative;
+	text-align: left;
+	overflow: hidden;
+	padding: 30px;
+	height: 100%;
+	float: left;
+	width: 40%;
+
+}
+
+#container .product-details h3{
+	font-family: 'Bebas Neue', cursive;
+	display: inline-block;
+	position: relative;
+	font-size: 24px;
+	color: #344055;
+	margin: 0;
+	
+}
+
+#container .product-details h3:before{
+	position: absolute;
+	content: '';
+	right: 0%; 
+	top: 0%;
+	transform: translate(25px, -15px);
+	font-family: 'Bree Serif', serif;
+	display: inline-block;
+	background: #ffe6e6;
+	border-radius: 5px;
+	font-size: 14px;
+	padding: 5px;
+	color: white;
+	margin: 0;
+	animation: chan-sh 6s ease infinite;
+
+}
+
+#container .product-details > p {
+    font-family: 'EB Garamond', serif;
+        text-align: center;
+        font-size: 17px;
+        color: #7d7d7d;
+        
+    }
+
+    .product-image {
+        transition: all 0.3s ease-out;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        float: right;
+        width: 50%;
+        display: inline-block;
+    }
+
+    #container img {width: 100%;height: 100%;}
+
+.juii {
+    text-align: left;
+}
+
+.col-3 {
+	margin-top: 2%;
+}
