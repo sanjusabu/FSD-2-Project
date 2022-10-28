@@ -28,13 +28,14 @@ const Home = () => {
   return (
     <div>
       <div className="home"></div>
+      <NavBar />
       <div className="content">
-        <NavBar />
+        
         <br />
         <br />
         <div style={homecss}>
           <div style={homecss1}>
-            <h2>Stock Portfolio Dashboard</h2><br/><br/>
+            <span className="homeh2"><h2>Stock Portfolio Dashboard</h2></span><br/><br/>
             <h1><b>Stock Portfolio Management Now At Your Fingertips</b></h1>
           </div>
           <div style={homecss2}>
