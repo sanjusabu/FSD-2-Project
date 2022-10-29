@@ -38,9 +38,10 @@ const PortfolioForm = (props) => {
       setformValid(false);
     }
   }, [platformName, portName, type, openingDate]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log("triggered");
     port.portfolio.push({
       portfolio: portName,
       platform: platformName,
@@ -59,6 +60,7 @@ const PortfolioForm = (props) => {
     resetPlatform();
     resettype();
     resetopeningDate();
+    setPage(0);
   };
 
   return (
