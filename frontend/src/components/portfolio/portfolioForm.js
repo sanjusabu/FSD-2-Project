@@ -39,9 +39,10 @@ const PortfolioForm = (props) => {
       setformValid(false);
     }
   }, [platformName, portName, type, openingDate]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log("triggered");
     port.portfolio.push({
       portfolio: portName,
       platform: platformName,
@@ -60,6 +61,7 @@ const PortfolioForm = (props) => {
     resetPlatform();
     resettype();
     resetopeningDate();
+    setPage(0);
   };
 
   const [page, setPage] = useState(0);
@@ -67,6 +69,7 @@ const PortfolioForm = (props) => {
   const FormTitles = ["Portfolio Name", "Platform", "Type", "Opening Date"];
 
   const PageDisplay = () => {
+    // e.preventDefault();
     if (page === 0) {
       return (
         <div>
@@ -133,7 +136,7 @@ const PortfolioForm = (props) => {
         ></div>
       </div>
       <div className="portform-container">
-        <form onSubmit={submitHandler}>
+        <form>
           <div className="header">
             <h1>{FormTitles[page]}</h1>
           </div>
@@ -141,15 +144,18 @@ const PortfolioForm = (props) => {
           <div className="footer">
             <button
               disabled={page == 0}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setPage((currPage) => currPage - 1);
               }}
             >
               Prev
             </button>
+
             <button
               disabled={page == 3}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setPage((currPage) => currPage + 1);
               }}
             >
@@ -157,7 +163,7 @@ const PortfolioForm = (props) => {
             </button>
           </div>
 
-          <button disabled={!formValid} type="submit">
+          <button disabled={!formValid} type="submit" onClick={submitHandler}>
             Submit
           </button>
         </form>

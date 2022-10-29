@@ -8,17 +8,31 @@ const Check = (props) => {
   const port = useContext(Portfoliocontext);
   const dets = useContext(Detailscontext);
   const [show, setShow] = useState(false);
-  const [match, setMatch] = useState(false);
+  const [match, setMatch] = useState([]);
+  const [val, setVal] = useState(0);
   console.log(port.portfolio, "portfolio");
   console.log(dets.details, "details");
+  useEffect(() => {
+    let save = [];
+    port.portfolio.map((p) => {
+      save.push(dets.details.filter((det) => p.portfolio === det.Portfolio));
+    });
+    setMatch(save);
+  }, []);
+
   const TableHandler = (e) => {
     e.preventDefault();
+    setVal(e.target.value);
     setShow(true);
   };
   const CloseHandler = (e) => {
     e.preventDefault();
     setShow(false);
   };
+
+  console.log(match, "matched");
+  console.log(dets.details);
+
   return (
     <div style={{ backgroundColor: "black" }}>
       <h2 style={{ color: "white" }}>{props.details.portfolio}</h2>
@@ -29,6 +43,7 @@ const Check = (props) => {
       <button onClick={TableHandler} className="button-20" value={props.count}>
         Show Table
       </button>
+      {console.log(props.count, "table")}
       <button onClick={CloseHandler} className="button-20" value={props.count}>
         Close
       </button>
@@ -45,24 +60,20 @@ const Check = (props) => {
                 <th>Price</th>
                 <th>Total</th>
               </tr>
-              {dets.details.map((i) => {
-                port.portfolio.map((j) => {
-                  if (i.Portfolio === j.portfolio) {
-                    return (
-                      <tr>
-                        <td>{i.Portfolio}</td>
-                        <td>{i.Date}</td>
-                        <td>{i.Ticker}</td>
-                        <td>{i.action}</td>
-                        <td>{i.quantity}</td>
-                        <td>{i.price}</td>
-                        <td>{i.total}</td>
-                      </tr>
-                    );
-                  }
-                });
+
+              {match[val - 1].map((i) => {
+                return (
+                  <tr>
+                    <td>{i.Portfolio}</td>
+                    <td>{i.Date}</td>
+                    <td>{i.Ticker}</td>
+                    <td>{i.action}</td>
+                    <td>{i.quantity}</td>
+                    <td>{i.price}</td>
+                    <td>{i.total}</td>
+                  </tr>
+                );
               })}
-              ;
             </thead>
             <tbody></tbody>
           </table>
