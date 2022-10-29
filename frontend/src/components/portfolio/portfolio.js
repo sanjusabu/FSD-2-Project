@@ -5,7 +5,7 @@ import TempNavbar from "../tempNavbar";
 import { Detailscontext } from "../../context/details";
 const Portfolio = () => {
   const dets = useContext(Detailscontext);
-  console.log(dets.details);
+  // console.log(dets.details);
   const [render, setRender] = useState([]);
   const getPortfolio = (data) => {
     // console.log(data);
@@ -14,7 +14,7 @@ const Portfolio = () => {
       return newState;
     });
   };
-  console.log(render);
+  // console.log(render);
   return (
     <>
       <TempNavbar />

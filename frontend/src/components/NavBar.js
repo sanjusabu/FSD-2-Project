@@ -16,10 +16,10 @@ const NavBar = () => {
   //   };
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-*">
+      <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-dark homenav">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <span className="logo">S.P.D</span>
+            <span className="logo"><img src="./logo.png"></img></span>
           </Link>
           <button
             className="navbar-toggler"
