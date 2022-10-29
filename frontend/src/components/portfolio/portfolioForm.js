@@ -60,7 +60,6 @@ const PortfolioForm = (props) => {
     resetPlatform();
     resettype();
     resetopeningDate();
-    setPage(0);
   };
 
   return (
