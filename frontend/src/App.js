@@ -56,6 +56,7 @@ function App() {
           <Route path="/transactions" element={<Transactions />}></Route>
           <Route path="/portfolio" element={<Portfolio />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/" element={<Profile />}></Route>
         </Routes>
       </Router>
     );
