@@ -34,13 +34,11 @@ const Check = (props) => {
   console.log(dets.details);
 
   return (
-    <div style={{ backgroundColor: "black", width: "40vw" }}>
-      <h2 style={{ color: "white" }}>
-        Portfolio Name: {props.details.portfolio}
-      </h2>
-      <h2 style={{ color: "white" }}>Platform: {props.details.platform}</h2>
-      <h2 style={{ color: "white" }}>Type: {props.details.type}</h2>
-      <h2 style={{ color: "white" }}>Date: {props.details.openingDate}</h2>
+    <div className="portcard">
+      <p>Portfolio Name: {props.details.portfolio}</p>
+      <p>Platform: {props.details.platform}</p>
+      <p>Type: {props.details.type}</p>
+      <p>Opening Date: {props.details.openingDate}</p>
 
       {!show && (
         <button
@@ -62,9 +60,9 @@ const Check = (props) => {
         </button>
       )}
       {show && (
-        <div style={{ backgroundColor: "white" }}>
+        <div>
           <div className="table-responsive">
-            <table id="example" className="table table-striped data-table">
+            <table id="ex" className="table table-striped data-table">
               <thead>
                 <tr>
                   <th>Portfolio</th>

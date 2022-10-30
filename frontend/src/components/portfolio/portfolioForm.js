@@ -1,6 +1,7 @@
 import useInput from "../../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
 import { Portfoliocontext } from "../../context/portfolio-context";
+import "./portfolioForm.css";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const PortfolioForm = (props) => {
@@ -63,46 +64,50 @@ const PortfolioForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <input
-          id="name"
-          type="text"
-          value={portName}
-          placeholder="Name of Portfolio"
-          onChange={portChange}
-        />
-      </div>
-      <div>
-        <input
-          id="platform"
-          type="text"
-          placeholder="Platform"
-          value={platformName}
-          onChange={platformChange}
-        />
-      </div>
-      <div>
-        <select id="type" value={type} onChange={typeChange}>
-          <option>Select Type Of Portfolio</option>
-          <option value="Equity">Equity</option>
-          <option value="Cryptocurrency">Cryptocurrency</option>
-        </select>
-      </div>
-      <div>
-        <input
-          id="openingDate"
-          type="date"
-          placeholder="Opening Date"
-          value={openingDate}
-          onChange={openingDateChange}
-        />
-      </div>
-
-      <button disabled={!formValid} type="submit">
-        Submit
-      </button>
-    </form>
+    <div className="center">
+      <h1>Add Portfolio</h1>
+      <form onSubmit={submitHandler}>
+        <div className="inputbox">
+          <input
+            id="name"
+            type="text"
+            value={portName}
+            placeholder="Name of Portfolio"
+            onChange={portChange}
+          />
+        </div>
+        <div className="inputbox">
+          <input
+            id="platform"
+            type="text"
+            placeholder="Platform"
+            value={platformName}
+            onChange={platformChange}
+          />
+        </div>
+        <div className="inputbox">
+          <select id="type" value={type} onChange={typeChange}>
+            <option>Select Type Of Portfolio</option>
+            <option value="Equity">Equity</option>
+            <option value="Cryptocurrency">Cryptocurrency</option>
+          </select>
+        </div>
+        <div className="inputbox">
+          <input
+            id="openingDate"
+            type="date"
+            placeholder="Opening Date"
+            value={openingDate}
+            onChange={openingDateChange}
+          />
+        </div>
+        <div className="inputbox">
+        <button disabled={!formValid} type="submit">
+          Submit
+        </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
