@@ -71,3 +71,13 @@
 .center .inputbox:hover button {
   background: linear-gradient(45deg, #64EEFA, rgb(18, 76, 162));
 }
+
+.center .inputbox button:disabled {
+  width: 50%;
+  background: rgb(18, 76, 162);
+  color: #fff;
+  border: #fff;
+  border-radius: 10px;
+  opacity: 0.65;
+  cursor: not-allowed;
+}

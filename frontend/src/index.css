@@ -413,3 +413,32 @@ select::-ms-expand {
   font-family: "Freehand-Regular";   /*Can be any text*/
   src: local("Freehand-Regular"), url("./fonts/Freehand-Regular.ttf") format("truetype");
 }
+
+.portcard{
+  border-radius: 8px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  margin: 1rem;
+  width: 31vw;
+}
+
+.porttable{
+  display: flex;
+  flex-direction: row;
+}
+
+.portbutton {
+  width: 50%;
+  background: rgb(18, 76, 162);
+  color: #fff;
+  border: #fff;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 0rem 1rem;
+}
+.portbutton:hover {
+  background: linear-gradient(45deg, #64EEFA, rgb(18, 76, 162));
+}
+
+#ex{
+  width: 20vw;
+}

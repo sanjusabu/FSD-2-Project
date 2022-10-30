@@ -34,25 +34,25 @@ const Check = (props) => {
   console.log(dets.details);
 
   return (
-    <div style={{ backgroundColor: "black", width: "40vw" }}>
-      <h2 style={{ color: "white" }}>
+    <div className="portcard">
+      <p>
         Portfolio Name: {props.details.portfolio}
-      </h2>
-      <h2 style={{ color: "white" }}>Platform: {props.details.platform}</h2>
-      <h2 style={{ color: "white" }}>Type: {props.details.type}</h2>
-      <h2 style={{ color: "white" }}>Date: {props.details.openingDate}</h2>
+      </p>
+      <p>Platform: {props.details.platform}</p>
+      <p>Type: {props.details.type}</p>
+      <p>Opening Date: {props.details.openingDate}</p>
 
-      <button onClick={TableHandler} className="button-20" value={props.count}>
+      <button onClick={TableHandler} className="portbutton" value={props.count}>
         Show Table
       </button>
       {console.log(props.count, "table")}
-      <button onClick={CloseHandler} className="button-20" value={props.count}>
+      <button onClick={CloseHandler} className="portbutton" value={props.count}>
         Close
       </button>
       {show && (
-        <div style={{ backgroundColor: "white" }}>
+        <div>
           <div className="table-responsive">
-            <table id="example" className="table table-striped data-table">
+            <table id="ex" className="table table-striped data-table">
               <thead>
                 <tr>
                   <th>Portfolio</th>
