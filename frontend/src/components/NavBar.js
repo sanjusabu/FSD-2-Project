@@ -74,6 +74,17 @@ const NavBar = () => {
                   </Link>
                 </li>
               )}
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/About"
+                  >
+                    <span className="text">About Us</span>
+                  </Link>
+                </li>
+              )}
               {/* {auth.isLoggedIn &&  <li className="nav-item">
                 <Link className="nav-link active" to="/profile">
                   Profile
