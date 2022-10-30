@@ -421,6 +421,15 @@ select::-ms-expand {
   flex-direction: row;
 }
 
+.portcard__content{
+  margin-left: 23%;
+}
+
+.portcardtable td{
+  font-weight: 500;
+}
+
+
 .portbutton {
   width: 50%;
   background: rgb(18, 76, 162);

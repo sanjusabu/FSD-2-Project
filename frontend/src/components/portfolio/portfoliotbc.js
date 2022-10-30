@@ -41,11 +41,26 @@ const Check = (props) => {
   return (
     <div className="portcard">
       <img src={props.details.images[0].address} style={{ width: "60%" }}></img>
-      <p>Portfolio Name: {props.details.portfolio}</p>
-      <p>Platform: {props.details.platform}</p>
-      <p>Type: {props.details.type}</p>
-      <p>Opening Date: {props.details.openingDate}</p>
-
+      <div className="portcard__content">
+      <table className="portcardtable">
+      <tr>
+        <td style={{fontSize: "1.4rem"}}>Portfolio Name: </td>
+        <td style={{fontSize: "1.4rem"}}>{props.details.portfolio}</td>
+      </tr>
+      <tr>
+      <td>Type: </td>
+      <td>{props.details.type}</td>
+      </tr>
+      <tr>
+      <td>Platform: </td>
+      <td>{props.details.platform}</td>
+      </tr>
+      <tr>
+      <td>Opening Date: </td>
+      <td>{props.details.openingDate}</td>
+      </tr>
+      </table>
+      </div>
       {!show && (
         <button
           onClick={TableHandler}
