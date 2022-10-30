@@ -171,6 +171,7 @@ const CreateTransactions = (props) => {
   };
   return (
     <div className="tranform">
+      <h1>Step {page+1} of 5</h1>
       <div className="progressbar">
         <div
           style={{
