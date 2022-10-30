@@ -82,7 +82,7 @@ const Register = () => {
       {/* <ErrorModal error={isError} onClear={clearError} /> */}
 
       <form onSubmit={submitHandler}>
-        <div className="form">
+        <div className="form-register">
           <div className="title">Registration Form</div>
           <div className="subtitle">Let's create your account!</div>
           <div className="input-container ic1">
