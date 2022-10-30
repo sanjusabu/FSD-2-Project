@@ -35,20 +35,30 @@ const Check = (props) => {
 
   return (
     <div className="portcard">
-      <p>
-        Portfolio Name: {props.details.portfolio}
-      </p>
+      <p>Portfolio Name: {props.details.portfolio}</p>
       <p>Platform: {props.details.platform}</p>
       <p>Type: {props.details.type}</p>
       <p>Opening Date: {props.details.openingDate}</p>
 
-      <button onClick={TableHandler} className="portbutton" value={props.count}>
-        Show Table
-      </button>
+      {!show && (
+        <button
+          onClick={TableHandler}
+          className="button-20"
+          value={props.count}
+        >
+          Show Table
+        </button>
+      )}
       {console.log(props.count, "table")}
-      <button onClick={CloseHandler} className="portbutton" value={props.count}>
-        Close
-      </button>
+      {show && (
+        <button
+          onClick={CloseHandler}
+          className="button-20"
+          value={props.count}
+        >
+          Close
+        </button>
+      )}
       {show && (
         <div>
           <div className="table-responsive">
