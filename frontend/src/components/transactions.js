@@ -17,7 +17,7 @@ const Transactions = () => {
     <>
       <TempNavbar />
       <CreateTransactions takedetails={getdetails} />
-      <br></br>
+      {/* <br></br>
       <table className="container">
         <tr>
           <th>Ticker</th>
@@ -39,7 +39,7 @@ const Transactions = () => {
             </tr>
           );
         })}
-      </table>
+      </table> */}
     </>
   );
 };
