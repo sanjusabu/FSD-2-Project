@@ -447,7 +447,7 @@ select::-ms-expand {
 }
 
 .backgroundimage-wala{
-  /* background: url("../src/components/auth/bg-01.jpg"); */
+  background: url("../src/components/auth/bg-01.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
@@ -457,11 +457,11 @@ select::-ms-expand {
 }
 
 .formcontainer{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
   margin-top: 6%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .form {

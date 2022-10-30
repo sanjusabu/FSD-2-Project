@@ -82,12 +82,9 @@ const Login = () => {
                 onChange={emailChangeHandler}
                 onBlur={emailBlurHandler}
                 value={emailValue}
-                placeholder="email"
+                placeholder="Email"
               />
 
-              <label for="email" className="placeholder">
-                Email
-              </label>
               {emailError && (
                 <p className="error-text">Please Enter a valid Email!</p>
               )}
@@ -100,11 +97,8 @@ const Login = () => {
                 onChange={passwordChangeHandler}
                 onBlur={passwordBlurHandler}
                 value={passwordValue}
-                placeholder="password"
+                placeholder="Password"
               />
-              <label for="lastname" className="placeholder">
-                Password
-              </label>
               {passwordError && (
                 <p className="error-text">
                   Password should be atleast 5 characters long!
