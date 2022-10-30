@@ -23,7 +23,7 @@ const Login = () => {
     return (
       <label>
         <input type="checkbox" checked={value} onChange={handleOnChange} />
-        {label}
+        <span style={{ color: "white" }}> {label}</span>
       </label>
     );
   };
@@ -68,9 +68,8 @@ const Login = () => {
     resetPassword();
   };
   return (
-    <div>
+    <div className="backgroundimg">
       <NavBar />
-      <div className="backgroundimage-wala" />
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
@@ -88,7 +87,7 @@ const Login = () => {
                 onChange={emailChangeHandler}
                 onBlur={emailBlurHandler}
                 value={emailValue}
-                placeholder="email"
+                placeholder="Email"
               />
 
               {emailError && (
@@ -103,7 +102,7 @@ const Login = () => {
                 onChange={passwordChangeHandler}
                 onBlur={passwordBlurHandler}
                 value={passwordValue}
-                placeholder="password"
+                placeholder="Password"
               />
               {passwordError && (
                 <p className="error-text">
