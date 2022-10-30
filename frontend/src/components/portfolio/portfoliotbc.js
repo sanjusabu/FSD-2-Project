@@ -42,13 +42,25 @@ const Check = (props) => {
       <h2 style={{ color: "white" }}>Type: {props.details.type}</h2>
       <h2 style={{ color: "white" }}>Date: {props.details.openingDate}</h2>
 
-      <button onClick={TableHandler} className="button-20" value={props.count}>
-        Show Table
-      </button>
+      {!show && (
+        <button
+          onClick={TableHandler}
+          className="button-20"
+          value={props.count}
+        >
+          Show Table
+        </button>
+      )}
       {console.log(props.count, "table")}
-      <button onClick={CloseHandler} className="button-20" value={props.count}>
-        Close
-      </button>
+      {show && (
+        <button
+          onClick={CloseHandler}
+          className="button-20"
+          value={props.count}
+        >
+          Close
+        </button>
+      )}
       {show && (
         <div style={{ backgroundColor: "white" }}>
           <div className="table-responsive">
