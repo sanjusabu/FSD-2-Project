@@ -16,6 +16,11 @@ const TempNavbar = () => {
 
   return (
     <nav className="navigation">
+      <Link className="navbar-brand" to="/">
+        <span className="logo">
+          <img src="./logo.png"></img>
+        </span>
+      </Link>
       <Link
         to="/portfolio"
         style={{
@@ -25,7 +30,7 @@ const TempNavbar = () => {
           margin: "1rem",
         }}
       >
-        Portfolio
+        <span className="temptext">Portfolio</span>
       </Link>
       <Link
         to="/profile"
@@ -36,7 +41,7 @@ const TempNavbar = () => {
           margin: "1rem",
         }}
       >
-        Profile
+        <span className="temptext">Profile</span>
       </Link>
       <Link
         to="/transactions"
@@ -47,7 +52,7 @@ const TempNavbar = () => {
           margin: "1rem",
         }}
       >
-        Transactions
+        <span className="temptext">Transactions</span>
       </Link>
       <button
         className="hamburger"

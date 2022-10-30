@@ -120,12 +120,32 @@ const Help = () => {
                     on just one or two sectors increases the chances of your
                     portfolio losing its value during periods of downturn.
                   </p>
-                  <div className="product-image">
-                    <img src={choices} alt="choices" />
-                  </div>
+                </div>
+                <div className="product-image">
+                  <img src={choices} alt="choices" />
                 </div>
               </div>
             </div>
+            {/* <div className="col">
+              <div id="container">
+                <div className="product-details">
+                  <h3>Diversify your choices</h3>
+                  <br />{" "}
+                  <p>
+                    There’s one thing that you should always keep in mind when
+                    picking stocks for your portfolio - diversification. Try to
+                    select stocks from multiple different sectors and
+                    industries. This way, you can reduce the risk of your
+                    portfolio underperforming during tough times. Concentrating
+                    on just one or two sectors increases the chances of your
+                    portfolio losing its value during periods of downturn.
+                  </p>
+                  <div className="product-image">
+                    <img src={conclude} alt="conclude" />
+                  </div>
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
 
