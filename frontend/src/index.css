@@ -420,6 +420,11 @@ select::-ms-expand {
   flex-direction: row;
 }
 
+.portcard__content{
+  margin-left: 30%;
+}
+
+
 .portbutton {
   width: 50%;
   background: rgb(18, 76, 162);
