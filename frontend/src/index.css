@@ -423,6 +423,7 @@ select::-ms-expand {
 
 .portcard__content{
   margin-left: 23%;
+  padding-bottom: 2%;
 }
 
 .portcardtable td{
@@ -487,4 +488,46 @@ select::-ms-expand {
     height: 95vh;
     padding: 2vw;
     width: 30vw;
+}
+
+.logoutbutton {
+  font-size: .8em;
+  font-family: 'Oswald', sans-serif;
+	position: relative;
+  right: -30px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  border: none;
+}
+
+.logout {
+	text-decoration: none;
+	float: right;
+  padding: 12px;
+  margin: 0px;
+  color: white;
+  width: 50px;
+  background-color: white ;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+.logout:hover {
+  width: 110px;
+}
+
+.logoutbutton:hover{
+  opacity: .9;
+}
+
+.logout img {
+  position: absolute;
+  bottom: 1rem;
+  width: 25px;
+  float: left;
 }

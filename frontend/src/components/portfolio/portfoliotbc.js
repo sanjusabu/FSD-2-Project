@@ -64,7 +64,7 @@ const Check = (props) => {
       {!show && (
         <button
           onClick={TableHandler}
-          className="button-20"
+          className="btn btn-dark"
           value={props.count}
         >
           Show Table
@@ -74,7 +74,7 @@ const Check = (props) => {
       {show && (
         <button
           onClick={CloseHandler}
-          className="button-20"
+          className="btn btn-dark"
           value={props.count}
         >
           Close

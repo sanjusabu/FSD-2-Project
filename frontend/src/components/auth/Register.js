@@ -97,7 +97,7 @@ const Register = () => {
                   onChange={nameChangeHandler}
                   onBlur={nameBlurHandler}
                   value={nameValue}
-                  placeholder="name"
+                  placeholder="Name"
                 />
 
                 {/* <div className="cut"></div> */}
@@ -114,7 +114,7 @@ const Register = () => {
                   onChange={emailChangeHandler}
                   onBlur={emailBlurHandler}
                   value={emailValue}
-                  placeholder="email"
+                  placeholder="Email"
                 />
                 {/* <div className="cut cut-short"></div> */}
 
@@ -130,7 +130,7 @@ const Register = () => {
                   onChange={passwordChangeHandler}
                   onBlur={passwordBlurHandler}
                   value={passwordValue}
-                  placeholder="password"
+                  placeholder="Password"
                 />
                 {/* <div className="cut"></div> */}
                 {passwordError && (
@@ -147,7 +147,7 @@ const Register = () => {
                   onChange={numberChangeHandler}
                   onBlur={numberBlurHandler}
                   value={numberValue}
-                  placeholder="mobile"
+                  placeholder="Mobile"
                 />
 
                 {/* <div className="cut cut-short"></div> */}
