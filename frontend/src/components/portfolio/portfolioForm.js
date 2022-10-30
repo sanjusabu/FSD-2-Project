@@ -39,9 +39,10 @@ const PortfolioForm = (props) => {
       setformValid(false);
     }
   }, [platformName, portName, type, openingDate]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log("triggered");
     port.portfolio.push({
       portfolio: portName,
       platform: platformName,
@@ -62,14 +63,11 @@ const PortfolioForm = (props) => {
     resetopeningDate();
   };
 
-  const [page, setPage] = useState(0);
-
-  const FormTitles = ["Portfolio Name", "Platform", "Type", "Opening Date"];
-
-  const PageDisplay = () => {
-    if (page === 0) {
-      return (
-        <div>
+  return (
+    <div className="center">
+      <h1>Add Portfolio</h1>
+      <form onSubmit={submitHandler}>
+        <div className="inputbox">
           <input
             id="name"
             type="text"
@@ -78,10 +76,7 @@ const PortfolioForm = (props) => {
             onChange={portChange}
           />
         </div>
-      );
-    } else if (page === 1) {
-      return (
-        <div>
+        <div className="inputbox">
           <input
             id="platform"
             type="text"
@@ -90,20 +85,14 @@ const PortfolioForm = (props) => {
             onChange={platformChange}
           />
         </div>
-      );
-    } else if (page === 2) {
-      return (
-        <div>
+        <div className="inputbox">
           <select id="type" value={type} onChange={typeChange}>
             <option>Select Type Of Portfolio</option>
             <option value="Equity">Equity</option>
             <option value="Cryptocurrency">Cryptocurrency</option>
           </select>
         </div>
-      );
-    } else {
-      return (
-        <div>
+        <div className="inputbox">
           <input
             id="openingDate"
             type="date"
@@ -112,56 +101,12 @@ const PortfolioForm = (props) => {
             onChange={openingDateChange}
           />
         </div>
-      );
-    }
-  };
-
-  return (
-    <div className="portform">
-      <div className="progressbar">
-        <div
-          style={{
-            width:
-              page === 0
-                ? "25%"
-                : page == 1
-                ? "50%"
-                : page == 2
-                ? "75%"
-                : "100%",
-          }}
-        ></div>
-      </div>
-      <div className="portform-container">
-        <form onSubmit={submitHandler}>
-          <div className="header">
-            <h1>{FormTitles[page]}</h1>
-          </div>
-          <div className="body">{PageDisplay()}</div>
-          <div className="footer">
-            <button
-              disabled={page == 0}
-              onClick={() => {
-                setPage((currPage) => currPage - 1);
-              }}
-            >
-              Prev
-            </button>
-            <button
-              disabled={page == 3}
-              onClick={() => {
-                setPage((currPage) => currPage + 1);
-              }}
-            >
-              Next
-            </button>
-          </div>
-
-          <button disabled={!formValid} type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+        <div className="inputbox">
+        <button disabled={!formValid} type="submit">
+          Submit
+        </button>
+        </div>
+      </form>
     </div>
   );
 };

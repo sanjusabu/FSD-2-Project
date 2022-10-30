@@ -2,6 +2,7 @@ import useInput from "../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
 import { Detailscontext } from "../context/details";
 import { Portfoliocontext } from "../context/portfolio-context";
+import "./createTransactions.css";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
@@ -73,18 +74,25 @@ const CreateTransactions = (props) => {
     resetPrice();
     resetQuantity();
     resetAction();
+    setPage(0);
   };
-  // date of trans,name,action,quantity,price,total
-  return (
-    <>
-      <form onSubmit={submitHandler} className="form">
-        <div className="input-container ic3">
-          <label for="Portfolio" style={{ color: "black" }}>
-            Portfolio
-          </label>
+
+  const [page, setPage] = useState(0);
+
+  const FormTitles = [
+    "Which Portfolio?",
+    "Ticker",
+    "Date of Transaction",
+    "How Many Stocks Bought or Sold?",
+    "Price",
+  ];
+
+  const PageDisplay = () => {
+    if (page === 0) {
+      return (
+        <div>
           <select
             name="Portfolio"
-            className="input"
             id="Portfolio"
             value={Portfolio}
             onChange={PortfolioChange}
@@ -95,39 +103,35 @@ const CreateTransactions = (props) => {
             })}
           </select>
         </div>
-        <div className="input-container ic3">
-          <label for="name" style={{ color: "black" }}>
-            Ticker
-          </label>
+      );
+    } else if (page === 1) {
+      return (
+        <div>
           <input
             id="name"
-            className="input"
             type="text"
+            placeholder="Enter the Stock Ticker"
             value={Ticker}
             onChange={taskChange}
           />
         </div>
-
-        <div className="input-container ic3">
-          <label for="start" style={{ color: "black" }}>
-            Date
-          </label>
+      );
+    } else if (page === 2) {
+      return (
+        <div>
           <input
             id="start"
             type="date"
-            className="input"
             value={startDate}
             onChange={startChange}
           />
         </div>
-
-        <div className="input-container ic3">
-          <label for="Priority" style={{ color: "black" }}>
-            Action
-          </label>
+      );
+    } else if (page === 3) {
+      return (
+        <div className="traninput">
           <select
             name="Priority"
-            className="input"
             id="Priority"
             value={actionvalue}
             onChange={actionChange}
@@ -136,51 +140,89 @@ const CreateTransactions = (props) => {
             <option value="buy">Buy</option>
             <option value="sell">Sell</option>
           </select>
-        </div>
-
-        <div className="input-container ic3">
-          <label for="name" style={{ color: "black" }}>
-            Quantity
-          </label>
           <input
             id="name"
-            className="input"
             type="number"
+            placeholder="Enter the Quantity"
             value={quantity}
             onChange={quanChange}
           />
         </div>
-
-        <div className="input-container ic3">
-          <label for="name" style={{ color: "black" }}>
-            Price
-          </label>
+      );
+    } else {
+      return (
+        <div className="traninput">
           <input
             id="name"
-            className="input"
             type="number"
+            placeholder="Enter the Price"
             value={price}
             onChange={priceChange}
           />
-        </div>
-        <div className="input-container ic3">
-          <label for="name" style={{ color: "black" }}>
-            Total
-          </label>
           <input
             id="name"
-            className="input"
             type="number"
             value={quantity * price}
             onChange={totalChange}
           />
         </div>
-
-        <button className="button-87" disabled={!formValid} type="submit">
-          Submit Task
-        </button>
-      </form>
-    </>
+      );
+    }
+  };
+  return (
+    <div className="tranform">
+      <div className="progressbar">
+        <div
+          style={{
+            width:
+              page === 0
+                ? "20%"
+                : page === 1
+                ? "40%"
+                : page === 2
+                ? "60%"
+                : page === 3
+                ? "80%"
+                : "100%",
+          }}
+        ></div>
+      </div>
+      <div className="tranform-container">
+        <form>
+          <div className="header">
+            <h1>{FormTitles[page]}</h1>
+          </div>
+          <div className="body">{PageDisplay()}</div>
+          <div className="footer">
+            <button
+              disabled={page === 0}
+              onClick={(e) => {
+                e.preventDefault();
+                setPage((currPage) => currPage - 1);
+              }}
+            >
+              Prev
+            </button>
+            <button
+              disabled={page === 4}
+              onClick={(e) => {
+                e.preventDefault();
+                setPage((currPage) => currPage + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
+          <button
+            disabled={!formValid}
+            type="submit"
+            onClick={submitHandler}
+          >
+            Submit Transaction
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

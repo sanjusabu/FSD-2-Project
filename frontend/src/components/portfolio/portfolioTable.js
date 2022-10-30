@@ -7,12 +7,16 @@ const PortfolioTable = (props) => {
   let count = 0;
   // console.log();
   return (
-    <>
+    <div className="row porttable m-2">
       {port.portfolio.map((data) => {
         count++;
-        return <Check details={data} count={count} />;
+        return (
+          <div className="col-md-4">
+            <Check details={data} count={count} />
+          </div>
+        );
       })}
-    </>
+    </div>
   );
 };
 
