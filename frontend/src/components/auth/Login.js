@@ -4,6 +4,8 @@ import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../auth/logo.png";
+import NavBar from "../NavBar";
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
 let formValid = false;
@@ -67,11 +69,15 @@ const Login = () => {
   };
   return (
     <div>
+      <NavBar />
       <div className="backgroundimage-wala" />
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
           <div className="form">
+            <div className="img">
+              <img src={logo} className="logo" alt="logo" />
+            </div>
             <div className="title">Login</div>
 
             <div className="input-container ic1">
@@ -85,9 +91,6 @@ const Login = () => {
                 placeholder="email"
               />
 
-              <label for="email" className="placeholder">
-                Email
-              </label>
               {emailError && (
                 <p className="error-text">Please Enter a valid Email!</p>
               )}
@@ -102,9 +105,6 @@ const Login = () => {
                 value={passwordValue}
                 placeholder="password"
               />
-              <label for="lastname" className="placeholder">
-                Password
-              </label>
               {passwordError && (
                 <p className="error-text">
                   Password should be atleast 5 characters long!
@@ -113,6 +113,7 @@ const Login = () => {
 
               {/* {<p style={{ color: "red" }}>{isError}</p>} */}
             </div>
+            <br />
             <br />
             {/* <input
               type="checkbox"
@@ -130,7 +131,6 @@ const Login = () => {
                 onChange={handleOnChange}
               ></Checkbox>
             </div>
-            <br></br>
             {/* {console.log(isError)} */}
             <button type="submit" disabled={!formValid} className="submit">
               Submit
