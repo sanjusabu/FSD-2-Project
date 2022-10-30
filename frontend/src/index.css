@@ -484,7 +484,7 @@ select::-ms-expand {
   background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%);
     border-radius: 20px;
     box-sizing: border-box;
-    height: 95vh;
+    height: 100vh;
     padding: 2vw;
     width: 30vw;
 }

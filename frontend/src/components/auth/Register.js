@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import ErrorModal from "../../Design/UIElements/ErrorModal"
 import { useState } from "react";
 import NavBar from "../NavBar";
+import logo from "../auth/logo.png";
 // import { setDriver } from "mongoose";
 
 const isNotEmpty = (value) => value.trim() !== "";
@@ -87,6 +88,9 @@ const Register = () => {
         <div className="formcontainer">
           <form onSubmit={submitHandler}>
             <div className="form-register">
+              <div className="img">
+                <img src={logo} className="logo" alt="logo" />
+              </div>
               <div className="title">Registration Form</div>
               <div className="subtitle">Let's create your account!</div>
               <div className="input-container ic1">
