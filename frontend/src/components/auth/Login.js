@@ -68,9 +68,8 @@ const Login = () => {
     resetPassword();
   };
   return (
-    <div>
+    <div className="backgroundimg">
       <NavBar />
-      <div className="backgroundimage-wala" />
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
