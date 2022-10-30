@@ -44,8 +44,8 @@ const Check = (props) => {
       <div className="portcard__content">
       <table className="portcardtable">
       <tr>
-        <td>Portfolio Name: </td>
-        <td>{props.details.portfolio}</td>
+        <td style={{fontSize: "1.4rem"}}>Portfolio Name: </td>
+        <td style={{fontSize: "1.4rem"}}>{props.details.portfolio}</td>
       </tr>
       <tr>
       <td>Type: </td>

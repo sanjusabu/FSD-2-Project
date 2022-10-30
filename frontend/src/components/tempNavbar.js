@@ -18,7 +18,7 @@ const TempNavbar = () => {
     <nav className="navigation">
       <Link className="navbar-brand" to="/">
         <span className="logo">
-          <img src="./logo.png"></img>
+          <img src="https://www.linkpicture.com/q/logo_356.png"></img>
         </span>
       </Link>
       <Link
