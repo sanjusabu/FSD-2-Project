@@ -2,14 +2,29 @@ body{
   margin:0;
 }
 
+.backgroundimage-wala{
+  background-image: url("../src/components/auth/bg-01.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.formcontainer{
+  margin-top: 8%;
+}
+
 .form {
-  background-color: orange;
+  background-color:darkviolet;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 95vh;
+  height: 75vh;
   padding: 2vw;
   width: 30vw;
-  margin: auto;
+  margin: 5%;
+  
 }
 .form-control-invalid {
   border: 1px solid #b40e0e;

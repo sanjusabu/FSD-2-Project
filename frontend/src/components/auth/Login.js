@@ -53,59 +53,64 @@ const Login = () => {
     resetPassword();
   };
   return (
-    <form onSubmit={submitHandler}>
-      {/* {console.log(isError)} */}
-      <div className="form">
-        <div className="title">Login</div>
+    <div>
+      <div className="backgroundimage-wala" />
+      <div className="formcontainer">
+        <form onSubmit={submitHandler}>
+          {/* {console.log(isError)} */}
+          <div className="form">
+            <div className="title">Login</div>
 
-        <div className="input-container ic1">
-          <input
-            id="email"
-            className="input"
-            type="text"
-            onChange={emailChangeHandler}
-            onBlur={emailBlurHandler}
-            value={emailValue}
-            placeholder="email"
-          />
+            <div className="input-container ic1">
+              <input
+                id="email"
+                className="input"
+                type="text"
+                onChange={emailChangeHandler}
+                onBlur={emailBlurHandler}
+                value={emailValue}
+                placeholder="email"
+              />
 
-          <label for="email" className="placeholder">
-            Email
-          </label>
-          {emailError && (
-            <p className="error-text">Please Enter a valid Email!</p>
-          )}
-        </div>
-        <div className="input-container ic2">
-          <input
-            id="lastname"
-            className="input"
-            type="password"
-            onChange={passwordChangeHandler}
-            onBlur={passwordBlurHandler}
-            value={passwordValue}
-            placeholder="password"
-          />
-          <label for="lastname" className="placeholder">
-            Password
-          </label>
-          {passwordError && (
-            <p className="error-text">
-              Password should be atleast 5 characters long!
-            </p>
-          )}
-          {/* {<p style={{ color: "red" }}>{isError}</p>} */}
-        </div>
-        <br></br>
-        {/* {console.log(isError)} */}
-        <button type="submit" disabled={!formValid} className="submit">
-          Submit
-        </button>
-        <Link to="/register">
-          <button className="submit">Switch to Register</button>
-        </Link>
+              <label for="email" className="placeholder">
+                Email
+              </label>
+              {emailError && (
+                <p className="error-text">Please Enter a valid Email!</p>
+              )}
+            </div>
+            <div className="input-container ic2">
+              <input
+                id="lastname"
+                className="input"
+                type="password"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                value={passwordValue}
+                placeholder="password"
+              />
+              <label for="lastname" className="placeholder">
+                Password
+              </label>
+              {passwordError && (
+                <p className="error-text">
+                  Password should be atleast 5 characters long!
+                </p>
+              )}
+              {/* {<p style={{ color: "red" }}>{isError}</p>} */}
+            </div>
+            <br></br>
+            {/* {console.log(isError)} */}
+            <button type="submit" disabled={!formValid} className="submit">
+              Submit
+            </button>
+            <Link to="/register">
+              <button className="submit">Switch to Register</button>
+            </Link>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 
