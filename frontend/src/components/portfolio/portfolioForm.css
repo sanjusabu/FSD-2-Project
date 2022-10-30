@@ -11,7 +11,7 @@
 }
 .center h1 {
   font-size: 2em;
-  border-left: 5px solid dodgerblue;
+  border-left: 5px solid rgb(18, 76, 162);
   padding: 10px;
   color: #000;
   letter-spacing: 5px;
@@ -63,11 +63,11 @@
 }
 .center .inputbox button {
   width: 50%;
-  background: dodgerblue;
+  background: rgb(18, 76, 162);
   color: #fff;
   border: #fff;
   border-radius: 10px;
 }
 .center .inputbox:hover button {
-  background: linear-gradient(45deg, greenyellow, dodgerblue);
+  background: linear-gradient(45deg, #64EEFA, rgb(18, 76, 162));
 }
