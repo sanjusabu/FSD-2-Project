@@ -23,7 +23,7 @@ const Login = () => {
     return (
       <label>
         <input type="checkbox" checked={value} onChange={handleOnChange} />
-        {label}
+        <span style={{ color: "white" }}> {label}</span>
       </label>
     );
   };

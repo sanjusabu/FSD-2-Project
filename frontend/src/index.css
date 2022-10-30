@@ -474,7 +474,7 @@ select::-ms-expand {
 }
 
 .form {
-  background-color:darkviolet;
+  background-color:#000000;
   border-radius: 20px;
   box-sizing: border-box;
   height: 75vh;
@@ -483,7 +483,7 @@ select::-ms-expand {
 }
 
 .form-register{
-    background-color:darkviolet;
+    background-color:rgb(0, 0, 0);
     border-radius: 20px;
     box-sizing: border-box;
     height: 95vh;
