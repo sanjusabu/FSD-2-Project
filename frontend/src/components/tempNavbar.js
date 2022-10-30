@@ -30,7 +30,7 @@ const TempNavbar = () => {
           margin: "1rem",
         }}
       >
-        <span className="temptext">Portfolios</span>
+        <span className="temptext">Portfolio</span>
       </Link>
       <Link
         to="/profile"
@@ -52,7 +52,7 @@ const TempNavbar = () => {
           margin: "1rem",
         }}
       >
-        <span className="temptext">Add Transactions</span>
+        <span className="temptext">Transactions</span>
       </Link>
       <button
         className="hamburger"
