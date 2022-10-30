@@ -42,12 +42,7 @@ const Check = (props) => {
   {name:"Groww", address: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Groww_app_logo.png"},
   {name:"Upstox", address: "https://www.pngfind.com/pngs/m/95-958216_upstox-offers-free-demat-account-for-7-days.png"},
   {name:"ICICI Direct", address: "https://secure.icicidirect.com/BaseMasterPage/images/logo.jpg"},
-  {name:"WazirX", address: "https://wazirx.com/static/media/wazirx-logo-blue.8f74de7a.png"},
-  {name:"Angel Broking", address: "https://angelones.in/images/angel.png"},
-  {name:"5Paisa", address: "https://assets.smallcase.com/images/publishers/fivepaisa/logo.png"},
-  {name:"Paytm Money", address: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Paytm_Money_Logo.png"},
-  {name:"Kotak Securities", address: "https://assets.smallcase.com/images/publishers/kotak/logo.png"},
-  {name:"Sharekhan", address: "https://upload.wikimedia.org/wikipedia/commons/8/89/Official_Logo_of_Sharekhan_by_BNP_Paribas.png"}]
+  {name:"WazirX", address: "https://wazirx.com/static/media/wazirx-logo-blue.8f74de7a.png"}]
 
   return (
     <div className="portcard">
