@@ -2,7 +2,7 @@ import useInput from "../../hooks/useInput";
 // import { useRequest } from "../../hooks/request-hook";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
@@ -12,6 +12,19 @@ const Login = () => {
   // <NavBar />
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const Checkbox = ({ label, value, onChange }) => {
+    return (
+      <label>
+        <input type="checkbox" checked={value} onChange={handleOnChange} />
+        {label}
+      </label>
+    );
+  };
 
   // const { isError, clearError, sendRequest } = useRequest();
 
@@ -97,7 +110,25 @@ const Login = () => {
                   Password should be atleast 5 characters long!
                 </p>
               )}
+
               {/* {<p style={{ color: "red" }}>{isError}</p>} */}
+            </div>
+            <br />
+            {/* <input
+              type="checkbox"
+              id="Remember me"
+              name="Remember me"
+              value="remember me"
+              checked={isChecked}
+              onChange={handleOnChange}
+            />
+            <label for="Remember me"> Remember me</label> */}
+            <div>
+              <Checkbox
+                label="Remember me"
+                value={isChecked}
+                onChange={handleOnChange}
+              ></Checkbox>
             </div>
             <br></br>
             {/* {console.log(isError)} */}
