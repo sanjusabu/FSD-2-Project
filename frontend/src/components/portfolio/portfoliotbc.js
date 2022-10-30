@@ -34,11 +34,13 @@ const Check = (props) => {
   console.log(dets.details);
 
   return (
-    <div style={{ backgroundColor: "black" }}>
-      <h2 style={{ color: "white" }}>{props.details.portfolio}</h2>
-      <h2 style={{ color: "white" }}>{props.details.platform}</h2>
-      <h2 style={{ color: "white" }}>{props.details.type}</h2>
-      <h2 style={{ color: "white" }}>{props.details.openingDate}</h2>
+    <div style={{ backgroundColor: "black", width: "40vw" }}>
+      <h2 style={{ color: "white" }}>
+        Portfolio Name: {props.details.portfolio}
+      </h2>
+      <h2 style={{ color: "white" }}>Platform: {props.details.platform}</h2>
+      <h2 style={{ color: "white" }}>Type: {props.details.type}</h2>
+      <h2 style={{ color: "white" }}>Date: {props.details.openingDate}</h2>
 
       <button onClick={TableHandler} className="button-20" value={props.count}>
         Show Table
@@ -48,35 +50,37 @@ const Check = (props) => {
         Close
       </button>
       {show && (
-        <div className="table-responsive">
-          <table id="example" className="table table-striped data-table">
-            <thead>
-              <tr>
-                <th>Portfolio</th>
-                <th>Date of Transaction</th>
-                <th>Ticker</th>
-                <th>Action</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-              </tr>
-
-              {match[val - 1].map((i) => {
-                return (
-                  <tr>
-                    <td>{i.Portfolio}</td>
-                    <td>{i.Date}</td>
-                    <td>{i.Ticker}</td>
-                    <td>{i.action}</td>
-                    <td>{i.quantity}</td>
-                    <td>{i.price}</td>
-                    <td>{i.total}</td>
-                  </tr>
-                );
-              })}
-            </thead>
-            <tbody></tbody>
-          </table>
+        <div style={{ backgroundColor: "white" }}>
+          <div className="table-responsive">
+            <table id="example" className="table table-striped data-table">
+              <thead>
+                <tr>
+                  <th>Portfolio</th>
+                  <th>Date of Transaction</th>
+                  <th>Ticker</th>
+                  <th>Action</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {match[val - 1].map((i) => {
+                  return (
+                    <tr>
+                      <td>{i.Portfolio}</td>
+                      <td>{i.Date}</td>
+                      <td>{i.Ticker}</td>
+                      <td>{i.action}</td>
+                      <td>{i.quantity}</td>
+                      <td>{i.price}</td>
+                      <td>{i.total}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
