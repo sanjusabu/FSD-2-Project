@@ -4,7 +4,6 @@ import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../auth/logo.png";
 import NavBar from "../NavBar";
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
@@ -75,7 +74,7 @@ const Login = () => {
           {/* {console.log(isError)} */}
           <div className="form">
             <div className="img">
-              <img src={logo} className="logo" alt="logo" />
+              <img src="https://www.linkpicture.com/q/logo_356.png" className="logo" alt="logo" />
             </div>
             <div className="title">Login</div>
 

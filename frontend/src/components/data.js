@@ -3,7 +3,7 @@ const member = [
     id: 1,
     image: "/photos/sanju.jpg",
     name: "Name : Sanju Sabu",
-    RollNo: "Roll No:S20200010187",
+    Rollno: "Roll No: S20200010187",
     Skills:"Skills: C,C++,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs,SQL",
     githubProfile: "https://github.com/sanjusabu"
   },

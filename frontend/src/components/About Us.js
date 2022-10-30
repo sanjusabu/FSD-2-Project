@@ -28,7 +28,7 @@ const About = () => {
   return (
     <section>  
       <NavBar />
-      <div className="title">
+      <div className="abttitle">
       
         <h2>Our Team</h2>
       </div>
@@ -49,8 +49,8 @@ const About = () => {
             <article className={position} key={id}>
               <img src={image} alt={name} className="person-img" />
               <h4>{name}</h4>
-              <p className="title">{Rollno}</p>
-              <p className="text">{Skills}</p>
+              <p className="abttitle">{Rollno}</p>
+              <p className="abttext">{Skills}</p>
               <a href={githubProfile}><i class="fa-brands fa-github"></i></a>
             </article>
           );

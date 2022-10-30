@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 // import ErrorModal from "../../Design/UIElements/ErrorModal"
 import { useState } from "react";
 import NavBar from "../NavBar";
-import logo from "../auth/logo.png";
 // import { setDriver } from "mongoose";
 
 const isNotEmpty = (value) => value.trim() !== "";
@@ -79,103 +78,100 @@ const Register = () => {
     resetNumber();
   };
   return (
-    <>
-      {/* <NavBar /> */}
-      {/* <ErrorModal error={isError} onClear={clearError} /> */}
-      <div>
-        <NavBar />
-        <div className="backgroundimage-wala" />
-        <div className="formcontainer">
-          <form onSubmit={submitHandler}>
-            <div className="form-register">
-              <div className="img">
-                <img src={logo} className="logo" alt="logo" />
-              </div>
-              <div className="title">Registration Form</div>
-              <div className="subtitle">Let's create your account!</div>
-              <div className="input-container ic1">
-                <input
-                  id="name"
-                  className="input"
-                  type="text"
-                  onChange={nameChangeHandler}
-                  onBlur={nameBlurHandler}
-                  value={nameValue}
-                  placeholder="Name"
-                />
-
-                {/* <div className="cut"></div> */}
-
-                {nameError && (
-                  <p className="error-text">Please Enter a Name!</p>
-                )}
-              </div>
-              <div className="input-container ic2">
-                <input
-                  id="email"
-                  className="input"
-                  type="text"
-                  onChange={emailChangeHandler}
-                  onBlur={emailBlurHandler}
-                  value={emailValue}
-                  placeholder="Email"
-                />
-                {/* <div className="cut cut-short"></div> */}
-
-                {emailError && (
-                  <p className="error-text">Please Enter a valid Email!</p>
-                )}
-              </div>
-              <div className="input-container ic2">
-                <input
-                  id="password"
-                  className="input"
-                  type="password"
-                  onChange={passwordChangeHandler}
-                  onBlur={passwordBlurHandler}
-                  value={passwordValue}
-                  placeholder="Password"
-                />
-                {/* <div className="cut"></div> */}
-                {passwordError && (
-                  <p className="error-text">
-                    Password should be atleast 5 characters long!
-                  </p>
-                )}
-              </div>
-              <div className="input-container ic2">
-                <input
-                  id="mobile"
-                  className="input"
-                  type="number"
-                  onChange={numberChangeHandler}
-                  onBlur={numberBlurHandler}
-                  value={numberValue}
-                  placeholder="Mobile"
-                />
-
-                {/* <div className="cut cut-short"></div> */}
-                {numberError && (
-                  <p className="error-text">
-                    Mobile Number should have 10 digits!
-                  </p>
-                )}
-
-                {/* {<p style={{ color: "red" }}>{isError}</p>} */}
-              </div>
-              <button type="submit" disabled={!formValid} className="submit">
-                Submit
-              </button>
-
-              <Link to="/login">
-                <button className="submit">Switch to Login</button>
-              </Link>
+    <div className="backgroundimg">
+      <NavBar />
+      <div className="formcontainer">
+        <form onSubmit={submitHandler}>
+          <div className="form-register">
+            <div className="img">
+              <img
+                src="https://www.linkpicture.com/q/logo_356.png"
+                className="logo"
+                alt="logo"
+              />
             </div>
-            {mess}
-          </form>
-        </div>
+            <div className="title">Registration Form</div>
+            <div className="subtitle">Let's create your account!</div>
+            <div className="input-container ic1">
+              <input
+                id="name"
+                className="input"
+                type="text"
+                onChange={nameChangeHandler}
+                onBlur={nameBlurHandler}
+                value={nameValue}
+                placeholder="Name"
+              />
+
+              {/* <div className="cut"></div> */}
+
+              {nameError && <p className="error-text">Please Enter a Name!</p>}
+            </div>
+            <div className="input-container ic2">
+              <input
+                id="email"
+                className="input"
+                type="text"
+                onChange={emailChangeHandler}
+                onBlur={emailBlurHandler}
+                value={emailValue}
+                placeholder="Email"
+              />
+              {/* <div className="cut cut-short"></div> */}
+
+              {emailError && (
+                <p className="error-text">Please Enter a valid Email!</p>
+              )}
+            </div>
+            <div className="input-container ic2">
+              <input
+                id="password"
+                className="input"
+                type="password"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                value={passwordValue}
+                placeholder="Password"
+              />
+              {/* <div className="cut"></div> */}
+              {passwordError && (
+                <p className="error-text">
+                  Password should be atleast 5 characters long!
+                </p>
+              )}
+            </div>
+            <div className="input-container ic2">
+              <input
+                id="mobile"
+                className="input"
+                type="number"
+                onChange={numberChangeHandler}
+                onBlur={numberBlurHandler}
+                value={numberValue}
+                placeholder="Mobile"
+              />
+
+              {/* <div className="cut cut-short"></div> */}
+              {numberError && (
+                <p className="error-text">
+                  Mobile Number should have 10 digits!
+                </p>
+              )}
+
+              {/* {<p style={{ color: "red" }}>{isError}</p>} */}
+            </div>
+            <button type="submit" disabled={!formValid} className="submit">
+              Submit
+            </button>
+
+            <Link to="/login">
+              <button className="submit">Switch to Login</button>
+            </Link>
+          </div>
+          {mess}
+        </form>
       </div>
-    </>
+      </div>
   );
 };
 

@@ -72,7 +72,7 @@ article h4 {
   color: hsl(21, 62%, 45%);
   margin-bottom: 0.25rem;
 }
-.title {
+.abttitle {
   text-transform: capitalize;
   margin-bottom: 0.75rem;
   color: hsl(209, 34%, 30%);
@@ -89,7 +89,7 @@ article h4 {
   font-weight: 500;
 }
 
-.text {
+.abttext {
   max-width: 35em;
   margin: 0 auto;
   margin-top: 2rem;
