@@ -10,6 +10,7 @@ const Check = (props) => {
   const [show, setShow] = useState(false);
   const [match, setMatch] = useState([]);
   const [val, setVal] = useState(0);
+  const [images, setImages] = useState([]);
   console.log(port.portfolio, "portfolio");
   console.log(dets.details, "details");
   useEffect(() => {
@@ -18,6 +19,10 @@ const Check = (props) => {
       save.push(dets.details.filter((det) => p.portfolio === det.Portfolio));
     });
     setMatch(save);
+    // let newimg=[]
+    // images.filter((data)=>
+    //   data.name.lowercase() === props.details.platform
+    // )
   }, []);
 
   const TableHandler = (e) => {
