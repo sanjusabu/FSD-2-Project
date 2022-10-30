@@ -38,6 +38,12 @@ const Check = (props) => {
   console.log(match, "matched");
   console.log(dets.details);
 
+  const logolist = [{name:"Zerodha",address: "https://www.freelogovectors.net/wp-content/uploads/2021/12/zerodha-logo-freelogovectors.net_.png"},
+  {name:"Groww", address: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Groww_app_logo.png"},
+  {name:"Upstox", address: "https://www.pngfind.com/pngs/m/95-958216_upstox-offers-free-demat-account-for-7-days.png"},
+  {name:"ICICI Direct", address: "https://secure.icicidirect.com/BaseMasterPage/images/logo.jpg"},
+  {name:"WazirX", address: "https://wazirx.com/static/media/wazirx-logo-blue.8f74de7a.png"}]
+
   return (
     <div className="portcard">
       <p>Portfolio Name: {props.details.portfolio}</p>
