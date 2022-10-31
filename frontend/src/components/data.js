@@ -4,6 +4,7 @@ const member = [
     image: "/photos/sanju.jpg",
     name: "Name : Sanju Sabu",
     Rollno: "Roll No: S20200010187",
+    Lead: "SPOC",
     Skills:"Skills: C,C++,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs,SQL",
     githubProfile: "https://github.com/sanjusabu"
   },
@@ -12,6 +13,7 @@ const member = [
     image: "/photos/pranjay.jpg",
     name: "Name: Pranjay Gupta",
     Rollno: "Roll No: S20200010169",
+    Lead: "Member",
     Skills:"Skills: C,C++,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs,SQL",
     githubProfile:"https://github.com/PJ0710"
   },
@@ -20,6 +22,7 @@ const member = [
     image: "/photos/srikar.jpg",
     name: "Name: Sai Srikar Reddy Kolli",
     Rollno: "Roll No: S20200010095",
+    Lead: "Member",
     Skills:"Skills: C,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs",
     githubProfile:"https://github.com/srikar0805"
   },
@@ -28,6 +31,7 @@ const member = [
     image: "/photos/vikyath.jpg",
     name: "Name: Sanka Vikyath",
     Rollno: "Roll No: S20200010188",
+    Lead: "Member",
     Skills:"Skills: C,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs",
     githubProfile:"https://github.com/SANKAVIKYATH"
   },
@@ -36,6 +40,7 @@ const member = [
     image: "/photos/balamani.jpg",
     name: "Name: M Bala Mani Teja",
     Rollno: "Roll No: S20200010123",
+    Lead: "Member",
     Skills:"Skills: C,Java,Python,HTML,CSS,Javascript,NodeJs,ReactJs",
     githubProfile:"https://github.com/Baluchowdary2258"
   },

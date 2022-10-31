@@ -34,7 +34,7 @@ const About = () => {
       </div>
       <div className="section-center">
         {member.map((item, indexMember) => {
-          const { id, image, name, Rollno, Skills,githubProfile} = item;
+          const { id, image, name, Rollno,Lead,Skills,githubProfile} = item;
           let position = "nextSlide";
           if (indexMember === index) {
             position = "activeSlide";
@@ -49,8 +49,10 @@ const About = () => {
             <article className={position} key={id}>
               <img src={image} alt={name} className="person-img" />
               <h4>{name}</h4>
+              <p className = "abttext">{Lead}</p>
               <p className="abttitle">{Rollno}</p>
               <p className="abttext">{Skills}</p>
+              <br/>
               <a href={githubProfile}><i class="fa-brands fa-github"></i></a>
             </article>
           );
