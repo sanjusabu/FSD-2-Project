@@ -18,7 +18,7 @@ const TempNavbar = () => {
     <nav className="navigation">
       <Link className="navbar-brand" to="/">
         <span className="logo">
-          <img src="./logo.png"></img>
+          <img src="https://www.linkpicture.com/q/logo_356.png"></img>
         </span>
       </Link>
       <Link
@@ -79,9 +79,12 @@ const TempNavbar = () => {
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }
       >
-        <button className="button-20" onClick={logoutHandler}>
+        <div className="logout">
+        <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png"/>
+        <button className="logoutbutton" onClick={logoutHandler}>
           Logout
         </button>
+        </div>
       </div>
     </nav>
   );
