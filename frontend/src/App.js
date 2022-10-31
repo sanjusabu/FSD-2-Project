@@ -13,7 +13,7 @@ import Login from "./components/auth/Login";
 import Help from "./components/Help";
 import { Portfoliocontext } from "./context/portfolio-context";
 function App() {
-  const details = [];
+  // const details = [];
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userId, setuserId] = useState("");
@@ -71,9 +71,9 @@ function App() {
           logout: logout,
         }}
       >
-        <Detailscontext.Provider value={{ details: details }}>
-          <main>{routes}</main>
-        </Detailscontext.Provider>
+        {/* <Detailscontext.Provider value={{ details: details }}> */}
+        <main>{routes}</main>
+        {/* </Detailscontext.Provider> */}
       </AuthContext.Provider>
     </div>
   );
