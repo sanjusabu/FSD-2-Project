@@ -6,3 +6,8 @@ PRANJAY GUPTA - S20200010169
 SANKA VIKYATH - S20200010188
 SAI SRIKAR REDDY KOLI - S20200010095
 M. BALAMANITEJA - S20200010123
+
+To use this React app, do the following in the root folder in the terminal:
+cd frontend
+npm i
+npm start
