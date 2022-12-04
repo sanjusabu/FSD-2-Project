@@ -1,6 +1,6 @@
 // import NavBar from "../NavBar/Navbar"
 import useInput from "../../hooks/useInput";
-// import { useRequest } from "../../hooks/useInput"
+import { useRequest } from "../../hooks/request-hook";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 // import ErrorModal from "../../Design/UIElements/ErrorModal"
@@ -16,6 +16,7 @@ const number = (value) => value.trim().length === 10;
 let formValid = false;
 
 const Register = () => {
+  const { sendRequest } = useRequest();
   const navigate = useNavigate();
   // const { isError, clearError, sendRequest } = useRequest();
   const [mess, setmess] = useState("");
@@ -70,7 +71,19 @@ const Register = () => {
       console.log("errorrrr");
       return;
     }
-    // console.log(nameValue,emailValue,passwordValue,numberValue)
+    const response = await sendRequest(
+      "http://localhost:5011/users/",
+      "POST",
+      JSON.stringify({
+        name: nameValue,
+        email: emailValue,
+        password: passwordValue,
+        mobile: numberValue,
+      }),
+      { "Content-Type": "application/json" }
+    );
+
+    console.log(response);
     navigate("/login");
     resetName();
     resetEmail();
@@ -171,7 +184,7 @@ const Register = () => {
           {mess}
         </form>
       </div>
-      </div>
+    </div>
   );
 };
 

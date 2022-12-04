@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
 const ProfileGrowth = () => {
+  const mode = useSelector((state) => state.darkMode);
+  const { isdarkMode } = mode;
   return (
     <div className="card h-100">
       <div className="card-header">

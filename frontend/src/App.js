@@ -13,8 +13,9 @@ import Login from "./components/auth/Login";
 import Help from "./components/Help";
 import About from "./components/About Us";
 import { Portfoliocontext } from "./context/portfolio-context";
+import { Provider } from "react-redux";
+import store from "./store/store";
 function App() {
-  // const details = [];
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userId, setuserId] = useState("");
@@ -53,14 +54,16 @@ function App() {
     );
   } else {
     routes = (
-      <Router>
-        <Routes>
-          <Route path="/transactions" element={<Transactions />}></Route>
-          <Route path="/portfolio" element={<Portfolio />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/" element={<Profile />}></Route>
-        </Routes>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/transactions" element={<Transactions />}></Route>
+            <Route path="/portfolio" element={<Portfolio />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/" element={<Profile />}></Route>
+          </Routes>
+        </Router>
+      </Provider>
     );
   }
   return (
@@ -74,6 +77,7 @@ function App() {
         }}
       >
         {/* <Detailscontext.Provider value={{ details: details }}> */}
+
         <main>{routes}</main>
         {/* </Detailscontext.Provider> */}
       </AuthContext.Provider>

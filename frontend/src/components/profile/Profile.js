@@ -2,13 +2,47 @@ import ProfileGrowth from "./ProfileGrowth";
 import ProfileBreakdown from "./ProfileBreakdown";
 import ProfileTable from "./ProfileTable";
 import TempNavbar from "../tempNavbar";
+import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { handledarkMode } from "../../store/actions/darkModeAction";
 import "./Profile.css";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  const mode = useSelector((state) => state.darkMode);
+  console.log(mode);
+  const { isdarkMode } = mode;
+
+  const switchDarkMode = () => {
+    isdarkMode
+      ? dispatch(handledarkMode(false))
+      : dispatch(handledarkMode(true));
+  };
+  useEffect(() => {
+    document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
+    document.body.style.color = isdarkMode ? "#fff" : "#292c35";
+  }, [isdarkMode]);
+
   return (
     <>
       <TempNavbar />
       <main className="mt-5 pt-3" id="dashboard">
+        <div id="darkmode">
+          <input
+            type="checkbox"
+            className="checkbox"
+            id="checkbox"
+            onChange={switchDarkMode}
+            checked={isdarkMode}
+          />
+          <label htmlFor="checkbox" className="label">
+            <BsMoonStarsFill color="red" />
+            <BsFillSunFill color="yellow" />
+            <div className="ball"></div>
+          </label>
+        </div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
