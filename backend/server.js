@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const HttpError = require("./models/http-error");
 const userRoutes = require("./routes/user");
+const portRoutes = require("./routes/portfolio");
+const transRoutes = require("./routes/transactions");
 const app = express();
 
 app.use(bodyParser.json());
@@ -20,6 +22,8 @@ app.use((req, res, next) => {
 }); //cors error
 
 app.use("/users", userRoutes);
+app.use("/port", portRoutes);
+app.use("/trans", transRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);

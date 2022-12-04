@@ -11,8 +11,8 @@ const Check = (props) => {
   const [match, setMatch] = useState([]);
   const [val, setVal] = useState(0);
   const [images, setImages] = useState([]);
-  console.log(port.portfolio, "portfolio");
-  console.log(dets.details, "details");
+  // console.log(port.portfolio, "portfolio");
+  // console.log(dets.details, "details");
   useEffect(() => {
     let save = [];
     port.portfolio.map((p) => {
@@ -35,31 +35,32 @@ const Check = (props) => {
     setShow(false);
   };
 
-  console.log(match, "matched");
-  console.log(dets.details);
+  // console.log(match, "matched");
+  // console.log(props.details, "image");
+  // console.log(dets.details);
 
   return (
     <div className="portcard">
       <img src={props.details.images[0].address} style={{ width: "60%" }}></img>
       <div className="portcard__content">
-      <table className="portcardtable">
-      <tr>
-        <td style={{fontSize: "1.4rem"}}>Portfolio Name: </td>
-        <td style={{fontSize: "1.4rem"}}>{props.details.portfolio}</td>
-      </tr>
-      <tr>
-      <td>Type: </td>
-      <td>{props.details.type}</td>
-      </tr>
-      <tr>
-      <td>Platform: </td>
-      <td>{props.details.platform}</td>
-      </tr>
-      <tr>
-      <td>Opening Date: </td>
-      <td>{props.details.openingDate}</td>
-      </tr>
-      </table>
+        <table className="portcardtable">
+          <tr>
+            <td style={{ fontSize: "1.4rem" }}>Portfolio Name: </td>
+            <td style={{ fontSize: "1.4rem" }}>{props.details.portfolio}</td>
+          </tr>
+          <tr>
+            <td>Type: </td>
+            <td>{props.details.type}</td>
+          </tr>
+          <tr>
+            <td>Platform: </td>
+            <td>{props.details.platform}</td>
+          </tr>
+          <tr>
+            <td>Opening Date: </td>
+            <td>{props.details.openingDate}</td>
+          </tr>
+        </table>
       </div>
       {!show && (
         <button
@@ -70,7 +71,7 @@ const Check = (props) => {
           Show Table
         </button>
       )}
-      {console.log(props.count, "table")}
+      {/* {console.log(props.count, "table")} */}
       {show && (
         <button
           onClick={CloseHandler}
