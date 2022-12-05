@@ -3,7 +3,7 @@ const UserModel = require("../models/UserModel");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const { ObjectId } = require("mongodb");
-
+const AdminModel = require("../models/admin");
 const signup = async (req, res, next) => {
   // const errors = validationResult(req);
   console.log(req.body);
@@ -91,5 +91,7 @@ const login = async (req, res, next) => {
   res.json({ user: existingUser.toObject({ getters: true }) });
 };
 
+const adminlogin = (req, res) => {};
 exports.signup = signup;
 exports.login = login;
+exports.adminlogin = adminlogin;
