@@ -2,19 +2,21 @@ import { useState, useContext } from "react";
 import { Detailscontext } from "../../context/details";
 import { Portfoliocontext } from "../../context/portfolio-context";
 import { useEffect } from "react";
+import { useRequest } from "../../hooks/request-hook";
+
 const Check = (props) => {
   // console.log(props.details, props.count);
-
   const port = useContext(Portfoliocontext);
   const dets = useContext(Detailscontext);
   const [show, setShow] = useState(false);
   const [match, setMatch] = useState([]);
   const [val, setVal] = useState(0);
   const [images, setImages] = useState([]);
-  // console.log(port.portfolio, "portfolio");
-  // console.log(dets.details, "details");
+  const { sendRequest } = useRequest();
+
   useEffect(() => {
     let save = [];
+
     port.portfolio.map((p) => {
       save.push(dets.details.filter((det) => p.portfolio === det.Portfolio));
     });
