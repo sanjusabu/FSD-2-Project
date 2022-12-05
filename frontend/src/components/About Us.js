@@ -26,15 +26,14 @@ const About = () => {
   }, [index]);
 
   return (
-    <section>  
+    <section>
       <NavBar />
       <div className="abttitle">
-      
         <h2>Our Team</h2>
       </div>
       <div className="section-center">
         {member.map((item, indexMember) => {
-          const { id, image, name, Rollno,Lead,Skills,githubProfile} = item;
+          const { id, image, name, Rollno, Lead, Skills, githubProfile } = item;
           let position = "nextSlide";
           if (indexMember === index) {
             position = "activeSlide";
@@ -49,19 +48,21 @@ const About = () => {
             <article className={position} key={id}>
               <img src={image} alt={name} className="person-img" />
               <h4>{name}</h4>
-              <p className = "abttext">{Lead}</p>
+              <p className="abttext">{Lead}</p>
               <p className="abttitle">{Rollno}</p>
               <p className="abttext">{Skills}</p>
-              <br/>
-              <a href={githubProfile}><i class="fa-brands fa-github"></i></a>
+              <br />
+              <a href={githubProfile}>
+                <i class="fa-brands fa-github"></i>
+              </a>
             </article>
           );
         })}
         <button className="prev" onClick={() => setIndex(index - 1)}>
-        <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
         <button className="next" onClick={() => setIndex(index + 1)}>
-        <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
     </section>

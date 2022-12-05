@@ -7,6 +7,8 @@ const Portfolio = () => {
   const dets = useContext(Detailscontext);
   // console.log(dets.details);
   const [render, setRender] = useState([]);
+  const [chang, setChange] = useState(false);
+  const [trigger, setTrigger] = useState(false);
   const getPortfolio = (data) => {
     // console.log(data);
     setRender((prevState) => {

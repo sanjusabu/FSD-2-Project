@@ -19,7 +19,9 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-dark homenav">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <span className="logo"><img src="https://www.linkpicture.com/q/logo_356.png"></img></span>
+            <span className="logo">
+              <img src="https://www.linkpicture.com/q/logo_356.png"></img>
+            </span>
           </Link>
           <button
             className="navbar-toggler"
