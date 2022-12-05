@@ -62,7 +62,7 @@ const AdminLogin = () => {
       return;
     }
     const response = await sendRequest(
-      "http://localhost:5011/users/login",
+      "http://localhost:5011/users/adminlogin",
       "POST",
       JSON.stringify({
         email: emailValue,
@@ -72,13 +72,13 @@ const AdminLogin = () => {
     );
     resetEmail();
     resetPassword();
-    auth.login(response.user.id);
-    navigate("/profile");
+    // auth.login(response.user.id);
+    navigate("/admin");
   };
   return (
     <div className="backgroundimg">
       <NavBar />
-      {isError && <ErrorModal error={isError} showmodal={true} />}
+      {/* {isError && <ErrorModal error={isError} showmodal={true} />} */}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
@@ -100,7 +100,7 @@ const AdminLogin = () => {
                 onChange={emailChangeHandler}
                 onBlur={emailBlurHandler}
                 value={emailValue}
-                placeholder="Email"
+                placeholder="Username"
               />
 
               {emailError && (
@@ -128,17 +128,18 @@ const AdminLogin = () => {
             <br />
             <br />
 
-            <div>
+            {/* <div>
               <Checkbox
                 label="Remember me"
                 value={isChecked}
                 onChange={handleOnChange}
               ></Checkbox>
-            </div>
+            </div> */}
             {/* {console.log(isError)} */}
             <button type="submit" disabled={!formValid} className="submit">
               Submit
             </button>
+            {isError && <p style={{ color: "red" }}>Wrong Credentials</p>}
           </div>
         </form>
       </div>

@@ -91,7 +91,40 @@ const login = async (req, res, next) => {
   res.json({ user: existingUser.toObject({ getters: true }) });
 };
 
-const adminlogin = (req, res) => {};
+const adminlogin = async (req, res, next) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  const user = await AdminModel.find({ email, password });
+  if (!user) {
+    const error = new HttpError(
+      "Invalid credentials, could not log you in.",
+      401
+    );
+
+    return next(error);
+  }
+  res.json(user);
+};
+
+const getusers = async (req, res, next) => {
+  const user = await UserModel.find({});
+  res.json(user);
+};
+
+const deleteusers = async (req, res) => {
+  console.log(req.body);
+  const { email } = req.body;
+  const us = await UserModel.find({ email });
+  console.log(us);
+  const delmod = await UserModel.deleteOne({
+    email: email,
+  });
+  console.log(delmod);
+  res.json(delmod);
+};
+
 exports.signup = signup;
 exports.login = login;
 exports.adminlogin = adminlogin;
+exports.getusers = getusers;
+exports.deleteusers = deleteusers;
