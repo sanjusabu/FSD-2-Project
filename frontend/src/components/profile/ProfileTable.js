@@ -31,6 +31,38 @@ const ProfileTable = () => {
     Details();
   }, []);
   console.log(transData);
+  const [tblColor, setTblColor] = useState("");
+
+  const tbldata = () => {
+    return transData.map((data) => {
+      if (data.action === "buy") {
+        return (
+          <tr>
+            <td>{data.portfolio}</td>
+            <td>{data.date}</td>
+            <td>{data.ticker}</td>
+            <td style={{ color: "green", fontWeight: "bold"}}>{data.action}</td>
+            <td>{data.quantity}</td>
+            <td>{data.price}</td>
+            <td>{data.total}</td>
+          </tr>
+        );
+      }
+      if (data.action === "sell") {
+        return (
+          <tr>
+            <td>{data.portfolio}</td>
+            <td>{data.date}</td>
+            <td>{data.ticker}</td>
+            <td style={{ color: "red", fontWeight: "bold"}}>{data.action}</td>
+            <td>{data.quantity}</td>
+            <td>{data.price}</td>
+            <td>{data.total}</td>
+          </tr>
+        );
+      }
+    });
+  }
   return (
     <div className="row">
       <div className="col-md-12 mb-3">
@@ -49,17 +81,7 @@ const ProfileTable = () => {
                     <th>Total</th>
                   </tr>
 
-                  {transData.map((i) => (
-                    <tr>
-                      <td>{i.Portfolio}</td>
-                      <td>{i.Date}</td>
-                      <td>{i.Ticker}</td>
-                      <td>{i.action}</td>
-                      <td>{i.quantity}</td>
-                      <td>{i.price}</td>
-                      <td>{i.total}</td>
-                    </tr>
-                  ))}
+                  {tbldata()}
                 </thead>
                 <tbody></tbody>
               </table>
