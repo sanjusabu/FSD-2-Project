@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
+import reduce from './AppReducer';
 
 // Initial State
 const initialState = {
@@ -11,7 +11,7 @@ export const GlobalContext = createContext(initialState);
 
 // Provider Component
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(reduce, initialState);
 
   // Actions
   const removeUser = (id) => {
@@ -24,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider value={{
       users: state.users,
-      removeUser,
+      removeUser
     }}>
       {children}
     </GlobalContext.Provider>
