@@ -106,25 +106,39 @@ const ProfileTable = () => {
       <div className="col-md-12 mb-3">
         <div className="card">
           <div className="card-header">
-            <span className="me-2">
+            {/* <span className="me-2">
               <i className="bi bi-bar-chart-fill"></i>
-            </span>{" "}
-            Transaction Table
+            </span> */}
+            <div style={{ justifyContent: "space-between" }}>
+              <span
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: "1.5rem",
+                }}
+              >
+                Transaction Table
+              </span>
+
+              <div style={{ marginLeft: "32rem" }}>
+                <form onSubmit={deleteHandler}>
+                  <input
+                    placeholder="DeleteTicker"
+                    type="text"
+                    onChange={nameChangeHandler}
+                    value={nameValue}
+                  />{" "}
+                  <button type="submit">
+                    <FaRegTrashAlt />
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
+
+          <div></div>
           <div className="card-body">
             <div className="table-responsive">
-              <form onSubmit={deleteHandler}>
-                <input
-                  placeholder="DeleteTicker"
-                  type="text"
-                  onChange={nameChangeHandler}
-                  value={nameValue}
-                />{" "}
-                <button type="submit">
-                  {" "}
-                  <FaRegTrashAlt />
-                </button>
-              </form>
               <table id="example" className="table table-striped data-table">
                 <tbody>
                   <tr>

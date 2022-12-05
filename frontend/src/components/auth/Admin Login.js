@@ -1,6 +1,5 @@
 import useInput from "../../hooks/useInput";
 // import { useRequest } from "../../hooks/request-hook";
-import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
 let formValid = false;
 
-const Login = () => {
+const AdminLogin = () => {
   // <NavBar />
   const { isError, sendRequest } = useRequest();
   const navigate = useNavigate();
@@ -79,7 +78,7 @@ const Login = () => {
   return (
     <div className="backgroundimg">
       <NavBar />
-      {/* {isError && <ErrorModal error={isError} showmodal={true} />} */}
+      {isError && <ErrorModal error={isError} showmodal={true} />}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
@@ -91,7 +90,7 @@ const Login = () => {
                 alt="logo"
               />
             </div>
-            <div className="title">Login</div>
+            <div className="title">Admin Login</div>
 
             <div className="input-container ic1">
               <input
@@ -129,27 +128,17 @@ const Login = () => {
             <br />
             <br />
 
-            {/* <div>
+            <div>
               <Checkbox
                 label="Remember me"
                 value={isChecked}
                 onChange={handleOnChange}
               ></Checkbox>
-            </div> */}
+            </div>
             {/* {console.log(isError)} */}
-            {isError && (
-              <h4 style={{ color: "red", fontWeight: "bold" }}>
-                Wrong Credentials, try again
-              </h4>
-            )}
-            <br></br>
             <button type="submit" disabled={!formValid} className="submit">
               Submit
             </button>
-            <Link to="/register">
-              <button className="submit">Switch to Register</button>
-            </Link>
-            <br></br>
           </div>
         </form>
       </div>
@@ -157,4 +146,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

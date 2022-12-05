@@ -31,6 +31,7 @@ const Profile = () => {
   const [num, setNum] = useState(0);
   const [transnum, setTransNum] = useState(0);
   const [portNames, setPortNames] = useState("");
+  const [modes, setMode] = useState("dark");
 
   const switchDarkMode = () => {
     isdarkMode
@@ -42,8 +43,10 @@ const Profile = () => {
       ? "radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%)"
       : "#f5f5f5";
     if (isdarkMode) {
+      setMode("light");
       setColor("white");
     } else {
+      setMode("dark");
       setColor("black");
     }
   }, [isdarkMode]);
@@ -88,7 +91,7 @@ const Profile = () => {
       <main className="mt-5 pt-3" id="dashboard">
         <div id="darkmode" className="darkmode">
           <p style={{ marginRight: "5%" }}>
-            <strong>Enable light mode</strong>
+            <strong style={{ color: colors }}>Enable {modes} mode</strong>
           </p>
           <input
             type="checkbox"

@@ -149,7 +149,9 @@ const PortfolioForm = (props) => {
   }, [isdarkMode]);
   return (
     <div className="center">
-      <h1 style={{ color: colors }}>Add Portfolio</h1>
+      <h1 style={{ color: colors, borderLeftColor: { colors } }}>
+        Add Portfolio
+      </h1>
       <form onSubmit={submitHandler}>
         <div className="inputbox">
           <input

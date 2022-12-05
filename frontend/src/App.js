@@ -8,6 +8,7 @@ import { Detailscontext } from "./context/details";
 import Portfolio from "./components/portfolio/portfolio";
 import Register from "./components/auth/Register";
 import { AuthContext } from "./context/auth-context";
+import AdminLogin from "./components/auth/Admin Login";
 import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
 import Help from "./components/Help";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/help" element={<Help />}></Route>
           <Route path="/About" element={<About />}></Route>
           <Route path="/Admin" element={<Admin />}></Route>
+          <Route path="/AdminLogin" element={<AdminLogin />}></Route>
         </Routes>
       </Router>
     );
