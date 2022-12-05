@@ -12,6 +12,8 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
 import Help from "./components/Help";
 import About from "./components/About Us";
+import Admin from "./components/Admin";
+import News from "./components/news/News";
 import { Portfoliocontext } from "./context/portfolio-context";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -49,6 +51,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/help" element={<Help />}></Route>
           <Route path="/About" element={<About />}></Route>
+          <Route path="/Admin" element={<Admin />}></Route>
         </Routes>
       </Router>
     );
@@ -61,6 +64,7 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/" element={<Profile />}></Route>
+            <Route path="/news" element={<News />}></Route>
           </Routes>
         </Router>
       </Provider>

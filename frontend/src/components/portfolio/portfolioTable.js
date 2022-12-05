@@ -37,14 +37,16 @@ const PortfolioTable = (props) => {
   console.log(portData);
   return (
     <div className="row porttable m-2">
-      {portData.map((data) => {
-        count++;
-        return (
-          <div className="col-md-4">
-            <Check details={data} count={count} />
-          </div>
-        );
-      })}
+      {portData &&
+        portData.map((data) => {
+          count++;
+          return (
+            <div className="col-md-4">
+              {console.log(data, "ewiofewofj")}
+              {data.images[0] && <Check details={data} count={count} />}
+            </div>
+          );
+        })}
     </div>
   );
 };

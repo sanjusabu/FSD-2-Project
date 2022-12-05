@@ -8,7 +8,7 @@ const isNotEmpty = (value) => value.trim() !== "";
 const PortfolioForm = (props) => {
   const port = useContext(Portfoliocontext);
   const reload = useContext(Reloadcontext);
-  const { sendRequest } = useRequest();
+  const { sendRequest, isError } = useRequest();
 
   const [formValid, setformValid] = useState(false);
 
@@ -176,6 +176,7 @@ const PortfolioForm = (props) => {
           </button>
         </div>
       </form>
+      {isError && <p>Portfolio exists already!!</p>}
     </div>
   );
 };

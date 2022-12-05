@@ -54,6 +54,17 @@ const TempNavbar = () => {
       >
         <span className="temptext">Transactions</span>
       </Link>
+      <Link
+        to="/News"
+        style={{
+          textDecoration: "none",
+          color: "black",
+          fontSize: "1rem",
+          margin: "1rem",
+        }}
+      >
+        <span className="temptext">News</span>
+      </Link>
       <button
         className="hamburger"
         onClick={() => {
@@ -80,10 +91,10 @@ const TempNavbar = () => {
         }
       >
         <div className="logout">
-        <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png"/>
-        <button className="logoutbutton" onClick={logoutHandler}>
-          Logout
-        </button>
+          <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" />
+          <button className="logoutbutton" onClick={logoutHandler}>
+            Logout
+          </button>
         </div>
       </div>
     </nav>

@@ -4,6 +4,8 @@ import { Detailscontext } from "../context/details";
 import { Portfoliocontext } from "../context/portfolio-context";
 import "./createTransactions.css";
 import { useRequest } from "../hooks/request-hook";
+import { Transcontext } from "../context/trans-context";
+
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);
@@ -11,6 +13,8 @@ const CreateTransactions = (props) => {
   const port = useContext(Portfoliocontext);
   const [portData, setportData] = useState([]);
   // console.log(port.portfolio);
+  const trans = useContext(Transcontext);
+
   const { sendRequest } = useRequest();
   useEffect(() => {
     const Details = async () => {
@@ -105,6 +109,8 @@ const CreateTransactions = (props) => {
       }),
       { "Content-Type": "application/json" }
     );
+    trans.tr = true;
+    console.log(trans.tr);
   };
 
   const [page, setPage] = useState(0);
