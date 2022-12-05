@@ -27,4 +27,13 @@ const postdata = async (req, res) => {
   res.json(transmodel);
 };
 
+const getTrans = async (req, res) => {
+  console.log(req.body);
+  const { id } = req.body;
+  const transac = await TransactionsModel.find({ id: id });
+  console.log(transac);
+  res.json(transac);
+};
+
 exports.postdata = postdata;
+exports.getTrans = getTrans;
