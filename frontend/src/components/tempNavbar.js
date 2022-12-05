@@ -22,17 +22,6 @@ const TempNavbar = () => {
         </span>
       </Link>
       <Link
-        to="/portfolio"
-        style={{
-          textDecoration: "none",
-          color: "black",
-          fontSize: "1rem",
-          margin: "1rem",
-        }}
-      >
-        <span className="temptext">Portfolio</span>
-      </Link>
-      <Link
         to="/profile"
         style={{
           textDecoration: "none",
@@ -42,6 +31,17 @@ const TempNavbar = () => {
         }}
       >
         <span className="temptext">Profile</span>
+      </Link>
+      <Link
+        to="/portfolio"
+        style={{
+          textDecoration: "none",
+          color: "black",
+          fontSize: "1rem",
+          margin: "1rem",
+        }}
+      >
+        <span className="temptext">Portfolio</span>
       </Link>
       <Link
         to="/transactions"

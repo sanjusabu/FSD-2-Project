@@ -6,5 +6,7 @@ const transController = require("../controllers/transController");
 
 router.post("/postdata", transController.postdata);
 router.post("/getTrans", transController.getTrans);
+router.post("/nums", transController.getnum);
+router.post("/deleteTrans", transController.deleteTrans);
 
 module.exports = router;

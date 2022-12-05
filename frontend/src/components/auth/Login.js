@@ -79,7 +79,7 @@ const Login = () => {
   return (
     <div className="backgroundimg">
       <NavBar />
-      {isError && <ErrorModal error={isError} showmodal={true} />}
+      {/* {isError && <ErrorModal error={isError} showmodal={true} />} */}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
@@ -129,20 +129,27 @@ const Login = () => {
             <br />
             <br />
 
-            <div>
+            {/* <div>
               <Checkbox
                 label="Remember me"
                 value={isChecked}
                 onChange={handleOnChange}
               ></Checkbox>
-            </div>
+            </div> */}
             {/* {console.log(isError)} */}
+            {isError && (
+              <h4 style={{ color: "red", fontWeight: "bold" }}>
+                Wrong Credentials, try again
+              </h4>
+            )}
+            <br></br>
             <button type="submit" disabled={!formValid} className="submit">
               Submit
             </button>
             <Link to="/register">
               <button className="submit">Switch to Register</button>
             </Link>
+            <br></br>
           </div>
         </form>
       </div>
