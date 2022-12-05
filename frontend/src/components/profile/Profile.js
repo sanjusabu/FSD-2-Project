@@ -1,5 +1,3 @@
-import ProfileGrowth from "./ProfileGrowth";
-import ProfileBreakdown from "./ProfileBreakdown";
 import ProfileTable from "./ProfileTable";
 import TempNavbar from "../tempNavbar";
 import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
@@ -13,6 +11,9 @@ import networth from "../Images/net-worth.jpg";
 import totalgains from "../Images/total-gains.jpg";
 import totalinvestment from "../Images/total-investment.jpg";
 import ProfileCharts from "./ProfileCharts";
+import ProfileStatNetworth from "./ProfileStatNetworth";
+import ProfileStatTInvest from "./ProfileStatTInvest";
+import ProfileStatTGain from "./ProfileStatTGain";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const Profile = () => {
@@ -107,65 +108,74 @@ const Profile = () => {
               <h1 style={{ color: colors }}>Dashboard</h1>
             </div>
           </div>
-          <div className="row cards">
+          {/* <div className="row cards">
             <div className="col-md-3 mb-3 row11">
               <div className="card bg-white text-black h-100">
-                <div className="card-body py-5">Networth</div>
-                <div
-                  className="card-footer d-flex bg-success text-white"
-                  id="networth"
-                >
-                  abc
+                <div className="card-body py-5">
+                  <p>
+                    <span style={{ fontWeight: "bold", fontSize: "30px" }}>
+                      Hello User, Welcome to SPD!
+                    </span>{" "}
+                    <br />
+                    <br />
+                    <span style={{ fontSize: "20px" }}>Let's get started!</span>
+                  </p>
+                </div>
+                <div className="card-body bg-success text-white">
+                  Add your portfolios to get started <br />
+                  After that add your transaction history in respective
+                  portfolios
                 </div>
               </div>
             </div>
-            {/* <div className="col-md-3 mb-3">
-              <div className="card bg-warning text-dark h-100">
-                <div className="card-body py-5">Total Investment</div>
-                <div className="card-footer d-flex" id="tinvestment"></div>
-              </div>
-            </div> */}
             <div className="col-md-3 mb-3 row12">
               <div className="card bg-success text-white h-100">
-                <div className="card-body py-5">Total Gains</div>
-                {/* <div
-                  className="card-footer d-flex bg-white text-black"
-                  id="tgain"
-                > */}
-                {/* abc
-                </div> */}
-                Portfolios: {/* console.log(po); */}
-                {portNames &&
-                  portNames.map((data) => {
-                    return (
-                      <div>
-                        <h4>{data.portfolio}</h4>
-                      </div>
-                    );
-                  })}
-                Your Portfolios: {num}
-                Your Transactions: {transnum}
+                <div className="card-body py-5">
+                  <span style={{fontWeight: "bold", fontSize: "30px", color: "white"}}>Portfolios:</span>{" "}<br/><br/>
+                  <div style={{display: "flex"}}>
+                  {portNames &&
+                    portNames.map((data) => {
+                      return (
+                          <h4 style={{paddingRight: "10px"}}>{data.portfolio}</h4>
+                      );
+                    })}
+                  </div>
+                  
+                </div>
+                <div className="card-body bg-white text-black">
+                Your Portfolios: {num} <br />
+                  Your Transactions: {transnum}
+                </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="row cards r2">
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
                 <img className="profile-short-images" src={networth} />
                 <div className="card-body py-5">Networth</div>
+                <div className="card-body py-5">
+                  <ProfileStatNetworth />
+                </div>
               </div>
             </div>
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
                 <img className="profile-short-images" src={totalinvestment} />
                 <div className="card-body py-5">Total Investment</div>
+                <div className="card-body py-5">
+                  <ProfileStatTInvest />
+                </div>
               </div>
             </div>
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
                 <img className="profile-short-images" src={totalgains} />
                 <div className="card-body py-5">Total Gains</div>
+                <div className="card-body py-5">
+                  <ProfileStatTGain />
+                </div>
               </div>
             </div>
           </div>
