@@ -10,6 +10,7 @@ import { handledarkMode } from "../../store/actions/darkModeAction";
 import { useRequest } from "../../hooks/request-hook";
 import "./Profile.css";
 import ProfileCharts from "./ProfileCharts";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -124,14 +125,15 @@ const Profile = () => {
                 > */}
                 {/* abc
                 </div> */}
-                Portfolios:{" "}
-                {portNames.map((data) => {
-                  return (
-                    <div>
-                      <h4>{data.portfolio}</h4>
-                    </div>
-                  );
-                })}
+                Portfolios: {/* console.log(po); */}
+                {portNames &&
+                  portNames.map((data) => {
+                    return (
+                      <div>
+                        <h4>{data.portfolio}</h4>
+                      </div>
+                    );
+                  })}
                 Your Portfolios: {num}
                 Your Transactions: {transnum}
               </div>
@@ -173,7 +175,7 @@ const Profile = () => {
             <div className="col-md-3 mb-3 row32">
               <div className="card bg-white text-black h-100">
                 <div className="card-body py-5">
-                  <ProfileCharts/>
+                  <ProfileCharts />
                 </div>
               </div>
             </div>
