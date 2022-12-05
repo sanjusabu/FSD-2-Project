@@ -7,15 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { handledarkMode } from "../../store/actions/darkModeAction";
+import { useRequest } from "../../hooks/request-hook";
 import "./Profile.css";
 
 const Profile = () => {
   const dispatch = useDispatch();
-
+  const { sendRequest } = useRequest();
   const mode = useSelector((state) => state.darkMode);
   console.log(mode);
   const { isdarkMode } = mode;
   const [colors, setColor] = useState("");
+  const [num, setNum] = useState(0);
+  const [transnum, setTransNum] = useState(0);
+  const [portNames, setPortNames] = useState("");
 
   const switchDarkMode = () => {
     isdarkMode
@@ -32,6 +36,40 @@ const Profile = () => {
       setColor("black");
     }
   }, [isdarkMode]);
+
+  const Portfoilo = async () => {
+    const res = await sendRequest(
+      "http://localhost:5011/port/nums",
+      "POST",
+      JSON.stringify({
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    // console.log(res, "getformdata");
+    setNum(res.len);
+    setPortNames(res.names);
+  };
+
+  const Transaction = async () => {
+    const res = await sendRequest(
+      "http://localhost:5011/trans/nums",
+      "POST",
+      JSON.stringify({
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    // console.log(res, "getformdata");
+    setTransNum(res.len);
+  };
+
+  useEffect(() => {
+    console.log(localStorage.getItem("user"));
+    Portfoilo();
+    Transaction();
+  }, []);
+  console.log(portNames);
 
   return (
     <div className="profile">
@@ -55,7 +93,7 @@ const Profile = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h1 style={{color : colors}}>Dashboard</h1>
+              <h1 style={{ color: colors }}>Dashboard</h1>
             </div>
           </div>
           <div className="row cards">
@@ -79,12 +117,22 @@ const Profile = () => {
             <div className="col-md-3 mb-3 row12">
               <div className="card bg-success text-white h-100">
                 <div className="card-body py-5">Total Gains</div>
-                <div
+                {/* <div
                   className="card-footer d-flex bg-white text-black"
                   id="tgain"
-                >
-                  abc
-                </div>
+                > */}
+                {/* abc
+                </div> */}
+                Portfolios:{" "}
+                {portNames.map((data) => {
+                  return (
+                    <div>
+                      <h4>{data.portfolio}</h4>
+                    </div>
+                  );
+                })}
+                Your Portfolios: {num}
+                Your Transactions: {transnum}
               </div>
             </div>
           </div>

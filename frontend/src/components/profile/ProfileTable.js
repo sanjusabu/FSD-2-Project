@@ -38,7 +38,8 @@ const ProfileTable = () => {
           <div className="card-body">
             <div className="table-responsive">
               <table id="example" className="table table-striped data-table">
-                <thead>
+                <thead>Transaction Table</thead>
+                <tbody>
                   <tr>
                     <th>Portfolio</th>
                     <th>Date of Transaction </th>
@@ -60,8 +61,7 @@ const ProfileTable = () => {
                       <td>{i.total}</td>
                     </tr>
                   ))}
-                </thead>
-                <tbody></tbody>
+                </tbody>
               </table>
             </div>
           </div>

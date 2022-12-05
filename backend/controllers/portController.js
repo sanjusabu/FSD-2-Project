@@ -8,7 +8,7 @@ const getformdets = async (req, res) => {
   findDets = await PortfolioModel.find({ id: id });
   // console.log(findDets);
 
-  console.log(findDets);
+  // console.log(findDets);
   res.status(201).json(findDets);
 };
 
@@ -42,5 +42,13 @@ const form = async (req, res, next) => {
   res.json(portModel);
 };
 
+const getnum = async (req, res) => {
+  const { id } = req.body;
+  console.log(req.body);
+  const nums = await PortfolioModel.find({ id: id });
+  console.log(nums.length);
+  res.json({ len: nums.length, names: nums });
+};
 exports.form = form;
 exports.getformdets = getformdets;
+exports.getnum = getnum;
