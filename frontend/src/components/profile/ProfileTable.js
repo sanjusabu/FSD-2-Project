@@ -51,9 +51,9 @@ const ProfileTable = () => {
 
                   {transData.map((i) => (
                     <tr>
-                      <td>{i.Portfolio}</td>
-                      <td>{i.Date}</td>
-                      <td>{i.Ticker}</td>
+                      <td>{i.portfolio}</td>
+                      <td>{i.date}</td>
+                      <td>{i.ticker}</td>
                       <td>{i.action}</td>
                       <td>{i.quantity}</td>
                       <td>{i.price}</td>
