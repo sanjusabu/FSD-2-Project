@@ -9,6 +9,9 @@ import { useState } from "react";
 import { handledarkMode } from "../../store/actions/darkModeAction";
 import { useRequest } from "../../hooks/request-hook";
 import "./Profile.css";
+import networth from "../Images/net-worth.jpg";
+import totalgains from "../Images/total-gains.jpg";
+import totalinvestment from "../Images/total-investment.jpg";
 import ProfileCharts from "./ProfileCharts";
 import { FaRegTrashAlt } from "react-icons/fa";
 
@@ -77,7 +80,10 @@ const Profile = () => {
     <div className="profile">
       <TempNavbar />
       <main className="mt-5 pt-3" id="dashboard">
-        <div id="darkmode">
+        <div id="darkmode" className="darkmode">
+          <p style={{ marginRight: "5%" }}>
+            <strong>Enable light mode</strong>
+          </p>
           <input
             type="checkbox"
             className="checkbox"
@@ -143,16 +149,19 @@ const Profile = () => {
           <div className="row cards r2">
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
+                <img className="profile-short-images" src={networth} />
                 <div className="card-body py-5">Networth</div>
               </div>
             </div>
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
+                <img className="profile-short-images" src={totalinvestment} />
                 <div className="card-body py-5">Total Investment</div>
               </div>
             </div>
             <div className="col-md-3 mb-3">
               <div className="card bg-white text-black h-100">
+                <img className="profile-short-images" src={totalgains} />
                 <div className="card-body py-5">Total Gains</div>
               </div>
             </div>
