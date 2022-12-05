@@ -12,6 +12,7 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
 import Help from "./components/Help";
 import About from "./components/About Us";
+import Admin from "./components/Admin";
 import { Portfoliocontext } from "./context/portfolio-context";
 function App() {
   // const details = [];
@@ -48,6 +49,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/help" element={<Help />}></Route>
           <Route path="/About" element={<About />}></Route>
+          <Route path="/Admin" element={<Admin />}></Route>
         </Routes>
       </Router>
     );
