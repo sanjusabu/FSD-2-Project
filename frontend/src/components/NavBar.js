@@ -92,9 +92,9 @@ const NavBar = () => {
                   <Link
                     className="nav-link active"
                     aria-current="page"
-                    to="/Admin"
+                    to="/AdminLogin"
                   >
-                    <span className="text">Admin</span>
+                    <span className="text">Admin Login</span>
                   </Link>
                 </li>
               )}
