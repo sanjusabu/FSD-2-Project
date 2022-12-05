@@ -14,6 +14,7 @@ const CreateTransactions = (props) => {
   const port = useContext(Portfoliocontext);
   const [portData, setportData] = useState([]);
   const [colors, setColor] = useState("");
+  const [bgcolors, setbgColor] = useState("");
 
   // console.log(port.portfolio);
   const trans = useContext(Transcontext);
@@ -82,15 +83,7 @@ const CreateTransactions = (props) => {
     e.preventDefault();
     // dets.details.push({ Ticker });
     // console.log(dets);
-    props.takedetails({
-      Portfolio: Portfolio,
-      Ticker: Ticker,
-      Date: startDate,
-      quantity: quantity,
-      price: price,
-      action: actionvalue,
-      total: quantity * price,
-    });
+
     resetPortfolio();
     resetTask();
     resetStart();
@@ -248,6 +241,7 @@ const CreateTransactions = (props) => {
                 e.preventDefault();
                 setPage((currPage) => currPage - 1);
               }}
+              style={{ backgroundColor: "black" }}
             >
               Prev
             </button>
@@ -257,11 +251,17 @@ const CreateTransactions = (props) => {
                 e.preventDefault();
                 setPage((currPage) => currPage + 1);
               }}
+              style={{ backgroundColor: "black" }}
             >
               Next
             </button>
           </div>
-          <button disabled={!formValid} type="submit" onClick={submitHandler}>
+          <button
+            disabled={!formValid}
+            type="submit"
+            onClick={submitHandler}
+            style={{ backgroundColor: "black" }}
+          >
             Submit Transaction
           </button>
         </form>
