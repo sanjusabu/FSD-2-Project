@@ -1,0 +1,49 @@
+.card {
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    background-color:#fff;
+    padding: 1.25rem;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+}
+.topCard1{
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    background-color:#fff;
+    padding: 1.25rem;
+    height: 25vh;
+    width: 25vw;
+    margin: 1rem;
+    background: rgb(34,195,120);
+background: linear-gradient(0deg, rgba(34,195,120,1) 0%, rgba(45,253,243,1) 100%);
+}
+.topCard2{
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    background-color:#fff;
+    padding: 1.25rem;
+    height: 25vh;
+    width: 25vw;
+    margin: 1rem;
+   
+background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+.topCard3{
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    background-color:#fff;
+    padding: 1.25rem;
+    height: 25vh;
+    width: 25vw;
+    margin: 1rem;
+    background: rgb(238,174,202);
+background: linear-gradient(0deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+.networth{
+    height: 50%;
+}

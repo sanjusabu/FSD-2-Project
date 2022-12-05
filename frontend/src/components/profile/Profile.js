@@ -15,6 +15,11 @@ import ProfileStatNetworth from "./ProfileStatNetworth";
 import ProfileStatTInvest from "./ProfileStatTInvest";
 import ProfileStatTGain from "./ProfileStatTGain";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Card from "../Card/Card";
+import TopCard1 from "../Card/TopCard1";
+import TopCard2 from "../Card/TopCard2";
+import TopCard3 from "../Card/TopCard3";
+import classes from "../Card/Card.module.css";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -148,42 +153,46 @@ const Profile = () => {
           </div> */}
 
           <div className="row cards r2">
-            <div className="col-md-3 mb-3">
-              <div className="card bg-white text-black h-100">
-                <img className="profile-short-images" src={networth} />
-                <div className="card-body py-5">Networth</div>
-                <div className="card-body py-5">
-                  <ProfileStatNetworth />
-                </div>
+            <div className="col-md-3 mb-3 topcard1">
+              <div>
+                {/* <img className="profile-short-images" src={networth} /> */}
+                <TopCard1>
+                <div style={{fontWeight: "20", fontSize: "30px"}}>Networth</div><br/>
+                <div><ProfileStatNetworth /></div>
+                </TopCard1>
               </div>
             </div>
-            <div className="col-md-3 mb-3">
-              <div className="card bg-white text-black h-100">
-                <img className="profile-short-images" src={totalinvestment} />
-                <div className="card-body py-5">Total Investment</div>
-                <div className="card-body py-5">
+            <div className="col-md-3 mb-3 topcard2">
+              <div>
+                {/* <img className="profile-short-images" src={totalinvestment} /> */}
+                <TopCard2>
+                <div style={{fontWeight: "20", fontSize: "30px"}}>Total Investment</div><br/>
+                <div>
                   <ProfileStatTInvest />
                 </div>
+                </TopCard2>
               </div>
             </div>
-            <div className="col-md-3 mb-3">
-              <div className="card bg-white text-black h-100">
-                <img className="profile-short-images" src={totalgains} />
-                <div className="card-body py-5">Total Gains</div>
-                <div className="card-body py-5">
+            <div className="col-md-3 mb-3 topcard3">
+              <div>
+                {/* <img className="profile-short-images" src={totalgains} /> */}
+                <TopCard3>
+                <div style={{fontWeight: "20", fontSize: "30px"}}>Total Gains</div><br/>
+                <div>
                   <ProfileStatTGain />
                 </div>
+                </TopCard3>
               </div>
             </div>
           </div>
 
           <div className="row cards">
             <div className="col-md-3 mb-3 row31">
-              <div className="card bg-white text-black h-100">
-                <div className="card-body py-5">
+              <Card>
+                <div>
                   <ProfileTable />
                 </div>
-              </div>
+              </Card>
             </div>
             {/* <div className="col-md-3 mb-3">
               <div className="card bg-warning text-dark h-100">
@@ -192,11 +201,11 @@ const Profile = () => {
               </div>
             </div> */}
             <div className="col-md-3 mb-3 row32">
-              <div className="card bg-white text-black h-100">
-                <div className="card-body py-5">
+              <Card>
+                <div>
                   <ProfileCharts />
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
 

@@ -67,5 +67,22 @@
 }
 
 .r2{
-  margin-left: 19%;
+  margin-left: 9%;
+}
+
+.topcard1{
+  margin-left: 0%;
+}
+
+.topcard2{
+  margin-left: 4%;
+}
+
+.topcard3{
+  margin-left: 4%;
+}
+
+.profile-short-images{
+  height: 100px;
+  width: 100px;
 }
