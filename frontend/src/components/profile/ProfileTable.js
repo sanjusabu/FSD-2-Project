@@ -69,10 +69,15 @@ const ProfileTable = () => {
     <div className="row">
       <div className="col-md-12 mb-3">
         <div className="card">
+          <div className="card-header">
+            <span className="me-2">
+              <i className="bi bi-bar-chart-fill"></i>
+            </span>{" "}
+            Transaction Table
+          </div>
           <div className="card-body">
             <div className="table-responsive">
               <table id="example" className="table table-striped data-table">
-                <thead>Transaction Table</thead>
                 <tbody>
                   <tr>
                     <th>Portfolio</th>
