@@ -72,7 +72,7 @@ const Register = () => {
       return;
     }
     const response = await sendRequest(
-      "http://localhost:5011/users/",
+      "http://localhost:5011/users/signup",
       "POST",
       JSON.stringify({
         name: nameValue,

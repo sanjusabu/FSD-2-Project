@@ -11,7 +11,7 @@ const ProfileTable = () => {
   useEffect(() => {
     //changing color of body with darkmode in useEffect
     if (isdarkMode) {
-      setColor("white");
+      setColor("black");
     } else {
       setColor("black");
     }
