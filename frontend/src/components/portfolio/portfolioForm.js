@@ -1,11 +1,14 @@
 import useInput from "../../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
 import { Portfoliocontext } from "../../context/portfolio-context";
+import { Reloadcontext } from "../../context/reload-context";
 import "./portfolioForm.css";
-
+import { useRequest } from "../../hooks/request-hook";
 const isNotEmpty = (value) => value.trim() !== "";
 const PortfolioForm = (props) => {
   const port = useContext(Portfoliocontext);
+  const reload = useContext(Reloadcontext);
+  const { sendRequest, isError } = useRequest();
 
   const [formValid, setformValid] = useState(false);
 
@@ -92,6 +95,22 @@ const PortfolioForm = (props) => {
     const newimg = logolist.filter(
       (dat) => dat.name.toLowerCase() === platformName.toLowerCase()
     );
+
+    const response = await sendRequest(
+      "http://localhost:5011/port/form",
+      "POST",
+      JSON.stringify({
+        portfolio: portName,
+        platform: platformName,
+        type: type,
+        openingDate: openingDate,
+        images: newimg,
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    console.log(response, "dfkfjgekljgdekl");
+    reload.rd = true;
     port.portfolio.push({
       portfolio: portName,
       platform: platformName,
@@ -99,7 +118,7 @@ const PortfolioForm = (props) => {
       openingDate: openingDate,
       images: newimg,
     });
-    console.log(port);
+    // console.log(port);
 
     props.formdets({
       portfolio: portName,
@@ -157,6 +176,7 @@ const PortfolioForm = (props) => {
           </button>
         </div>
       </form>
+      {isError && <p>Portfolio exists already!!</p>}
     </div>
   );
 };

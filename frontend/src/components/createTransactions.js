@@ -3,15 +3,34 @@ import { useEffect, useState, useContext } from "react";
 import { Detailscontext } from "../context/details";
 import { Portfoliocontext } from "../context/portfolio-context";
 import "./createTransactions.css";
+import { useRequest } from "../hooks/request-hook";
+import { Transcontext } from "../context/trans-context";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);
   const [formValid, setformValid] = useState(false);
   const port = useContext(Portfoliocontext);
-
+  const [portData, setportData] = useState([]);
   // console.log(port.portfolio);
+  const trans = useContext(Transcontext);
 
+  const { sendRequest } = useRequest();
+  useEffect(() => {
+    const Details = async () => {
+      const res = await sendRequest(
+        "http://localhost:5011/port/getform",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      console.log(res, "getformdata");
+      setportData(res);
+    };
+    Details();
+  }, []);
   const {
     value: Portfolio,
     valueChangeHandler: PortfolioChange,
@@ -75,6 +94,23 @@ const CreateTransactions = (props) => {
     resetQuantity();
     resetAction();
     setPage(0);
+    const response = await sendRequest(
+      "http://localhost:5011/trans/postdata",
+      "POST",
+      JSON.stringify({
+        portfolio: Portfolio,
+        ticker: Ticker,
+        date: startDate,
+        quantity: quantity,
+        price: price,
+        action: actionvalue,
+        total: quantity * price,
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    trans.tr = true;
+    console.log(trans.tr);
   };
 
   const [page, setPage] = useState(0);
@@ -98,7 +134,7 @@ const CreateTransactions = (props) => {
             onChange={PortfolioChange}
           >
             <option> Select--an--option</option>
-            {port.portfolio.map((data) => {
+            {portData.map((data) => {
               return <option value={data.portfolio}>{data.portfolio}</option>;
             })}
           </select>
@@ -171,7 +207,7 @@ const CreateTransactions = (props) => {
   };
   return (
     <div className="tranform">
-      <h1>Step {page+1} of 5</h1>
+      <h1>Step {page + 1} of 5</h1>
       <div className="progressbar">
         <div
           style={{
@@ -214,11 +250,7 @@ const CreateTransactions = (props) => {
               Next
             </button>
           </div>
-          <button
-            disabled={!formValid}
-            type="submit"
-            onClick={submitHandler}
-          >
+          <button disabled={!formValid} type="submit" onClick={submitHandler}>
             Submit Transaction
           </button>
         </form>

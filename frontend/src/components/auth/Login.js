@@ -5,12 +5,15 @@ import { AuthContext } from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar";
+import { useRequest } from "../../hooks/request-hook";
+import ErrorModal from "../errorModal";
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
 let formValid = false;
 
 const Login = () => {
   // <NavBar />
+  const { isError, sendRequest } = useRequest();
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(false);
@@ -59,22 +62,34 @@ const Login = () => {
       console.log("errorrrr");
       return;
     }
-
-    // console.lo(isError);
-    auth.login("loggedin");
-    navigate("/profile");
+    const response = await sendRequest(
+      "http://localhost:5011/users/login",
+      "POST",
+      JSON.stringify({
+        email: emailValue,
+        password: passwordValue,
+      }),
+      { "Content-Type": "application/json" }
+    );
     resetEmail();
     resetPassword();
+    auth.login(response.user.id);
+    navigate("/profile");
   };
   return (
     <div className="backgroundimg">
       <NavBar />
+      {isError && <ErrorModal error={isError} showmodal={true} />}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
           <div className="form">
             <div className="img">
-              <img src="https://www.linkpicture.com/q/logo_356.png" className="logo" alt="logo" />
+              <img
+                src="https://www.linkpicture.com/q/logo_356.png"
+                className="logo"
+                alt="logo"
+              />
             </div>
             <div className="title">Login</div>
 
@@ -113,15 +128,7 @@ const Login = () => {
             </div>
             <br />
             <br />
-            {/* <input
-              type="checkbox"
-              id="Remember me"
-              name="Remember me"
-              value="remember me"
-              checked={isChecked}
-              onChange={handleOnChange}
-            />
-            <label for="Remember me"> Remember me</label> */}
+
             <div>
               <Checkbox
                 label="Remember me"
