@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -7,6 +7,8 @@ const userRoutes = require("./routes/user");
 const portRoutes = require("./routes/portfolio");
 const transRoutes = require("./routes/transactions");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -38,14 +40,8 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
-const dbUrl =
-  "mongodb+srv://" +
-  process.env.USER +
-  ":" +
-  process.env.PASSWORD +
-  "@cluster0.f8yjf.mongodb.net/" +
-  process.env.DATABASE +
-  "?retryWrites=true&w=majority";
+
+const dbUrl ="mongodb+srv://SANJU:sanju_123456@cluster0.f8yjf.mongodb.net/FSD2Project?retryWrites=true&w=majority";
 
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
