@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from "./GlobalState";
 import {Button} from "react-bootstrap";
-import Home from "./Home";
+import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 
-//
  const UserList = () => {
-  
+  const navigate = useNavigate();
+  const navigateHome = () => {
+    navigate("/");
+  }
   let { users, removeUser } = useContext(GlobalContext);
   users = [{id: 1, name: "John Doe"}, {id: 2, name: "Jane Doe"}];
 
@@ -14,9 +17,9 @@ import Home from "./Home";
     <>
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <h1 className="text-white">Admin</h1>
-      <Button variant = "primary" className = "ms-auto">
-      <i class="fa-solid fa-right-from-bracket"></i>
-      </Button>
+      <button variant = "primary" className = "ms-auto" onclick = {navigateHome}>
+      <Link to="/"><i class="fa-solid fa-right-from-bracket"></i></Link>
+      </button>
 
     </nav>
     <ul className="mt-4">
