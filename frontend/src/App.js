@@ -12,6 +12,7 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
 import Help from "./components/Help";
 import About from "./components/About Us";
+import News from "./components/news/News";
 import { Portfoliocontext } from "./context/portfolio-context";
 function App() {
   // const details = [];
@@ -59,6 +60,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/" element={<Profile />}></Route>
+          <Route path="/news" element={<News />}></Route>
         </Routes>
       </Router>
     );
