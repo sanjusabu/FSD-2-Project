@@ -9,6 +9,7 @@ import { useState } from "react";
 import { handledarkMode } from "../../store/actions/darkModeAction";
 import { useRequest } from "../../hooks/request-hook";
 import "./Profile.css";
+import ProfileCharts from "./ProfileCharts";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -172,7 +173,7 @@ const Profile = () => {
             <div className="col-md-3 mb-3 row32">
               <div className="card bg-white text-black h-100">
                 <div className="card-body py-5">
-                  <ProfileGrowth />
+                  <ProfileCharts/>
                 </div>
               </div>
             </div>
