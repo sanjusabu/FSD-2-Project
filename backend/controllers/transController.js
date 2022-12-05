@@ -41,7 +41,17 @@ const getnum = async (req, res) => {
   console.log(nums.length);
   res.json({ len: nums.length, names: nums });
 };
+const deleteTrans = async (req, res) => {
+  console.log(req.body);
+  const { id, deleteticker } = req.body;
+  const delmod = await TransactionsModel.deleteMany({
+    id,
+    ticker: deleteticker,
+  });
+  res.json(delmod);
+};
 
 exports.postdata = postdata;
 exports.getTrans = getTrans;
 exports.getnum = getnum;
+exports.deleteTrans = deleteTrans;

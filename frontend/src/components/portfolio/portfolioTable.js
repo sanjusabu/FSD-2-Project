@@ -3,10 +3,12 @@ import { Portfoliocontext } from "../../context/portfolio-context";
 import { useContext, useEffect, useState } from "react";
 import { useRequest } from "../../hooks/request-hook";
 import { Reloadcontext } from "../../context/reload-context";
+
 const PortfolioTable = (props) => {
   const port = useContext(Portfoliocontext);
   // console.log(port, "ergyrihfj");
   let count = 0;
+
   const reload = useContext(Reloadcontext);
   const [portData, setportData] = useState([]);
   const { sendRequest } = useRequest();

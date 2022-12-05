@@ -5,6 +5,7 @@ import { Portfoliocontext } from "../context/portfolio-context";
 import "./createTransactions.css";
 import { useRequest } from "../hooks/request-hook";
 import { Transcontext } from "../context/trans-context";
+import { useDispatch, useSelector } from "react-redux";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
@@ -12,9 +13,13 @@ const CreateTransactions = (props) => {
   const [formValid, setformValid] = useState(false);
   const port = useContext(Portfoliocontext);
   const [portData, setportData] = useState([]);
+  const [colors, setColor] = useState("");
+
   // console.log(port.portfolio);
   const trans = useContext(Transcontext);
-
+  const mode = useSelector((state) => state.darkMode);
+  console.log(mode);
+  const { isdarkMode } = mode;
   const { sendRequest } = useRequest();
   useEffect(() => {
     const Details = async () => {
@@ -112,7 +117,13 @@ const CreateTransactions = (props) => {
     trans.tr = true;
     console.log(trans.tr);
   };
-
+  useEffect(() => {
+    if (isdarkMode) {
+      setColor("white");
+    } else {
+      setColor("black");
+    }
+  }, [isdarkMode]);
   const [page, setPage] = useState(0);
 
   const FormTitles = [
@@ -207,7 +218,7 @@ const CreateTransactions = (props) => {
   };
   return (
     <div className="tranform">
-      <h1>Step {page + 1} of 5</h1>
+      <h1 style={{ color: colors }}>Step {page + 1} of 5</h1>
       <div className="progressbar">
         <div
           style={{

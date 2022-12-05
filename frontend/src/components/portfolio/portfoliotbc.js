@@ -4,6 +4,7 @@ import { Portfoliocontext } from "../../context/portfolio-context";
 import { useEffect } from "react";
 import { useRequest } from "../../hooks/request-hook";
 import { Transcontext } from "../../context/trans-context";
+import { useDispatch, useSelector } from "react-redux";
 
 const Check = (props) => {
   // console.log(props.details, props.count);
@@ -18,6 +19,11 @@ const Check = (props) => {
   const [transData, setTransData] = useState([]);
   const trans = useContext(Transcontext);
 
+  const mode = useSelector((state) => state.darkMode);
+  console.log(mode);
+  const { isdarkMode } = mode;
+
+  const [colors, setColor] = useState("");
   useEffect(() => {
     const Details = async () => {
       const res = await sendRequest(
@@ -69,6 +75,14 @@ const Check = (props) => {
     // console.log(trans.tr);
   }, [transData]);
 
+  useEffect(() => {
+    if (isdarkMode) {
+      setColor("white");
+    } else {
+      setColor("black");
+    }
+  }, [isdarkMode]);
+
   const TableHandler = (e) => {
     e.preventDefault();
     setVal(e.target.value);
@@ -88,22 +102,27 @@ const Check = (props) => {
       {console.log(props.details)}
       <img src={props.details.images[0].address} style={{ width: "60%" }}></img>
       <div className="portcard__content">
+        .
         <table className="portcardtable">
           <tr>
-            <td style={{ fontSize: "1.4rem" }}>Portfolio Name: </td>
-            <td style={{ fontSize: "1.4rem" }}>{props.details.portfolio}</td>
+            <td style={{ fontSize: "1.4rem", color: colors }}>
+              Portfolio Name:{" "}
+            </td>
+            <td style={{ fontSize: "1.4rem", color: colors }}>
+              {props.details.portfolio}
+            </td>
           </tr>
           <tr>
-            <td>Type: </td>
-            <td>{props.details.type}</td>
+            <td style={{ color: colors }}>Type: </td>
+            <td style={{ color: colors }}>{props.details.type}</td>
           </tr>
           <tr>
-            <td>Platform: </td>
-            <td>{props.details.platform}</td>
+            <td style={{ color: colors }}>Platform: </td>
+            <td style={{ color: colors }}>{props.details.platform}</td>
           </tr>
           <tr>
-            <td>Opening Date: </td>
-            <td>{props.details.openingDate}</td>
+            <td style={{ color: colors }}>Opening Date: </td>
+            <td style={{ color: colors }}>{props.details.openingDate}</td>
           </tr>
         </table>
       </div>
@@ -132,13 +151,13 @@ const Check = (props) => {
             <table id="ex" className="table table-striped data-table">
               <thead>
                 <tr>
-                  <th>Portfolio</th>
-                  <th>Date of Transaction</th>
-                  <th>Ticker</th>
-                  <th>Action</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Total</th>
+                  <th style={{ color: colors }}>Portfolio</th>
+                  <th style={{ color: colors }}>Date of Transaction</th>
+                  <th style={{ color: colors }}>Ticker</th>
+                  <th style={{ color: colors }}>Action</th>
+                  <th style={{ color: colors }}>Quantity</th>
+                  <th style={{ color: colors }}>Price</th>
+                  <th style={{ color: colors }}>Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -146,13 +165,13 @@ const Check = (props) => {
                   match[val - 1].map((i) => {
                     return (
                       <tr>
-                        <td>{i.portfolio}</td>
-                        <td>{i.date}</td>
-                        <td>{i.ticker}</td>
-                        <td>{i.action}</td>
-                        <td>{i.quantity}</td>
-                        <td>{i.price}</td>
-                        <td>{i.total}</td>
+                        <td style={{ color: colors }}>{i.portfolio}</td>
+                        <td style={{ color: colors }}>{i.date}</td>
+                        <td style={{ color: colors }}>{i.ticker}</td>
+                        <td style={{ color: colors }}>{i.action}</td>
+                        <td style={{ color: colors }}>{i.quantity}</td>
+                        <td style={{ color: colors }}>{i.price}</td>
+                        <td style={{ color: colors }}>{i.total}</td>
                       </tr>
                     );
                   })}
