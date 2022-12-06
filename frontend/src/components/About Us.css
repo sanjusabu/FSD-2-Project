@@ -75,7 +75,7 @@ article h4 {
 .abttitle {
   text-transform: capitalize;
   margin-bottom: 0.75rem;
-  color: hsl(209, 34%, 30%);
+  color: black;
 }
 
 .title {
