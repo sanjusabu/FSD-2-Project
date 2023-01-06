@@ -26,7 +26,7 @@ const About = () => {
   }, [index]);
 
   return (
-    <section>
+    <section className = "backgroundimg">
       <NavBar />
       <div className="abttitle">
         <h2>Our Team</h2>

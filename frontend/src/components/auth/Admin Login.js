@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar";
 import { useRequest } from "../../hooks/request-hook";
 import ErrorModal from "../errorModal";
+
+
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
 let formValid = false;
