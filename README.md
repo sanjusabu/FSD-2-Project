@@ -7,7 +7,12 @@ SANKA VIKYATH - S20200010188
 SAI SRIKAR REDDY KOLI - S20200010095
 M. BALAMANITEJA - S20200010123
 
-To use this React app, do the following in the root folder in the terminal:
+To use this React app,split the terminaland do the following in the root folder in the terminal:
 cd frontend
 npm i
 npm start
+FOr backend:
+npm i
+nodemon server
+
+Use your credentials using .env file.

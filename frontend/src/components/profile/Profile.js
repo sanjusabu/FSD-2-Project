@@ -160,8 +160,13 @@ const Profile = () => {
               <div>
                 {/* <img className="profile-short-images" src={networth} /> */}
                 <TopCard1>
-                <div style={{fontWeight: "20", fontSize: "30px"}}>Networth</div><br/>
-                <div><ProfileStatNetworth /></div>
+                  <div style={{ fontWeight: "20", fontSize: "30px" }}>
+                    Networth
+                  </div>
+                  <br />
+                  <div>
+                    <ProfileStatNetworth />
+                  </div>
                 </TopCard1>
               </div>
             </div>
@@ -169,10 +174,13 @@ const Profile = () => {
               <div>
                 {/* <img className="profile-short-images" src={totalinvestment} /> */}
                 <TopCard2>
-                <div style={{fontWeight: "20", fontSize: "30px"}}>Total Investment</div><br/>
-                <div>
-                  <ProfileStatTInvest />
-                </div>
+                  <div style={{ fontWeight: "20", fontSize: "30px" }}>
+                    Total Investment
+                  </div>
+                  <br />
+                  <div>
+                    <ProfileStatTInvest />
+                  </div>
                 </TopCard2>
               </div>
             </div>
@@ -180,10 +188,13 @@ const Profile = () => {
               <div>
                 {/* <img className="profile-short-images" src={totalgains} /> */}
                 <TopCard3>
-                <div style={{fontWeight: "20", fontSize: "30px"}}>Total Gains</div><br/>
-                <div>
-                  <ProfileStatTGain />
-                </div>
+                  <div style={{ fontWeight: "20", fontSize: "30px" }}>
+                    Total Gains
+                  </div>
+                  <br />
+                  <div>
+                    <ProfileStatTGain />
+                  </div>
                 </TopCard3>
               </div>
             </div>

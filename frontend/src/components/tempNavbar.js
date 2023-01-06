@@ -26,7 +26,6 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
@@ -37,7 +36,6 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
@@ -48,7 +46,6 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
@@ -59,7 +56,6 @@ const TempNavbar = () => {
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
