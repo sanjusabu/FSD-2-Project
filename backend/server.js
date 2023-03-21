@@ -8,6 +8,18 @@ const portRoutes = require("./routes/portfolio");
 const transRoutes = require("./routes/transactions");
 const app = express();
 const cors = require("cors");
+const fs = require("fs");
+const morgan = require("morgan");
+const path = require("path");
+
+// create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "access.log"),
+  { flags: "a" }
+);
+
+// setup the logger
+app.use(morgan("combined", { stream: accessLogStream }));
 app.use(cors());
 
 app.use(bodyParser.json());
