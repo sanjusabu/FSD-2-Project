@@ -6,6 +6,7 @@ const HttpError = require("./models/http-error");
 const userRoutes = require("./routes/user");
 const portRoutes = require("./routes/portfolio");
 const transRoutes = require("./routes/transactions");
+const uploadRoutes = require("./routes/upload");
 const app = express();
 const cors = require("cors");
 const fs = require("fs");
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/users", userRoutes);
 app.use("/port", portRoutes);
 app.use("/trans", transRoutes);
-
+app.use("/upload", uploadRoutes);
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);
   throw error;

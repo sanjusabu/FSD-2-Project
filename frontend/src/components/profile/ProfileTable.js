@@ -10,7 +10,7 @@ const isNotEmpty = (value) => value.trim() !== "";
 const ProfileTable = () => {
   const dets = useContext(Detailscontext);
   const [colors, setColor] = useState("black");
-  console.log(dets.details);
+  // console.log(dets.details);
   const mode = useSelector((state) => state.darkMode);
   const { isdarkMode } = mode;
   const { sendRequest } = useRequest();
@@ -36,7 +36,7 @@ const ProfileTable = () => {
         }),
         { "Content-Type": "application/json" }
       );
-      console.log(res, "getformdata");
+      // console.log(res, "getformdata");
       setTransData(res);
       // setportData((prevstate)=>{
       //   let newstate = [...prevstate,]
@@ -45,12 +45,12 @@ const ProfileTable = () => {
     };
     Details();
   }, [chg]);
-  console.log(transData);
+  // console.log(transData);
   const [tblColor, setTblColor] = useState("");
 
   const deleteHandler = async (e) => {
     e.preventDefault();
-    console.log(nameValue);
+    // console.log(nameValue);
     const res = await sendRequest(
       "http://localhost:5011/trans/deleteTrans",
       "POST",

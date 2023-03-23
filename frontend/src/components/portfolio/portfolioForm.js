@@ -100,7 +100,7 @@ const PortfolioForm = (props) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("triggered");
+    // console.log("triggered");
     const newimg = logolist.filter(
       (dat) => dat.name.toLowerCase() === platformName.toLowerCase()
     );
@@ -118,7 +118,7 @@ const PortfolioForm = (props) => {
       }),
       { "Content-Type": "application/json" }
     );
-    console.log(response, "dfkfjgekljgdekl");
+    // console.log(response, "dfkfjgekljgdekl");
     reload.rd = true;
     port.portfolio.push({
       portfolio: portName,

@@ -14,7 +14,7 @@ const ProfileStatTInvest = () => {
         }),
         { "Content-Type": "application/json" }
       );
-      console.log(res, "getformdata");
+      // console.log(res, "getformdata");
       setTransData(res);
       // setportData((prevstate)=>{
       //   let newstate = [...prevstate,]
@@ -23,7 +23,7 @@ const ProfileStatTInvest = () => {
     };
     Details();
   }, []);
-  console.log(transData);
+  // console.log(transData);
   let tblData = transData.map((data) => {
     return [
       data.portfolio,
@@ -55,7 +55,7 @@ const ProfileStatTInvest = () => {
     return res;
   }, {});
 
-  console.log(result, "result");
+  // console.log(result, "result");
 
   let array1 = [];
   for (let i = 0; i < tblData.length; i++) {
@@ -76,7 +76,7 @@ const ProfileStatTInvest = () => {
     return res;
   }, {});
 
-  console.log(result1, "result1");
+  // console.log(result1, "result1");
 
   let result11 = [];
   for (let i = 0; i < result.length; i++) {
@@ -84,7 +84,7 @@ const ProfileStatTInvest = () => {
       result11.push([result1[i][0], result1[i][1]]);
     }
   }
-  console.log(result11, "result11");
+  // console.log(result11, "result11");
   let tinvestment = 0;
 
   for (let i = 0; i < tblData.length; i++) {
@@ -95,9 +95,11 @@ const ProfileStatTInvest = () => {
 
   return (
     <div>
-        <span style={{fontWeight: "bold", fontSize: "30px"}}>₹{tinvestment}</span>
+      <span style={{ fontWeight: "bold", fontSize: "30px" }}>
+        ₹{tinvestment}
+      </span>
     </div>
-    );
+  );
 };
 
 export default ProfileStatTInvest;

@@ -1,7 +1,7 @@
 import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import {useRequest} from "../../hooks/request-hook";
-import {useState, useEffect} from "react";
+import { useRequest } from "../../hooks/request-hook";
+import { useState, useEffect } from "react";
 ChartJs.register(Tooltip, Title, ArcElement, Legend);
 const ProfileBreakdown = () => {
   // const dets = useContext(Detailscontext);
@@ -26,7 +26,7 @@ const ProfileBreakdown = () => {
         }),
         { "Content-Type": "application/json" }
       );
-      console.log(res, "getformdata");
+      // console.log(res, "getformdata");
       setTransData(res);
       // setportData((prevstate)=>{
       //   let newstate = [...prevstate,]
@@ -66,7 +66,7 @@ const ProfileBreakdown = () => {
     return res;
   }, {});
 
-  console.log(result , "result");
+  // console.log(result , "result");
 
   let result_label = [];
   let result_data = [];
@@ -82,7 +82,7 @@ const ProfileBreakdown = () => {
     colorarray.push("#" + Math.floor(Math.random() * 16777215).toString(16));
   }
 
-  console.log(colorarray, "djjkekj");
+  // console.log(colorarray, "djjkekj");
   const data = {
     datasets: [
       {
@@ -100,7 +100,7 @@ const ProfileBreakdown = () => {
         </span>{" "}
         Portfolio Breakdown
       </div>
-      <div style={{ width: "40%", marginLeft: "30%", marginTop: "10%"}}>
+      <div style={{ width: "40%", marginLeft: "30%", marginTop: "10%" }}>
         <Pie data={data} />
       </div>
     </div>

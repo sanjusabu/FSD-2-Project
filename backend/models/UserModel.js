@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true},
+  email: { type: String, required: true },
   password: { type: String, required: true, minlength: 6 },
   mobilenumber: { type: Number, required: true, minlength: 10 },
+  photo: { type: String },
 });
 const SALT_WORK_FACTOR = 10;
 userSchema.pre("save", async function save(next) {

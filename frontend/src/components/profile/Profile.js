@@ -20,18 +20,20 @@ import TopCard1 from "../Card/TopCard1";
 import TopCard2 from "../Card/TopCard2";
 import TopCard3 from "../Card/TopCard3";
 import classes from "../Card/Card.module.css";
-
+import axios from "axios";
 const Profile = () => {
   const dispatch = useDispatch();
   const { sendRequest } = useRequest();
   const mode = useSelector((state) => state.darkMode);
-  console.log(mode);
+  // console.log(mode);
   const { isdarkMode } = mode;
   const [colors, setColor] = useState("");
   const [num, setNum] = useState(0);
   const [transnum, setTransNum] = useState(0);
   const [portNames, setPortNames] = useState("");
   const [modes, setMode] = useState("dark");
+  const [photo, setPhoto] = useState("");
+  const [img, setImages] = useState("");
 
   const switchDarkMode = () => {
     isdarkMode
@@ -51,39 +53,58 @@ const Profile = () => {
     }
   }, [isdarkMode]);
 
-  const Portfoilo = async () => {
-    const res = await sendRequest(
-      "http://localhost:5011/port/nums",
-      "POST",
-      JSON.stringify({
-        id: localStorage.getItem("user"),
-      }),
-      { "Content-Type": "application/json" }
-    );
-    // console.log(res, "getformdata");
-    setNum(res.len);
-    setPortNames(res.names);
-  };
-
-  const Transaction = async () => {
-    const res = await sendRequest(
-      "http://localhost:5011/trans/nums",
-      "POST",
-      JSON.stringify({
-        id: localStorage.getItem("user"),
-      }),
-      { "Content-Type": "application/json" }
-    );
-    // console.log(res, "getformdata");
-    setTransNum(res.len);
-  };
-
   useEffect(() => {
-    console.log(localStorage.getItem("user"));
+    // console.log(localStorage.getItem("user"));
+    const Portfoilo = async () => {
+      const res = await sendRequest(
+        "http://localhost:5011/port/nums",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      // console.log(res, "getformdata");
+      setNum(res.len);
+      setPortNames(res.names);
+    };
+
+    const Transaction = async () => {
+      const res = await sendRequest(
+        "http://localhost:5011/trans/nums",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      // console.log(res, "getformdata");
+      setTransNum(res.len);
+    };
+
     Portfoilo();
     Transaction();
   }, []);
-  console.log(portNames);
+
+  const imageHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.files[0].name);
+    setPhoto(e.target.files[0]);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append("photo", photo);
+    formdata.append("id", localStorage.getItem("user"));
+    formdata.append("name", photo.name);
+
+    // console.log(photo + "dj");
+    // console.log(formdata);
+    axios.post("http://localhost:5011/upload/add", formdata).then((res) => {
+      setImages(`../images/${res.data.name}`);
+      // console.log();
+    });
+  };
 
   return (
     <div className="profile">
@@ -109,6 +130,16 @@ const Profile = () => {
         <br />
         <div className="container-fluid">
           <div className="row">
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <input
+                type="file"
+                accept=".png, .jpg, .jpeg"
+                onChange={imageHandler}
+                name="photo"
+              ></input>
+              <img src={img} />
+              <button type="submit">Submit</button>
+            </form>
             <div className="col-md-12">
               <h1 style={{ color: colors }}>Dashboard</h1>
             </div>
