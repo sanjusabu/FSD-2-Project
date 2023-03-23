@@ -17,6 +17,7 @@ import Admin from "./components/Admin";
 import News from "./components/news/News";
 import { Portfoliocontext } from "./context/portfolio-context";
 import { Provider } from "react-redux";
+import ForgotPassword from "./components/auth/ForgotPassword";
 import store from "./store/store";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -54,6 +55,7 @@ function App() {
           <Route path="/About" element={<About />}></Route>
           <Route path="/Admin" element={<Admin />}></Route>
           <Route path="/AdminLogin" element={<AdminLogin />}></Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         </Routes>
       </Router>
     );

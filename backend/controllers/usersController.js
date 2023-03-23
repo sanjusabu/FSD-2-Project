@@ -4,6 +4,9 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const { ObjectId } = require("mongodb");
 const AdminModel = require("../models/admin");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
+
 const signup = async (req, res, next) => {
   // const errors = validationResult(req);
   console.log(req.body);
@@ -91,6 +94,27 @@ const login = async (req, res, next) => {
   res.json({ user: existingUser.toObject({ getters: true }) });
 };
 
+const forgotPassword = async (req, res, next) => {
+  const client = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "sanjusabu066@gmail.com",
+      pass: "mbjbrcvjqvmtltap",
+    },
+  });
+  const otp = Math.floor(1000 + Math.random() * 9000);
+
+  // console.log(process.env.sendMail + "fkjgn");
+  const info = await client.sendMail({
+    from: "sanjusabu066@gmail.com",
+    to: req.body.email,
+    subject: "Password Change Code",
+    text: `The code for your password change is: ${otp}`,
+  });
+  console.log(info);
+  // console.log("Email Sent");
+  res.json({ status: info, code: otp, email: req.body.email });
+};
 const adminlogin = async (req, res, next) => {
   console.log(req.body);
   const { email, password } = req.body;
@@ -122,9 +146,33 @@ const deleteusers = async (req, res) => {
   console.log(delmod);
   res.json(delmod);
 };
+const reset = async (req, res) => {
+  // console.log(req.body);
+  let { email, password } = req.body;
+
+  existingEmail = await UserModel.findOne({ email });
+  if (!existingEmail) {
+    res.json({ message: "email doesnt exist" });
+  } else {
+    const SALT_WORK_FACTOR = 10;
+    const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+    password = await bcrypt.hash(password, salt);
+    await UserModel.updateOne(
+      { email },
+      {
+        $set: {
+          password: password,
+        },
+      }
+    );
+    res.json({ message: "Password updated successfully" });
+  }
+};
 
 exports.signup = signup;
 exports.login = login;
+exports.forgotPassword = forgotPassword;
 exports.adminlogin = adminlogin;
 exports.getusers = getusers;
 exports.deleteusers = deleteusers;
+exports.reset = reset;

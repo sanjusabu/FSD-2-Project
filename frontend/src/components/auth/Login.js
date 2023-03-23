@@ -63,7 +63,7 @@ const Login = () => {
       return;
     }
     const response = await sendRequest(
-      "https://fsdproject2.onrender.com/users/login",
+      "http://localhost:5011/users/login",
       "POST",
       JSON.stringify({
         email: emailValue,
@@ -75,6 +75,21 @@ const Login = () => {
     resetPassword();
     auth.login(response.user.id);
     navigate("/profile");
+  };
+  const Forgothandler = async (e) => {
+    e.preventDefault();
+    const response = await sendRequest(
+      "http://localhost:5011/users/forgot",
+      "POST",
+      JSON.stringify({
+        email: emailValue,
+      }),
+      { "Content-Type": "application/json" }
+    );
+    console.log(response);
+    navigate("/forgotpassword", {
+      state: { code: response.code, email: response.email },
+    });
   };
   return (
     <div className="backgroundimg">
@@ -146,6 +161,7 @@ const Login = () => {
             <button type="submit" disabled={!formValid} className="submit">
               Submit
             </button>
+            <Link onClick={Forgothandler}>Forgot Password?</Link>
             <Link to="/register">
               <button className="submit">Switch to Register</button>
             </Link>
