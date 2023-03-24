@@ -150,9 +150,10 @@ const Profile = () => {
         <br />
         <div className="container-fluid">
           <div className="row">
-            {exist && <img src={img} />}
+            {exist && <img className="image" src={img} />}
             {!exist && <p>{msg}</p>}
             {/* console.log(`http://localhost:5011/public/${img}`); */}
+          
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <input
                 type="file"

@@ -18,7 +18,7 @@ const TempNavbar = () => {
     <nav className="navigation">
       <Link className="navbar-brand" to="/">
         <span className="logo">
-          <img src="https://www.linkpicture.com/q/logo_356.png"></img>
+          <img src="https://www.linkpicture.com/q/logo_356.png" alt = "img"></img>
         </span>
       </Link>
       <Link
@@ -87,7 +87,7 @@ const TempNavbar = () => {
         }
       >
         <div className="logout">
-          <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt = "img" />
           <button className="logoutbutton" onClick={logoutHandler}>
             Logout
           </button>
