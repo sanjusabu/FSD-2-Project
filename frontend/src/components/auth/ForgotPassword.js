@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useRequest } from "../../hooks/request-hook";
+import NavBar from "../NavBar";
 const isNotEmpty = (value) => value.trim() !== "";
 const isnumber = (value) => value.includes("@");
 
@@ -62,27 +63,53 @@ const ForgotPassword = () => {
     }
   };
   return (
-    <div>
+    <div className="backgroundimg">
+      <NavBar />
+      <div className="formcontainer-forgotpassword">
       <form onSubmit={submitHandler}>
-        <label>Enter Code</label>
+      <div className="form-forgotpassword">
+            <div className="img">
+              <img
+                src="https://www.linkpicture.com/q/logo_356.png"
+                className="logo"
+                alt="logo"
+              />
+            </div>
+            <div className="title">Forgot Password</div>
+            <div className="input-container ic1">
+        {/* <label>Enter Code</label> */}
         <input
           type="number"
+          className="input"
           onChange={numberChangeHandler}
           onBlur={numberBlurHandler}
           value={numberValue}
+          placeholder="Code Received through Email"
         />
+        </div>
 
-        <label>Enter New Password</label>
+        <div className="input-container ic2">
+        {/* <label>Enter New Password</label> */}
         <input
           type="text"
+          className="input"
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
           value={passwordValue}
+            placeholder="New Password"
         />
-        <button type="submit">Submit</button>
+        </div>
+        {/* <button type="submit">Submit</button> */}
+        <button type="submit"  className="submit">
+              Submit
+            </button>
+            <br/>
+            <br/>
         {err && text && <h5 style={{ color: "red" }}>{text}</h5>}
         {err && res && <h5 style={{ color: "red" }}>{res}</h5>}
+        </div>
       </form>
+      </div>
     </div>
   );
 };
