@@ -8,7 +8,7 @@ const { ObjectId } = require("mongodb");
 
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, "../frontend/images");
+    callback(null, "./public");
   },
   filename: function (req, file, callback) {
     callback(null, file.originalname);

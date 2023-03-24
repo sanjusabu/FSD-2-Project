@@ -34,7 +34,8 @@ const Profile = () => {
   const [modes, setMode] = useState("dark");
   const [photo, setPhoto] = useState("");
   const [img, setImages] = useState("");
-
+  const [exist, setExist] = useState(false);
+  const [msg, setMsg] = useState("");
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
@@ -81,9 +82,27 @@ const Profile = () => {
       // console.log(res, "getformdata");
       setTransNum(res.len);
     };
-
+    const Profile = async () => {
+      const res = await sendRequest(
+        "http://localhost:5011/users/check",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      console.log(res);
+      if (res.photo) {
+        setExist(true);
+        setImages(`http://localhost:5011/${res.photo}`);
+      } else {
+        setExist(false);
+        setMsg(res.message);
+      }
+    };
     Portfoilo();
     Transaction();
+    Profile();
   }, []);
 
   const imageHandler = (e) => {
@@ -101,8 +120,9 @@ const Profile = () => {
     // console.log(photo + "dj");
     // console.log(formdata);
     axios.post("http://localhost:5011/upload/add", formdata).then((res) => {
-      setImages(`../images/${res.data.name}`);
-      // console.log();
+      setImages(`http://localhost:5011/${res.data.name}`);
+      console.log(res.data.name);
+      setExist(true);
     });
   };
 
@@ -130,6 +150,9 @@ const Profile = () => {
         <br />
         <div className="container-fluid">
           <div className="row">
+            {exist && <img src={img} />}
+            {!exist && <p>{msg}</p>}
+            {/* console.log(`http://localhost:5011/public/${img}`); */}
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <input
                 type="file"
@@ -137,7 +160,7 @@ const Profile = () => {
                 onChange={imageHandler}
                 name="photo"
               ></input>
-              <img src={img} />
+              {/* {console.log(img)} */}
               <button type="submit">Submit</button>
             </form>
             <div className="col-md-12">
