@@ -458,7 +458,7 @@ select::-ms-expand {
   background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%);
   border-radius: 20px;
   box-sizing: border-box;
-  height: 70vh;
+  height: 80vh;
   padding: 2vw;
   width: 30vw;
 }
@@ -467,7 +467,7 @@ select::-ms-expand {
   background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%);
   border-radius: 20px;
   box-sizing: border-box;
-  height: 55vh;
+  height: 58vh;
   padding: 2vw;
   width: 30vw;
 }
@@ -476,7 +476,7 @@ select::-ms-expand {
   background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%);
     border-radius: 20px;
     box-sizing: border-box;
-    height: 76vh;
+    height: 86vh;
     padding: 2%;
     width: 30vw;
 }
