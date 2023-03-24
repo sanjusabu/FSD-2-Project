@@ -17,29 +17,6 @@ const Transactions = () => {
     <>
       <TempNavbar />
       <CreateTransactions takedetails={getdetails} />
-      {/* <br></br>
-      <table className="container">
-        <tr>
-          <th>Ticker</th>
-          <th>Date</th>
-          <th>Action</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-        {dets.details.map((item) => {
-          return (
-            <tr>
-              <td>{item.Ticker}</td>
-              <td>{item.Date}</td>
-              <td>{item.action}</td>
-              <td>{item.quantity}</td>
-              <td>{item.price}</td>
-              <td>{item.total}</td>
-            </tr>
-          );
-        })}
-      </table> */}
     </>
   );
 };

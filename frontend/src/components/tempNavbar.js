@@ -18,41 +18,48 @@ const TempNavbar = () => {
     <nav className="navigation">
       <Link className="navbar-brand" to="/">
         <span className="logo">
-          <img src="./logo.png"></img>
+          <img src="https://www.linkpicture.com/q/logo_356.png"></img>
         </span>
-      </Link>
-      <Link
-        to="/portfolio"
-        style={{
-          textDecoration: "none",
-          color: "black",
-          fontSize: "1rem",
-          margin: "1rem",
-        }}
-      >
-        <span className="temptext">Portfolio</span>
       </Link>
       <Link
         to="/profile"
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
         <span className="temptext">Profile</span>
       </Link>
       <Link
+        to="/portfolio"
+        style={{
+          textDecoration: "none",
+          color: "black",
+          margin: "1rem",
+        }}
+      >
+        <span className="temptext">Portfolio</span>
+      </Link>
+      <Link
         to="/transactions"
         style={{
           textDecoration: "none",
           color: "black",
-          fontSize: "1rem",
           margin: "1rem",
         }}
       >
         <span className="temptext">Transactions</span>
+      </Link>
+      <Link
+        to="/News"
+        style={{
+          textDecoration: "none",
+          color: "black",
+          margin: "1rem",
+        }}
+      >
+        <span className="temptext">News</span>
       </Link>
       <button
         className="hamburger"
@@ -79,9 +86,12 @@ const TempNavbar = () => {
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }
       >
-        <button className="button-20" onClick={logoutHandler}>
-          Logout
-        </button>
+        <div className="logout">
+          <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" />
+          <button className="logoutbutton" onClick={logoutHandler}>
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
   );

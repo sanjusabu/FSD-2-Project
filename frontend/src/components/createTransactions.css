@@ -41,7 +41,6 @@
   border-radius: 7px;
   width: 170px;
   height: 40px;
-  background-color: rgb(18, 76, 162);
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -78,26 +77,26 @@
 .progressbar div {
   width: 33.3%;
   height: 100%;
-  background-color: rgb(22, 119, 197);
+  background-color: rgb(22, 219, 35);
 }
 
 .tranform input {
-  border: 2px solid rgb(22, 119, 197);
+  border: 2px solid rgb(1, 7, 11);
   border-radius: 5px;
   
 }
 
 .tranform input:focus {
-  border: 3px solid rgb(22, 119, 197);
+  border: 3px solid rgb(1, 7, 11);
 }
 
 .tranform select {
-  border: 2px solid rgb(22, 119, 197);
+  border: 2px solid rgb(1, 7, 11);
   border-radius: 5px;
 }
 
 .tranform select:focus {
-  border: 3px solid rgb(22, 119, 197);
+  border: 3px solid rgb(1, 7, 11);
 }
 
 .traninput{
@@ -105,7 +104,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .traninput input {

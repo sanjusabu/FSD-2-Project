@@ -3,15 +3,40 @@ import { useEffect, useState, useContext } from "react";
 import { Detailscontext } from "../context/details";
 import { Portfoliocontext } from "../context/portfolio-context";
 import "./createTransactions.css";
+import { useRequest } from "../hooks/request-hook";
+import { Transcontext } from "../context/trans-context";
+import { useDispatch, useSelector } from "react-redux";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
   const dets = useContext(Detailscontext);
   const [formValid, setformValid] = useState(false);
   const port = useContext(Portfoliocontext);
+  const [portData, setportData] = useState([]);
+  const [colors, setColor] = useState("");
+  const [bgcolors, setbgColor] = useState("");
 
   // console.log(port.portfolio);
-
+  const trans = useContext(Transcontext);
+  const mode = useSelector((state) => state.darkMode);
+  console.log(mode);
+  const { isdarkMode } = mode;
+  const { sendRequest } = useRequest();
+  useEffect(() => {
+    const Details = async () => {
+      const res = await sendRequest(
+        "http://localhost:5011/port/getform",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      console.log(res, "getformdata");
+      setportData(res);
+    };
+    Details();
+  }, []);
   const {
     value: Portfolio,
     valueChangeHandler: PortfolioChange,
@@ -58,15 +83,7 @@ const CreateTransactions = (props) => {
     e.preventDefault();
     // dets.details.push({ Ticker });
     // console.log(dets);
-    props.takedetails({
-      Portfolio: Portfolio,
-      Ticker: Ticker,
-      Date: startDate,
-      quantity: quantity,
-      price: price,
-      action: actionvalue,
-      total: quantity * price,
-    });
+
     resetPortfolio();
     resetTask();
     resetStart();
@@ -75,8 +92,31 @@ const CreateTransactions = (props) => {
     resetQuantity();
     resetAction();
     setPage(0);
+    const response = await sendRequest(
+      "http://localhost:5011/trans/postdata",
+      "POST",
+      JSON.stringify({
+        portfolio: Portfolio,
+        ticker: Ticker,
+        date: startDate,
+        quantity: quantity,
+        price: price,
+        action: actionvalue,
+        total: quantity * price,
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    trans.tr = true;
+    console.log(trans.tr);
   };
-
+  useEffect(() => {
+    if (isdarkMode) {
+      setColor("white");
+    } else {
+      setColor("black");
+    }
+  }, [isdarkMode]);
   const [page, setPage] = useState(0);
 
   const FormTitles = [
@@ -98,7 +138,7 @@ const CreateTransactions = (props) => {
             onChange={PortfolioChange}
           >
             <option> Select--an--option</option>
-            {port.portfolio.map((data) => {
+            {portData.map((data) => {
               return <option value={data.portfolio}>{data.portfolio}</option>;
             })}
           </select>
@@ -171,7 +211,7 @@ const CreateTransactions = (props) => {
   };
   return (
     <div className="tranform">
-      <h1>Step {page+1} of 5</h1>
+      <h1 style={{ color: colors }}>Step {page + 1} of 5</h1>
       <div className="progressbar">
         <div
           style={{
@@ -201,6 +241,7 @@ const CreateTransactions = (props) => {
                 e.preventDefault();
                 setPage((currPage) => currPage - 1);
               }}
+              style={{ backgroundColor: "black" }}
             >
               Prev
             </button>
@@ -210,6 +251,7 @@ const CreateTransactions = (props) => {
                 e.preventDefault();
                 setPage((currPage) => currPage + 1);
               }}
+              style={{ backgroundColor: "black" }}
             >
               Next
             </button>
@@ -218,6 +260,7 @@ const CreateTransactions = (props) => {
             disabled={!formValid}
             type="submit"
             onClick={submitHandler}
+            style={{ backgroundColor: "black" }}
           >
             Submit Transaction
           </button>

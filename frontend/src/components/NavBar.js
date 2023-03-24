@@ -19,7 +19,9 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark sticky-nav bg-dark homenav">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <span className="logo"><img src="./logo.png"></img></span>
+            <span className="logo">
+              <img src="https://www.linkpicture.com/q/logo_356.png"></img>
+            </span>
           </Link>
           <button
             className="navbar-toggler"
@@ -71,6 +73,28 @@ const NavBar = () => {
                     to="/help"
                   >
                     <span className="text">Help</span>
+                  </Link>
+                </li>
+              )}
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/About"
+                  >
+                    <span className="text">About Us</span>
+                  </Link>
+                </li>
+              )}
+              {!auth.isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/AdminLogin"
+                  >
+                    <span className="text">Admin Login</span>
                   </Link>
                 </li>
               )}

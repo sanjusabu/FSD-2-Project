@@ -4,12 +4,16 @@ import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar";
+import { useRequest } from "../../hooks/request-hook";
+import ErrorModal from "../errorModal";
 const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.trim().length >= 5;
 let formValid = false;
 
 const Login = () => {
   // <NavBar />
+  const { isError, sendRequest } = useRequest();
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(false);
@@ -21,7 +25,7 @@ const Login = () => {
     return (
       <label>
         <input type="checkbox" checked={value} onChange={handleOnChange} />
-        {label}
+        <span style={{ color: "white" }}> {label}</span>
       </label>
     );
   };
@@ -58,20 +62,50 @@ const Login = () => {
       console.log("errorrrr");
       return;
     }
-
-    // console.lo(isError);
-    auth.login("loggedin");
-    navigate("/profile");
+    const response = await sendRequest(
+      "http://localhost:5011/users/login",
+      "POST",
+      JSON.stringify({
+        email: emailValue,
+        password: passwordValue,
+      }),
+      { "Content-Type": "application/json" }
+    );
     resetEmail();
     resetPassword();
+    auth.login(response.user.id);
+    navigate("/profile");
+  };
+  const Forgothandler = async (e) => {
+    e.preventDefault();
+    const response = await sendRequest(
+      "http://localhost:5011/users/forgot",
+      "POST",
+      JSON.stringify({
+        email: emailValue,
+      }),
+      { "Content-Type": "application/json" }
+    );
+    console.log(response);
+    navigate("/forgotpassword", {
+      state: { code: response.code, email: response.email },
+    });
   };
   return (
-    <div>
-      <div className="backgroundimage-wala" />
+    <div className="backgroundimg">
+      <NavBar />
+      {/* {isError && <ErrorModal error={isError} showmodal={true} />} */}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           {/* {console.log(isError)} */}
           <div className="form">
+            <div className="img">
+              <img
+                src="https://www.linkpicture.com/q/logo_356.png"
+                className="logo"
+                alt="logo"
+              />
+            </div>
             <div className="title">Login</div>
 
             <div className="input-container ic1">
@@ -82,12 +116,9 @@ const Login = () => {
                 onChange={emailChangeHandler}
                 onBlur={emailBlurHandler}
                 value={emailValue}
-                placeholder="email"
+                placeholder="Email"
               />
 
-              <label for="email" className="placeholder">
-                Email
-              </label>
               {emailError && (
                 <p className="error-text">Please Enter a valid Email!</p>
               )}
@@ -100,11 +131,8 @@ const Login = () => {
                 onChange={passwordChangeHandler}
                 onBlur={passwordBlurHandler}
                 value={passwordValue}
-                placeholder="password"
+                placeholder="Password"
               />
-              <label for="lastname" className="placeholder">
-                Password
-              </label>
               {passwordError && (
                 <p className="error-text">
                   Password should be atleast 5 characters long!
@@ -114,30 +142,30 @@ const Login = () => {
               {/* {<p style={{ color: "red" }}>{isError}</p>} */}
             </div>
             <br />
-            {/* <input
-              type="checkbox"
-              id="Remember me"
-              name="Remember me"
-              value="remember me"
-              checked={isChecked}
-              onChange={handleOnChange}
-            />
-            <label for="Remember me"> Remember me</label> */}
-            <div>
+            <br />
+
+            {/* <div>
               <Checkbox
                 label="Remember me"
                 value={isChecked}
                 onChange={handleOnChange}
               ></Checkbox>
-            </div>
-            <br></br>
+            </div> */}
             {/* {console.log(isError)} */}
+            {isError && (
+              <h4 style={{ color: "red", fontWeight: "bold" }}>
+                Wrong Credentials, try again
+              </h4>
+            )}
+            <br></br>
             <button type="submit" disabled={!formValid} className="submit">
               Submit
             </button>
+            <Link onClick={Forgothandler}>Forgot Password?</Link>
             <Link to="/register">
               <button className="submit">Switch to Register</button>
             </Link>
+            <br></br>
           </div>
         </form>
       </div>

@@ -1,13 +1,22 @@
 import useInput from "../../hooks/useInput";
 import { useEffect, useState, useContext } from "react";
 import { Portfoliocontext } from "../../context/portfolio-context";
+import { Reloadcontext } from "../../context/reload-context";
 import "./portfolioForm.css";
+import { useRequest } from "../../hooks/request-hook";
+import { useDispatch, useSelector } from "react-redux";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const PortfolioForm = (props) => {
   const port = useContext(Portfoliocontext);
+  const reload = useContext(Reloadcontext);
+  const { sendRequest, isError } = useRequest();
 
   const [formValid, setformValid] = useState(false);
+
+  const mode = useSelector((state) => state.darkMode);
+  console.log(mode);
+  const { isdarkMode } = mode;
 
   const logolist = [
     {
@@ -54,6 +63,9 @@ const PortfolioForm = (props) => {
         "https://upload.wikimedia.org/wikipedia/commons/8/89/Official_Logo_of_Sharekhan_by_BNP_Paribas.png",
     },
   ];
+
+  const [colors, setColor] = useState("");
+
   const {
     value: portName,
     valueChangeHandler: portChange,
@@ -88,10 +100,26 @@ const PortfolioForm = (props) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("triggered");
+    // console.log("triggered");
     const newimg = logolist.filter(
       (dat) => dat.name.toLowerCase() === platformName.toLowerCase()
     );
+
+    const response = await sendRequest(
+      "http://localhost:5011/port/form",
+      "POST",
+      JSON.stringify({
+        portfolio: portName,
+        platform: platformName,
+        type: type,
+        openingDate: openingDate,
+        images: newimg,
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    // console.log(response, "dfkfjgekljgdekl");
+    reload.rd = true;
     port.portfolio.push({
       portfolio: portName,
       platform: platformName,
@@ -99,7 +127,7 @@ const PortfolioForm = (props) => {
       openingDate: openingDate,
       images: newimg,
     });
-    console.log(port);
+    // console.log(port);
 
     props.formdets({
       portfolio: portName,
@@ -112,10 +140,18 @@ const PortfolioForm = (props) => {
     resettype();
     resetopeningDate();
   };
-
+  useEffect(() => {
+    if (isdarkMode) {
+      setColor("white");
+    } else {
+      setColor("black");
+    }
+  }, [isdarkMode]);
   return (
     <div className="center">
-      <h1>Add Portfolio</h1>
+      <h1 style={{ color: colors, borderLeftColor: { colors } }}>
+        Add Portfolio
+      </h1>
       <form onSubmit={submitHandler}>
         <div className="inputbox">
           <input
@@ -124,6 +160,7 @@ const PortfolioForm = (props) => {
             value={portName}
             placeholder="Name of Portfolio"
             onChange={portChange}
+            style={{ color: colors }}
           />
         </div>
         <div className="inputbox">
@@ -133,11 +170,12 @@ const PortfolioForm = (props) => {
             placeholder="Platform"
             value={platformName}
             onChange={platformChange}
+            style={{ color: colors }}
           />
         </div>
         <div className="inputbox">
           <select id="type" value={type} onChange={typeChange}>
-            <option>Select Type Of Portfolio</option>
+            <option style={{ color: colors }}>Select Type Of Portfolio</option>
             <option value="Equity">Equity</option>
             <option value="Cryptocurrency">Cryptocurrency</option>
           </select>
@@ -149,6 +187,7 @@ const PortfolioForm = (props) => {
             placeholder="Opening Date"
             value={openingDate}
             onChange={openingDateChange}
+            style={{ color: colors }}
           />
         </div>
         <div className="inputbox">
@@ -157,6 +196,7 @@ const PortfolioForm = (props) => {
           </button>
         </div>
       </form>
+      {isError && <p>Portfolio exists already!!</p>}
     </div>
   );
 };

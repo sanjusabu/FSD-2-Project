@@ -8,12 +8,18 @@ import { Detailscontext } from "./context/details";
 import Portfolio from "./components/portfolio/portfolio";
 import Register from "./components/auth/Register";
 import { AuthContext } from "./context/auth-context";
+import AdminLogin from "./components/auth/Admin Login";
 import { useContext, useEffect, useState, useCallback } from "react";
 import Login from "./components/auth/Login";
 import Help from "./components/Help";
+import About from "./components/About Us";
+import Admin from "./components/Admin";
+import News from "./components/news/News";
 import { Portfoliocontext } from "./context/portfolio-context";
+import { Provider } from "react-redux";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import store from "./store/store";
 function App() {
-  const details = [];
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userId, setuserId] = useState("");
@@ -46,19 +52,26 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/help" element={<Help />}></Route>
+          <Route path="/About" element={<About />}></Route>
+          <Route path="/Admin" element={<Admin />}></Route>
+          <Route path="/AdminLogin" element={<AdminLogin />}></Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         </Routes>
       </Router>
     );
   } else {
     routes = (
-      <Router>
-        <Routes>
-          <Route path="/transactions" element={<Transactions />}></Route>
-          <Route path="/portfolio" element={<Portfolio />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/" element={<Profile />}></Route>
-        </Routes>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/transactions" element={<Transactions />}></Route>
+            <Route path="/portfolio" element={<Portfolio />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/" element={<Profile />}></Route>
+            <Route path="/news" element={<News />}></Route>
+          </Routes>
+        </Router>
+      </Provider>
     );
   }
   return (
@@ -71,9 +84,10 @@ function App() {
           logout: logout,
         }}
       >
-        <Detailscontext.Provider value={{ details: details }}>
-          <main>{routes}</main>
-        </Detailscontext.Provider>
+        {/* <Detailscontext.Provider value={{ details: details }}> */}
+
+        <main>{routes}</main>
+        {/* </Detailscontext.Provider> */}
       </AuthContext.Provider>
     </div>
   );
