@@ -16,13 +16,16 @@ import About from "./components/About Us";
 import Admin from "./components/Admin";
 import News from "./components/news/News";
 import { Portfoliocontext } from "./context/portfolio-context";
+import { useRequest } from "./hooks/request-hook";
 import { Provider } from "react-redux";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import store from "./store/store";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const [userId, setuserId] = useState("");
+  const [csrfToken, setCsrfToken] = useState("");
+
+  const { sendRequest } = useRequest();
 
   const login = useCallback((uid) => {
     localStorage.setItem("user", uid);
@@ -36,6 +39,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    async function init() {
+      const resData = await sendRequest("http://localhost:5011/", "GET");
+      console.log(resData);
+      setCsrfToken(resData.csrfToken);
+    }
+    init();
     if (localStorage.hasOwnProperty("user")) {
       setuserId(localStorage.getItem("user"));
       setIsLoggedIn(true);
@@ -82,6 +91,7 @@ function App() {
           userId: userId,
           login: login,
           logout: logout,
+          csrfToken: csrfToken,
         }}
       >
         {/* <Detailscontext.Provider value={{ details: details }}> */}

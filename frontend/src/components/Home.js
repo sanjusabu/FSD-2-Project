@@ -20,10 +20,11 @@ const Home = () => {
   const homecss1 = {
     width: "50%",
     float: "left",
+    
   };
   const homecss2 = {
     width: "50%",
-    float: "right",
+    float: "right", 
   };
   return (
     <div>
@@ -44,7 +45,7 @@ const Home = () => {
             </h1>
           </div>
           <div style={homecss2}>
-            <img src="https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHN0b2Nrc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+            <img src="https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHN0b2Nrc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="img" />
           </div>
         </div>
         <br />
@@ -90,7 +91,7 @@ const Home = () => {
         <br />
         <div style={homecss}>
           <div style={homecss1}>
-            <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGludmVzdG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" />
+            <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGludmVzdG1lbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt = "img" />
           </div>
           <div style={homecss2}>
             <h1>

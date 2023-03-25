@@ -1,4 +1,3 @@
-// require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -12,32 +11,58 @@ const cors = require("cors");
 const fs = require("fs");
 const morgan = require("morgan");
 const path = require("path");
+const csrf = require("csurf");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 // create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "access.log"),
   { flags: "a" }
 );
-
+const csrfProtection = csrf({ cookie: true });
 // setup the logger
 app.use(morgan("combined", { stream: accessLogStream }));
-app.use(cors());
-
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  console.log(req.method);
+  next();
+});
+
+app.use(cors(({credentials: true, origin: process.env.CLIENT_URL})))
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_URL);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization, csrf-token"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
   next();
 }); //cors error
 
-app.use(express.static("public"));
+app.use(csrfProtection);
 
+app.use(express.static("public"));
+app.get("/", (req, res, next) => {
+  res
+    .status(200)
+    .json({ csrfToken: req.csrfToken() });
+});
+app.post("/", (req, res, next) => {
+  res
+    .status(200)
+    .json({ csrfToken: req.csrfToken() });
+});
 app.use("/users", userRoutes);
 app.use("/port", portRoutes);
 app.use("/trans", transRoutes);
