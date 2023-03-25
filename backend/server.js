@@ -36,6 +36,8 @@ app.use((req, res, next) => {
   next();
 }); //cors error
 
+app.use(express.static("public"));
+
 app.use("/users", userRoutes);
 app.use("/port", portRoutes);
 app.use("/trans", transRoutes);

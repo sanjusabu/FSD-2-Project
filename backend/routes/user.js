@@ -11,5 +11,5 @@ router.post("/forgot", usersController.forgotPassword);
 router.post("/adminlogin", usersController.adminlogin);
 router.post("/getusers", usersController.getusers);
 router.post("/deleteusers", usersController.deleteusers);
-
+router.post("/check", usersController.checkProfile);
 module.exports = router;

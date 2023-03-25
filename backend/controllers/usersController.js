@@ -168,6 +168,19 @@ const reset = async (req, res) => {
     res.json({ message: "Password updated successfully" });
   }
 };
+const checkProfile = async (req, res) => {
+  const { id } = req.body;
+  const _id = ObjectId(id);
+  let existingUser;
+
+  existingUser = await UserModel.findOne({ _id });
+
+  if (existingUser.photo != null) {
+    res.json({ photo: existingUser.photo });
+  } else {
+    res.json({ message: "Add Profile Photo" });
+  }
+};
 
 exports.signup = signup;
 exports.login = login;
@@ -176,3 +189,4 @@ exports.adminlogin = adminlogin;
 exports.getusers = getusers;
 exports.deleteusers = deleteusers;
 exports.reset = reset;
+exports.checkProfile = checkProfile;
