@@ -162,8 +162,8 @@ const Profile = () => {
             {exist && <img className="image" src={img} />}
             {!exist && <p>{msg}</p>}
             <div className="ppbutt">
-            <button onClick={handler}>Change Profile Picture</button>
-            <button onClick={closehandler}>Close</button>
+              <button onClick={handler}>Upload Profile Picture</button>
+              <button onClick={closehandler}>Close</button>
             </div>
             {show && (
               <div className="pp">
