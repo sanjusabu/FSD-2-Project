@@ -14,6 +14,23 @@ const path = require("path");
 const csrf = require("csurf");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { 
+  swaggerOptions: {
+    info: {
+      title: 'My API',
+      description: 'This is the documentation for my API'
+    }
+  }
+}));
+
+
+
 
 // create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(
