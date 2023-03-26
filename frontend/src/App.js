@@ -20,15 +20,21 @@ import { Portfoliocontext } from "./context/portfolio-context";
 import { Provider } from "react-redux";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import store from "./store/store";
+import CreateTransactions from "./components/createTransactions";
+import TransactionsCSV from "./components/TransactionsCSV";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userId, setuserId] = useState("");
+  const [token, setToken] = useState("");
 
-  const login = useCallback((uid) => {
+  const login = useCallback((uid, token) => {
     localStorage.setItem("user", uid);
+    localStorage.setItem("token", token);
     setIsLoggedIn(true);
-    setuserId(localStorage.getItem("user"));
+    setToken(token);
+    console.log(token);
+    setuserId(uid);
   }, []);
 
   const logout = useCallback(() => {
@@ -66,6 +72,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/transactions" element={<Transactions />}></Route>
+            <Route path="/manualtransactions" element={<CreateTransactions/>}></Route>
+            <Route path="/importtransactions" element={<TransactionsCSV/>}></Route>
             <Route path="/portfolio" element={<Portfolio />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/" element={<Profile />}></Route>
@@ -83,11 +91,13 @@ function App() {
           userId: userId,
           login: login,
           logout: logout,
+          token: token,
         }}
       >
         {/* <Detailscontext.Provider value={{ details: details }}> */}
-
+        {/* <Reloadcontext.Provider value={{ rd: null }}> */}
         <main>{routes}</main>
+        {/* </Reloadcontext.Provider> */}
         {/* </Detailscontext.Provider> */}
       </AuthContext.Provider>
     </div>

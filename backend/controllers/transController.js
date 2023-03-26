@@ -30,19 +30,20 @@ const postdata = async (req, res) => {
 const getTrans = async (req, res) => {
   console.log(req.body);
   const { id } = req.body;
-  const transac = await TransactionsModel.find({ id: id });
+  const transac = await TransactionsModel.find({ id });
   console.log(transac);
   res.json(transac);
 };
 const getnum = async (req, res) => {
   const { id } = req.body;
-  console.log(req.body);
+
+  // console.log(req.body);
   const nums = await TransactionsModel.find({ id: id });
-  console.log(nums.length);
+  // console.log(nums.length);
   res.json({ len: nums.length, names: nums });
 };
 const deleteTrans = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { id, deleteticker } = req.body;
   const delmod = await TransactionsModel.deleteMany({
     id,
