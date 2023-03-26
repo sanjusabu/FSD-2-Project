@@ -61,7 +61,7 @@ function TransactionsCSV() {
   } = useInput(isNotEmpty);
 
   useEffect(() => {
-    if (Portfolio ) {
+    if (Portfolio) {
       setformValid(true);
     } else {
       setformValid(false);
@@ -72,26 +72,18 @@ function TransactionsCSV() {
     // e.preventDefault();
     // // dets.details.push({ Ticker });
     // // console.log(dets);
-
+    const response = await sendRequest(
+      "http://localhost:5011/trans/csvdata",
+      "POST",
+      JSON.stringify({
+        portfolio: Portfolio,
+        data: csvData,
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
     // resetPortfolio();
     // setPage(0);
-    // const response = await sendRequest(
-    //   "http://localhost:5011/trans/postdata",
-    //   "POST",
-    //   JSON.stringify({
-    //     portfolio: Portfolio,
-    //     ticker: Ticker,
-    //     date: startDate,
-    //     quantity: quantity,
-    //     price: price,
-    //     action: actionvalue,
-    //     total: quantity * price,
-    //     id: localStorage.getItem("user"),
-    //   }),
-    //   { "Content-Type": "application/json" }
-    // );
-    // trans.tr = true;
-    // console.log(trans.tr);
   };
   useEffect(() => {
     if (isdarkMode) {
@@ -102,10 +94,7 @@ function TransactionsCSV() {
   }, [isdarkMode]);
   const [page, setPage] = useState(0);
 
-  const FormTitles = [
-    "Which Portfolio?",
-    "Upload file",
-  ];
+  const FormTitles = ["Which Portfolio?", "Upload file"];
 
   const PageDisplay = () => {
     if (page === 0) {

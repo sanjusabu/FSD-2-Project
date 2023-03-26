@@ -8,5 +8,6 @@ router.post("/postdata", transController.postdata);
 router.post("/getTrans", transController.getTrans);
 router.post("/nums", transController.getnum);
 router.post("/deleteTrans", transController.deleteTrans);
+router.post("/csvdata", transController.csvdata);
 
 module.exports = router;

@@ -52,7 +52,34 @@ const deleteTrans = async (req, res) => {
   res.json(delmod);
 };
 
+const csvdata = (req, res, next) => {
+  // console.log(req.body);
+  const { data, portfolio, id } = req.body;
+  // console.log(data);
+  data.map(async (dat) => {
+    console.log(
+      dat.Ticker,
+      dat.date,
+      dat.Action,
+      dat.Quantity,
+      dat.Price,
+      dat.Total
+    );
+    let transmodel = await TransactionsModel({
+      portfolio: portfolio,
+      ticker: dat.Ticker,
+      date: dat.date,
+      quantity: dat.Quantity,
+      price: dat.Price,
+      action: dat.Action,
+      total: dat.Total,
+      id,
+    });
+    await transmodel.save();
+  });
+};
 exports.postdata = postdata;
 exports.getTrans = getTrans;
 exports.getnum = getnum;
 exports.deleteTrans = deleteTrans;
+exports.csvdata = csvdata;
