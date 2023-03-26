@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
 router.post("/add", upload.single("photo"), async (req, res) => {
   const { id, name } = req.body;
   const newid = ObjectId(id);

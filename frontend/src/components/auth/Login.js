@@ -73,7 +73,7 @@ const Login = () => {
     );
     resetEmail();
     resetPassword();
-    auth.login(response.user.id);
+    auth.login(response.userId, response.token);
     navigate("/profile");
   };
   const Forgothandler = async (e) => {
@@ -94,6 +94,7 @@ const Login = () => {
   return (
     <div className="backgroundimg">
       <NavBar />
+      <br/><br/><br/><br/>
       {/* {isError && <ErrorModal error={isError} showmodal={true} />} */}
       <div className="formcontainer">
         <form onSubmit={submitHandler}>

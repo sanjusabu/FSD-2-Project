@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+// import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Transactions from "./components/transactions";
 import Profile from "./components/profile/Profile";
 import { Detailscontext } from "./context/details";
@@ -25,11 +26,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userId, setuserId] = useState("");
+  const [token, setToken] = useState("");
 
-  const login = useCallback((uid) => {
+  const login = useCallback((uid, token) => {
     localStorage.setItem("user", uid);
+    localStorage.setItem("token", token);
     setIsLoggedIn(true);
-    setuserId(localStorage.getItem("user"));
+    setToken(token);
+    console.log(token);
+    setuserId(uid);
   }, []);
 
   const logout = useCallback(() => {
@@ -86,11 +91,13 @@ function App() {
           userId: userId,
           login: login,
           logout: logout,
+          token: token,
         }}
       >
         {/* <Detailscontext.Provider value={{ details: details }}> */}
-
+        {/* <Reloadcontext.Provider value={{ rd: null }}> */}
         <main>{routes}</main>
+        {/* </Reloadcontext.Provider> */}
         {/* </Detailscontext.Provider> */}
       </AuthContext.Provider>
     </div>
