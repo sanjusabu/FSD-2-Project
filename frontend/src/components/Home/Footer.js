@@ -35,7 +35,6 @@ function Footer() {
               target='_blank'
               aria-label='Instagram'
             >
-              <i className='fab fa-instagram' />
               <i class='fab fa-instagram gdcgsuydcs' />
             </Link>
             <Link
@@ -44,7 +43,7 @@ function Footer() {
               target='_blank'
               aria-label='Youtube'
             >
-              <i className='fab fa-youtube' />
+              
               <i class='fab fa-youtube gdcgsuydcs' />
             </Link>
             <Link
@@ -53,7 +52,7 @@ function Footer() {
               target='_blank'
               aria-label='Twitter'
             >
-              <i className='fab fa-twitter' />
+              
               <i class='fab fa-twitter gdcgsuydcs' />
             </Link>
             <Link
@@ -62,7 +61,7 @@ function Footer() {
               target='_blank'
               aria-label='LinkedIn'
             >
-              <i className='fab fa-linkedin' />
+              
               <i class='fab fa-linkedin gdcgsuydcs' />
 
             </Link>
