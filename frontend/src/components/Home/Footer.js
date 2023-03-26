@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className="footer-container">
       <section className='footer-subscription'>
-        <p className='footer-subscription-heading'>
+        <p className='footer-subscription-heading gdcgsuydcs'>
           A whole ecosystem of modern investment apps
           tailored to specific needs, built from the ground up
         </p>
@@ -22,12 +22,12 @@ function Footer() {
           <small className='website-rights'>SPD © 2023</small>
           <div className='social-icons'>
             <Link
-              className='social-icon-link facebook '
+              className='social-icon-link facebook'
               to='/'
               target='_blank'
               aria-label='Facebook'
             >
-              <i className='fab fa-facebook-f'/>
+              <i className='fab fa-facebook-f gdcgsuydcs'/>
             </Link>
             <Link
               className='social-icon-link instagram'
@@ -36,6 +36,7 @@ function Footer() {
               aria-label='Instagram'
             >
               <i className='fab fa-instagram' />
+              <i class='fab fa-instagram gdcgsuydcs' />
             </Link>
             <Link
               className='social-icon-link youtube'
@@ -44,6 +45,7 @@ function Footer() {
               aria-label='Youtube'
             >
               <i className='fab fa-youtube' />
+              <i class='fab fa-youtube gdcgsuydcs' />
             </Link>
             <Link
               className='social-icon-link twitter'
@@ -52,6 +54,7 @@ function Footer() {
               aria-label='Twitter'
             >
               <i className='fab fa-twitter' />
+              <i class='fab fa-twitter gdcgsuydcs' />
             </Link>
             <Link
               className='social-icon-link twitter'
@@ -60,6 +63,8 @@ function Footer() {
               aria-label='LinkedIn'
             >
               <i className='fab fa-linkedin' />
+              <i class='fab fa-linkedin gdcgsuydcs' />
+
             </Link>
           </div>
         </div>

@@ -6,6 +6,7 @@ import "./createTransactions.css";
 import { useRequest } from "../hooks/request-hook";
 import { Transcontext } from "../context/trans-context";
 import { useDispatch, useSelector } from "react-redux";
+import TempNavbar from "./tempNavbar";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const CreateTransactions = (props) => {
@@ -210,6 +211,8 @@ const CreateTransactions = (props) => {
     }
   };
   return (
+    <div>
+    <TempNavbar/>
     <div className="tranform">
       <h1 style={{ color: colors }}>Step {page + 1} of 5</h1>
       <div className="progressbar">
@@ -266,6 +269,7 @@ const CreateTransactions = (props) => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
