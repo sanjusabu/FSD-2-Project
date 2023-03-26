@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -12,20 +12,24 @@ const cors = require("cors");
 const fs = require("fs");
 const morgan = require("morgan");
 const path = require("path");
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { 
-  swaggerOptions: {
-    info: {
-      title: 'My API',
-      description: 'This is the documentation for my API'
-    }
-  }
-}));
-
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, {
+    swaggerOptions: {
+      info: {
+        title: "My API",
+        description: "This is the documentation for my API",
+      },
+    },
+  })
+);
+// console.log(process.env.sendEmail);
 // create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "access.log"),
@@ -68,8 +72,7 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
-const dbUrl =
-  "mongodb+srv://SANJU:sanju_123456@cluster0.f8yjf.mongodb.net/FSD2Project?retryWrites=true&w=majority";
+const dbUrl = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.f8yjf.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
 
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
