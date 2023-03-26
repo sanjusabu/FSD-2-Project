@@ -94,3 +94,46 @@
   height: 100px;
   width: 100px;
 }
+
+.pp {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.pp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pp label {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.pp input[type="file"] {
+  margin-bottom: 20px;
+}
+
+.pp button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pp button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.ppbutt{
+  display: flex;
+  flex-direction: row;
+  margin-left: 41vw;
+}

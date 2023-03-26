@@ -36,6 +36,8 @@ const Profile = () => {
   const [img, setImages] = useState("");
   const [exist, setExist] = useState(false);
   const [msg, setMsg] = useState("");
+  const [show, setshow] = useState(false);
+  // const [close,setclose] =  useState(false)
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
@@ -125,7 +127,14 @@ const Profile = () => {
       setExist(true);
     });
   };
-
+  const handler = (e) => {
+    e.preventDefault();
+    setshow(true);
+  };
+  const closehandler = (e) => {
+    e.preventDefault();
+    setshow(false);
+  };
   return (
     <div className="profile">
       <TempNavbar />
@@ -152,18 +161,31 @@ const Profile = () => {
           <div className="row">
             {exist && <img className="image" src={img} />}
             {!exist && <p>{msg}</p>}
-            {/* console.log(`http://localhost:5011/public/${img}`); */}
-          
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-              <input
-                type="file"
-                accept=".png, .jpg, .jpeg"
-                onChange={imageHandler}
-                name="photo"
-              ></input>
-              {/* {console.log(img)} */}
-              <button type="submit">Submit</button>
-            </form>
+            <div className="ppbutt">
+            <button onClick={handler}>Change Profile Picture</button>
+            <button onClick={closehandler}>Close</button>
+            </div>
+            {show && (
+              <div className="pp">
+                {/* console.log(`http://localhost:5011/public/${img}`); */}
+
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                  <label for="file-upload" style={{ color: colors }}>
+                    Choose Profile Photo:
+                  </label>
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    onChange={imageHandler}
+                    id="file-upload"
+                    name="photo"
+                    style={{ color: colors }}
+                  ></input>
+                  {/* {console.log(img)} */}
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+            )}
             <div className="col-md-12">
               <h1 style={{ color: colors }}>Dashboard</h1>
             </div>
