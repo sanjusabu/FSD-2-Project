@@ -73,7 +73,7 @@ const Login = () => {
     );
     resetEmail();
     resetPassword();
-    auth.login(response.user.id);
+    auth.login(response.userId, response.token);
     navigate("/profile");
   };
   const Forgothandler = async (e) => {

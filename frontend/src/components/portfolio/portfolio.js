@@ -3,6 +3,7 @@ import PortfolioForm from "./portfolioForm";
 import PortfolioTable from "./portfolioTable";
 import TempNavbar from "../tempNavbar";
 import { Detailscontext } from "../../context/details";
+import { Reloadcontext } from "../../context/reload-context";
 const Portfolio = () => {
   const dets = useContext(Detailscontext);
   // console.log(dets.details);

@@ -3,7 +3,7 @@ const HttpError = require("../models/http-error");
 
 const getformdets = async (req, res) => {
   const { id } = req.body;
-  console.log(id);
+  // console.log("hjjj");
   let findDets;
   findDets = await PortfolioModel.find({ id: id });
   // console.log(findDets);
@@ -44,11 +44,22 @@ const form = async (req, res, next) => {
 
 const getnum = async (req, res) => {
   const { id } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const nums = await PortfolioModel.find({ id: id });
-  console.log(nums.length);
+  // console.log(nums.length);
   res.json({ len: nums.length, names: nums });
+};
+const deletePort = async (req, res) => {
+  const { id, portfolio } = req.body;
+  // console.log(id, port);
+  const delmod = await PortfolioModel.deleteOne({
+    id: id,
+    portfolio: portfolio,
+  });
+  console.log(delmod);
+  res.json(delmod);
 };
 exports.form = form;
 exports.getformdets = getformdets;
 exports.getnum = getnum;
+exports.deletePort = deletePort;

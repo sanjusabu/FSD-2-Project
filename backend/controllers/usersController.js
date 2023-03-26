@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const { ObjectId } = require("mongodb");
 const AdminModel = require("../models/admin");
 const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const signup = async (req, res, next) => {
@@ -90,8 +91,28 @@ const login = async (req, res, next) => {
       return next(error);
     }
   }
+  let token;
+  try {
+    token = jwt.sign(
+      { userId: existingUser.id, email: existingUser.email },
+      "supersecret_dont_share",
+      { expiresIn: "1d" }
+    );
+    // lo;
+  } catch (err) {
+    const error = new HttpError(
+      "Logging in failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  // console.log(existingUser.id + " " + "possible?");
 
-  res.json({ user: existingUser.toObject({ getters: true }) });
+  res.json({
+    userId: existingUser.id,
+    email: existingUser.email,
+    token: token,
+  });
 };
 
 const forgotPassword = async (req, res, next) => {
