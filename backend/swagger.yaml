@@ -1,0 +1,266 @@
+swagger: '2.0'
+info:
+  title: Example API
+  version: '1.0'
+
+paths:
+  /users/signup:
+    post:
+      summary: Sign up a new user
+      description: Creates a new user account
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User information to sign up
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: User successfully created
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+  /users/login:
+    post:
+      summary: Log in an existing user
+      description: Authenticates the user and returns an access token
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: credentials
+          description: User login credentials
+          schema:
+            $ref: '#/definitions/Credentials'
+      responses:
+        '200':
+          description: User successfully logged in
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+
+  /users/resetPassword:
+    post:
+      summary: Reset the password of an existing user
+      description: Initiates the password reset process for a user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User information to reset password
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Password reset initiated
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+  /users/forgot:
+    post:
+      summary: Initiate the forgot password process for an existing user
+      description: Sends a password reset email to the user's registered email address
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User information to initiate forgot password process
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Forgot password process initiated
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+  /users/adminlogin:
+    post:
+      summary: Log in an existing admin user
+      description: Authenticates the admin user and returns an access token
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: credentials
+          description: Admin login credentials
+          schema:
+            $ref: '#/definitions/Credentials'
+      responses:
+        '200':
+          description: Admin successfully logged in
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+
+  /users/getusers:
+    get:
+      summary: Get a list of all users (admin access required)
+      description: Returns a list of all users with their details
+      produces:
+        - application/json
+      security:
+        - adminToken: []
+      responses:
+        '200':
+          description: User list successfully retrieved
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+
+  /users/deleteusers:
+    delete:
+      summary: Delete one or more users (admin access required)
+      description: Deletes one or more user accounts
+      consumes:
+        - application/json
+      security:
+        - adminToken: []
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /users/check:
+    get:
+      tags:
+        - "Users"
+      summary: "Check if a user has completed their profile"
+      description: "Requires authentication"
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: User profile completion status
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+
+  /port/form:
+    post:
+      summary: "Submit a form for a user's portfolio"
+      parameters:
+        - in: body
+          name: body
+          description: "Form data for the user's portfolio"
+          required: true
+          schema:
+            $ref: "#/definitions/PortfolioForm"
+      responses:
+        '200':
+          description: Form submission successful
+        '400':
+          description: Invalid request data
+        
+  /port/getform:
+    get:
+      summary: "Get the details of a user's portfolio"
+      parameters:
+        - in: query
+          name: user_id
+          description: "User ID of the portfolio to retrieve"
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Portfolio details retrieved successfully
+        '400':
+          description: Invalid request data
+        '404':
+          description: Portfolio not found
+  /port/nums:
+    get:
+      summary: "Get the total number of portfolios and transactions"
+      parameters:
+        - in: query
+          name: user_id
+          description: "User ID of the portfolios and transactions to count"
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Portfolio and transaction count retrieved successfully
+        '400':
+          description: Invalid request data
+  /trans/add:
+    post:
+      summary: "Add a transaction to a user's portfolio"
+      parameters:
+        - in: body
+          name: body
+          description: "Transaction data to add to the user's portfolio"
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      responses:
+        '200':
+          description: Transaction added successfully
+        '400':
+          description: Invalid request data
+  /trans/get:
+    get:
+      summary: "Get the transactions of a user's portfolio"
+      parameters:
+        - in: query
+          name: user_id
+          description: "User ID of the portfolio transactions to retrieve"
+          type: integer
+          required: true
+        - in: query
+          name: ticker
+          description: "Ticker symbol of the transactions to retrieve"
+          type: string
+          required: false
+      responses:
+        '200':
+          description: Portfolio transactions retrieved successfully
+        '400':
+          description: Invalid request data
+        '404':
+          description: Portfolio not found
+  /trans/delete:
+    delete:
+      summary: "Delete a transaction from a user's portfolio"
+      parameters:
+        - in: query
+          name: user_id
+          description: "User ID of the portfolio transaction to delete"
+          type: integer
+          required: true
+        - in: query
+          name: transaction_id
+          description: "ID of the transaction to delete"
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Transaction deleted successfully
+        '400':
+          description: Invalid request data
+        '404':
+          description: Transaction not found

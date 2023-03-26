@@ -2,6 +2,14 @@
   background-color: #f5f5f5;
 } */
 
+
+.image{
+  margin: 0 auto;
+  height: 250px;
+  width: 250px;
+  background-size: cover;
+  border-radius: 50%;
+}
 .cards{
     margin-left: 0%;
 }

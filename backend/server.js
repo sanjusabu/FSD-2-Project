@@ -12,6 +12,19 @@ const cors = require("cors");
 const fs = require("fs");
 const morgan = require("morgan");
 const path = require("path");
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { 
+  swaggerOptions: {
+    info: {
+      title: 'My API',
+      description: 'This is the documentation for my API'
+    }
+  }
+}));
 
 // create a write stream (in append mode)
 const accessLogStream = fs.createWriteStream(
@@ -35,6 +48,8 @@ app.use((req, res, next) => {
 
   next();
 }); //cors error
+
+app.use(express.static("public"));
 
 app.use("/users", userRoutes);
 app.use("/port", portRoutes);
