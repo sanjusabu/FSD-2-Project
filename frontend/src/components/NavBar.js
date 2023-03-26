@@ -20,7 +20,7 @@ const NavBar = () => {
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <span className="logo">
-              <img src="https://www.linkpicture.com/q/logo_356.png"></img>
+              <img src="https://www.linkpicture.com/q/logo_356.png" alt = "img"></img>
             </span>
           </Link>
           <button
