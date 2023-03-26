@@ -28,6 +28,7 @@ const About = () => {
   return (
     <section className = "backgroundimg">
       <NavBar />
+      <br/><br/><br/><br/><br/><br/><br/><br/>
       <div className="abttitle">
         <h2>Our Team</h2>
       </div>

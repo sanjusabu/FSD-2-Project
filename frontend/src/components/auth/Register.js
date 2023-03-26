@@ -93,6 +93,7 @@ const Register = () => {
   return (
     <div className="backgroundimg">
       <NavBar />
+      <br/><br/><br/><br/>
       <div className="formcontainer">
         <form onSubmit={submitHandler}>
           <div className="form-register">
