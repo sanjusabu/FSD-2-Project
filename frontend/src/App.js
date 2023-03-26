@@ -19,6 +19,8 @@ import { Portfoliocontext } from "./context/portfolio-context";
 import { Provider } from "react-redux";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import store from "./store/store";
+import CreateTransactions from "./components/createTransactions";
+import TransactionsCSV from "./components/TransactionsCSV";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -65,6 +67,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/transactions" element={<Transactions />}></Route>
+            <Route path="/manualtransactions" element={<CreateTransactions/>}></Route>
+            <Route path="/importtransactions" element={<TransactionsCSV/>}></Route>
             <Route path="/portfolio" element={<Portfolio />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/" element={<Profile />}></Route>
