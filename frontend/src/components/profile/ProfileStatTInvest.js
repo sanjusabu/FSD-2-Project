@@ -14,7 +14,7 @@ const ProfileStatTInvest = () => {
         }),
         { "Content-Type": "application/json" }
       );
-      // console.log(res, "getformdata");
+      console.log(res, "getformdata");
       setTransData(res);
       // setportData((prevstate)=>{
       //   let newstate = [...prevstate,]
@@ -34,7 +34,8 @@ const ProfileStatTInvest = () => {
       data.total,
     ];
   });
-
+  // console.log(tblData + "dsfheskjhf");
+  console.log(tblData);
   let array = [];
 
   for (let i = 0; i < tblData.length; i++) {
@@ -44,7 +45,7 @@ const ProfileStatTInvest = () => {
       array.push([tblData[i][1], -1 * parseInt(tblData[i][3])]);
     }
   }
-
+  console.log(array);
   let result = [];
   array.reduce(function (res, value) {
     if (!res[value[0]]) {

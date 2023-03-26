@@ -34,7 +34,7 @@ const ProfileStatNetworth = () => {
       data.total,
     ];
   });
-
+  // console.log(tblData);
   let array = [];
 
   for (let i = 0; i < tblData.length; i++) {
@@ -44,7 +44,7 @@ const ProfileStatNetworth = () => {
       array.push([tblData[i][1], -1 * parseInt(tblData[i][3])]);
     }
   }
-
+  // console.log(array);
   let result = [];
   array.reduce(function (res, value) {
     if (!res[value[0]]) {
@@ -55,7 +55,7 @@ const ProfileStatNetworth = () => {
     return res;
   }, {});
 
-  // console.log(result, "result");
+  console.log(result, "result");
 
   let array1 = [];
   for (let i = 0; i < tblData.length; i++) {
