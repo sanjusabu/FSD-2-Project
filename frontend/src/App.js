@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+// import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Transactions from "./components/transactions";
 import Profile from "./components/profile/Profile";
 import { Detailscontext } from "./context/details";

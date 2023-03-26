@@ -12,4 +12,6 @@
 .homenav{
     background: radial-gradient(circle, rgba(32,32,32,1) 0%, rgba(9,9,9,1) 100%);
     height: 65px;
+    position: fixed;
+width: 100%;
 }
