@@ -2,6 +2,52 @@ swagger: '2.0'
 info:
   title: Example API
   version: '1.0'
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      mobilenumber:
+        type: Number
+  PortfolioForm:
+     type: object
+     properties:
+      name:
+        type: string
+      platform:
+        type: string
+      portfolio_type:
+        type: string
+      date:
+        type: date
+  Transaction:
+     type: object
+     properties:
+      potfolio_select:
+        type: string
+      Ticker:
+        type: string
+      date:
+        type: date
+      transaction_type:
+        type: string
+      quantity:
+        type: integer
+      Price:
+        type: integer
+      
+      
+      
+        
+
 
 paths:
   /users/signup:
@@ -14,7 +60,7 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: user
+          name: User
           description: User information to sign up
           schema:
             $ref: '#/definitions/User'
@@ -36,10 +82,10 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: credentials
+          name: User
           description: User login credentials
           schema:
-            $ref: '#/definitions/Credentials'
+            $ref: '#/definitions/User'
       responses:
         '200':
           description: User successfully logged in
@@ -102,10 +148,10 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: credentials
+          name:   User
           description: Admin login credentials
           schema:
-            $ref: '#/definitions/Credentials'
+            $ref: '#/definitions/User'
       responses:
         '200':
           description: Admin successfully logged in
@@ -166,7 +212,7 @@ paths:
       summary: "Submit a form for a user's portfolio"
       parameters:
         - in: body
-          name: body
+          name: PortfolioForm
           description: "Form data for the user's portfolio"
           required: true
           schema:
@@ -212,7 +258,7 @@ paths:
       summary: "Add a transaction to a user's portfolio"
       parameters:
         - in: body
-          name: body
+          name: Transaction
           description: "Transaction data to add to the user's portfolio"
           required: true
           schema:

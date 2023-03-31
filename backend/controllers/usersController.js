@@ -196,7 +196,7 @@ const checkProfile = async (req, res) => {
 
   existingUser = await UserModel.findOne({ _id });
 
-  if (existingUser.photo != null) {
+  if (existingUser && existingUser.photo != null) {
     res.json({ photo: existingUser.photo });
   } else {
     res.json({ message: "Add Profile Photo" });
