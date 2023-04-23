@@ -6,9 +6,6 @@ definitions:
   User:
     type: object
     properties:
-      id:
-        type: integer
-        format: int64
       name:
         type: string
       email:
@@ -16,7 +13,7 @@ definitions:
       password:
         type: string
       mobilenumber:
-        type: Number
+        type: integer     
   PortfolioForm:
      type: object
      properties:
@@ -64,6 +61,11 @@ paths:
           description: User information to sign up
           schema:
             $ref: '#/definitions/User'
+      required:
+                - name
+                - mobile_number
+                - email
+                - password
       responses:
         '200':
           description: User successfully created

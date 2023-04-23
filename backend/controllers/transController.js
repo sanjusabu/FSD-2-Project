@@ -2,7 +2,7 @@ const express = require("express");
 const TransactionsModel = require("../models/TransactionsModel");
 const HttpError = require("../models/http-error");
 
-const postdata = async (req, res) => {
+const postdata = async (req, res, next) => {
   console.log(req.body);
   const { portfolio, ticker, date, quantity, price, action, total, id } =
     req.body;
@@ -52,32 +52,64 @@ const deleteTrans = async (req, res) => {
   res.json(delmod);
 };
 
-const csvdata = (req, res, next) => {
-  // console.log(req.body);
-  const { data, portfolio, id } = req.body;
-  // console.log(data);
-  data.map(async (dat) => {
-    console.log(
-      dat.Ticker,
-      dat.date,
-      dat.Action,
-      dat.Quantity,
-      dat.Price,
-      dat.Total
+// const csvdata = (req, res, next) => {
+//   // console.log(req.body);
+//   const { data, portfolio, id } = req.body;
+//   // console.log(data);
+//   data.map(async (dat) => {
+//     console.log(
+//       dat.Ticker,
+//       dat.date,
+//       dat.Action,
+//       dat.Quantity,
+//       dat.Price,
+//       dat.Total
+//     );
+//     let transmodel = await TransactionsModel({
+//       portfolio: portfolio,
+//       ticker: dat.Ticker,
+//       date: dat.date,
+//       quantity: dat.Quantity,
+//       price: dat.Price,
+//       action: dat.Action,
+//       total: dat.Total,
+//       id,
+//     });
+//     await transmodel.save();
+//   });
+// };
+const csvdata = async (req, res, next) => {
+  try {
+    const { data, portfolio, id } = req.body;
+    await Promise.all(
+      data.map(async (dat) => {
+        console.log(
+          dat.Ticker,
+          dat.date,
+          dat.Action,
+          dat.Quantity,
+          dat.Price,
+          dat.Total
+        );
+        let transmodel = await TransactionsModel({
+          portfolio: portfolio,
+          ticker: dat.Ticker,
+          date: dat.date,
+          quantity: dat.Quantity,
+          price: dat.Price,
+          action: dat.Action,
+          total: dat.Total,
+          id,
+        });
+        await transmodel.save();
+      })
     );
-    let transmodel = await TransactionsModel({
-      portfolio: portfolio,
-      ticker: dat.Ticker,
-      date: dat.date,
-      quantity: dat.Quantity,
-      price: dat.Price,
-      action: dat.Action,
-      total: dat.Total,
-      id,
-    });
-    await transmodel.save();
-  });
+    res.json({ message: "Data saved successfully" });
+  } catch (error) {
+    next(error);
+  }
 };
+
 exports.postdata = postdata;
 exports.getTrans = getTrans;
 exports.getnum = getnum;
