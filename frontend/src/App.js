@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Home from "./components/Home";
+import Error from "./components/error/error";
 import Home from "./components/Home/Home";
 import Transactions from "./components/transactions";
 import Profile from "./components/profile/Profile";
@@ -63,6 +64,7 @@ function App() {
           <Route path="/Admin" element={<Admin />}></Route>
           <Route path="/AdminLogin" element={<AdminLogin />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path="*" element={<Error />}></Route>
         </Routes>
       </Router>
     );
