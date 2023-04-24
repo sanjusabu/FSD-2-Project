@@ -6,3 +6,8 @@
 .page-link{
     color: black;
 }
+
+.delete{
+    display: flex;
+    flex-direction: row;
+}
