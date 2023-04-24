@@ -16,6 +16,7 @@ const ProfileTable = () => {
   const { sendRequest } = useRequest();
   const [transData, setTransData] = useState([]);
   const [chg, setChg] = useState(false);
+  const [del, setdel] = useState(false);
   const {
     value: nameValue,
     isValid: nameisValid,
@@ -44,7 +45,7 @@ const ProfileTable = () => {
       // res.map((data) => setportData(data));
     };
     Details();
-  }, [chg]);
+  }, [chg,del]);
   // console.log(transData);
   const [tblColor, setTblColor] = useState("");
 
@@ -61,6 +62,7 @@ const ProfileTable = () => {
       { "Content-Type": "application/json" }
     );
     setChg(true);
+    resetName()
     // console.log(res, "getformdata");
     // setTransData(res);
     // setportData((prevstate)=>{
@@ -68,6 +70,21 @@ const ProfileTable = () => {
     // })
     // res.map((data) => setportData(data));
   };
+  const deleteAll = async(e)=>{
+      //  console.log("HGJHJJKKHKHJKLHJKHK");
+       e.preventDefault();
+       setdel(false)
+       window.location.reload()
+       const res = await sendRequest(
+        "http://localhost:5011/trans/deleteAll",
+        "POST",
+        JSON.stringify({
+          id: localStorage.getItem("user"),
+        }),
+        { "Content-Type": "application/json" }
+      );
+      setdel(true)
+  }
 
   const tbldata = () => {
     return transData.map((data) => {
@@ -121,6 +138,11 @@ const ProfileTable = () => {
               </span>
 
               <div style={{ marginLeft: "32rem" }}>
+              <form onSubmit={deleteAll}>
+                  <button type="submit">
+                    Delete All
+                  </button>
+                </form>
                 <form onSubmit={deleteHandler}>
                   <input
                     placeholder="DeleteTicker"

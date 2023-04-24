@@ -31,7 +31,7 @@ function TransactionsCSV() {
   const port = useContext(Portfoliocontext);
   const [portData, setportData] = useState([]);
   const [colors, setColor] = useState("");
-  const [bgcolors, setbgColor] = useState("");
+  const [ref, setref] = useState(false);
 
   // console.log(port.portfolio);
   const trans = useContext(Transcontext);
@@ -53,7 +53,7 @@ function TransactionsCSV() {
       setportData(res);
     };
     Details();
-  }, []);
+  }, [ref]);
   const {
     value: Portfolio,
     valueChangeHandler: PortfolioChange,
@@ -72,6 +72,7 @@ function TransactionsCSV() {
     // e.preventDefault();
     // // dets.details.push({ Ticker });
     // // console.log(dets);
+    // setref(false)
     const response = await sendRequest(
       "http://localhost:5011/trans/csvdata",
       "POST",
@@ -82,6 +83,7 @@ function TransactionsCSV() {
       }),
       { "Content-Type": "application/json" }
     );
+    setref(true)
     // resetPortfolio();
     // setPage(0);
   };

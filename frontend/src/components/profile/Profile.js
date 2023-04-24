@@ -96,7 +96,7 @@ const Profile = () => {
       console.log(res);
       if (res.photo) {
         setExist(true);
-        setImages(`http://localhost:5011/${res.photo}`);
+        setImages(`${res.photo}`);
       } else {
         setExist(false);
         setMsg(res.message);
@@ -122,8 +122,9 @@ const Profile = () => {
     // console.log(photo + "dj");
     // console.log(formdata);
     axios.post("http://localhost:5011/upload/add", formdata).then((res) => {
-      setImages(`http://localhost:5011/${res.data.name}`);
-      console.log(res.data.name);
+      console.log(res.data.files);
+      setImages(`${res.data.files}`);
+      // console.log(res.data.name);
       setExist(true);
     });
   };

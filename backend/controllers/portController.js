@@ -5,6 +5,7 @@ const getformdets = async (req, res) => {
   const { id } = req.body;
   // console.log("hjjj");
   let findDets;
+  // const transLists = await client.get(`postLists?postid=${id}`);
   findDets = await PortfolioModel.find({ id: id });
   // console.log(findDets);
 
@@ -33,6 +34,8 @@ const form = async (req, res, next) => {
   });
   try {
     await portModel.save();
+    await client.del(`postLists?postid=${id}`)
+    // const transLists = await client.get(`postLists?postid=${id}`);
   } catch (err) {
     console.log(err);
     const error = new HttpError("Portfolio saving failed", 500);

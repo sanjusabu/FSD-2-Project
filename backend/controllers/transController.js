@@ -1,6 +1,11 @@
 const express = require("express");
 const TransactionsModel = require("../models/TransactionsModel");
 const HttpError = require("../models/http-error");
+const REDIS_PORT = 6379;
+const redis = require('redis');
+const client = redis.createClient();
+// client.on('error', err => console.log('Redis Client Error', err));
+client.connect()
 
 const postdata = async (req, res) => {
   console.log(req.body);
@@ -19,6 +24,9 @@ const postdata = async (req, res) => {
   });
   try {
     await transmodel.save();
+    // await client.del(`transLists?transid=${id}`)
+    // const transLists = await client.get(`transLists?transid=${id}`);
+    // console.log(transLists);
   } catch (err) {
     console.log(err);
     const error = new HttpError("Transactions saving failed", 500);
@@ -28,11 +36,24 @@ const postdata = async (req, res) => {
 };
 
 const getTrans = async (req, res) => {
-  console.log(req.body);
   const { id } = req.body;
-  const transac = await TransactionsModel.find({ id });
-  console.log(transac);
-  res.json(transac);
+  let result;
+  // const transLists = await client.get(`transLists?transid=${id}`);
+  // console.log(transLists.length,transLists);
+  // console.log();
+
+    try{
+      result = await TransactionsModel.find({ id });
+      // client.setEx(`transLists?transid=${id}`, 10000 ,JSON.stringify(result));
+      // console.log(result);
+    }
+    catch (error) {
+      res.status(500).json({ error: error.message });
+      return next(error);
+    }
+  
+  // console.log(transLists.length,transLists);
+  res.json(result);
 };
 const getnum = async (req, res) => {
   const { id } = req.body;
@@ -52,19 +73,19 @@ const deleteTrans = async (req, res) => {
   res.json(delmod);
 };
 
-const csvdata = (req, res, next) => {
+const deleteAll = async (req, res) => {
+  console.log(req.body);
+  const { id } = req.body;
+  const delmod = await TransactionsModel.deleteMany({id});
+
+};
+
+const csvdata = async (req, res, next) => {
   // console.log(req.body);
   const { data, portfolio, id } = req.body;
   // console.log(data);
   data.map(async (dat) => {
-    console.log(
-      dat.Ticker,
-      dat.date,
-      dat.Action,
-      dat.Quantity,
-      dat.Price,
-      dat.Total
-    );
+
     let transmodel = await TransactionsModel({
       portfolio: portfolio,
       ticker: dat.Ticker,
@@ -77,9 +98,12 @@ const csvdata = (req, res, next) => {
     });
     await transmodel.save();
   });
+  // result = await TransactionsModel.find({ id });
+  // client.setEx(`transLists?transid=${id}`, 10000 ,JSON.stringify(result));
 };
 exports.postdata = postdata;
 exports.getTrans = getTrans;
 exports.getnum = getnum;
 exports.deleteTrans = deleteTrans;
+exports.deleteAll = deleteAll;
 exports.csvdata = csvdata;
