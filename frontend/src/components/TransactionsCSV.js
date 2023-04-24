@@ -69,7 +69,7 @@ function TransactionsCSV() {
   }, [Portfolio]);
 
   const submitHandler = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // // dets.details.push({ Ticker });
     // // console.log(dets);
     // setref(false)
