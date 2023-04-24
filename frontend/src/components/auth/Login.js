@@ -63,7 +63,7 @@ const Login = () => {
       return;
     }
     const response = await sendRequest(
-      "http://localhost:5011/users/login",
+      "https://fsdproject2.onrender.com/users/login",
       "POST",
       JSON.stringify({
         email: emailValue,
@@ -79,7 +79,7 @@ const Login = () => {
   const Forgothandler = async (e) => {
     e.preventDefault();
     const response = await sendRequest(
-      "http://localhost:5011/users/forgot",
+      "https://fsdproject2.onrender.com/users/forgot",
       "POST",
       JSON.stringify({
         email: emailValue,
