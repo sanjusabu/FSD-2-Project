@@ -60,7 +60,7 @@ const Profile = () => {
     // console.log(localStorage.getItem("user"));
     const Portfoilo = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/port/nums",
+        "https://fsdproject2.onrender.com/port/nums",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -74,7 +74,7 @@ const Profile = () => {
 
     const Transaction = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/trans/nums",
+        "https://fsdproject2.onrender.com/trans/nums",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -86,7 +86,7 @@ const Profile = () => {
     };
     const Profile = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/users/check",
+        "https://fsdproject2.onrender.com/users/check",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -121,7 +121,7 @@ const Profile = () => {
 
     // console.log(photo + "dj");
     // console.log(formdata);
-    axios.post("http://localhost:5011/upload/add", formdata).then((res) => {
+    axios.post("https://fsdproject2.onrender.com/upload/add", formdata).then((res) => {
       console.log(res.data.files);
       setImages(`${res.data.files}`);
       // console.log(res.data.name);

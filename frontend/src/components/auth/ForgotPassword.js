@@ -43,7 +43,7 @@ const ForgotPassword = () => {
     // console.log(location.state);
     if (numberValue == location.state.code) {
       const response = await sendRequest(
-        "http://localhost:5011/users/resetPassword",
+        "https://fsdproject2.onrender.com/users/resetPassword",
         "POST",
         JSON.stringify({
           email: location.state.email,

@@ -74,7 +74,7 @@ function TransactionsCSV() {
     // // console.log(dets);
     // setref(false)
     const response = await sendRequest(
-      "http://localhost:5011/trans/csvdata",
+      "https://fsdproject2.onrender.com/trans/csvdata",
       "POST",
       JSON.stringify({
         portfolio: Portfolio,

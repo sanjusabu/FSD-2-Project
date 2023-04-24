@@ -30,7 +30,7 @@ const ProfileTable = () => {
     const Details = async () => {
       setChg(false);
       const res = await sendRequest(
-        "http://localhost:5011/trans/getTrans",
+        "https://fsdproject2.onrender.com/trans/getTrans",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -53,7 +53,7 @@ const ProfileTable = () => {
     e.preventDefault();
     // console.log(nameValue);
     const res = await sendRequest(
-      "http://localhost:5011/trans/deleteTrans",
+      "https://fsdproject2.onrender.com/trans/deleteTrans",
       "POST",
       JSON.stringify({
         id: localStorage.getItem("user"),
@@ -76,7 +76,7 @@ const ProfileTable = () => {
        setdel(false)
        window.location.reload()
        const res = await sendRequest(
-        "http://localhost:5011/trans/deleteAll",
+        "https://fsdproject2.onrender.com/trans/deleteAll",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),

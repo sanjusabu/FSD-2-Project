@@ -13,7 +13,7 @@ const ProfileGrowth = () => {
   useEffect(() => {
     const Details = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/trans/getTrans",
+        "https://fsdproject2.onrender.com/trans/getTrans",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
