@@ -17,7 +17,7 @@ const PortfolioTable = (props) => {
       console.log(reload.rd);
 
       const res = await sendRequest(
-        "http://localhost:5011/port/getform",
+        "https://fsdproject2.onrender.com/port/getform",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),

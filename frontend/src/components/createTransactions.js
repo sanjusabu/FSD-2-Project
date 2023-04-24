@@ -26,7 +26,7 @@ const CreateTransactions = (props) => {
   useEffect(() => {
     const Details = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/port/getform",
+        "https://fsdproject2.onrender.com/port/getform",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -94,7 +94,7 @@ const CreateTransactions = (props) => {
     resetAction();
     setPage(0);
     const response = await sendRequest(
-      "http://localhost:5011/trans/postdata",
+      "https://fsdproject2.onrender.com/trans/postdata",
       "POST",
       JSON.stringify({
         portfolio: Portfolio,

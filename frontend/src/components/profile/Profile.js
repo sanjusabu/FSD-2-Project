@@ -60,7 +60,7 @@ const Profile = () => {
     // console.log(localStorage.getItem("user"));
     const Portfoilo = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/port/nums",
+        "https://fsdproject2.onrender.com/port/nums",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -74,7 +74,7 @@ const Profile = () => {
 
     const Transaction = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/trans/nums",
+        "https://fsdproject2.onrender.com/trans/nums",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -86,7 +86,7 @@ const Profile = () => {
     };
     const Profile = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/users/check",
+        "https://fsdproject2.onrender.com/users/check",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -96,7 +96,7 @@ const Profile = () => {
       console.log(res);
       if (res.photo) {
         setExist(true);
-        setImages(`http://localhost:5011/${res.photo}`);
+        setImages(`${res.photo}`);
       } else {
         setExist(false);
         setMsg(res.message);
@@ -108,8 +108,9 @@ const Profile = () => {
   }, []);
 
   const imageHandler = (e) => {
+
     e.preventDefault();
-    console.log(e.target.files[0].name);
+    console.log(e.target.files[0]);
     setPhoto(e.target.files[0]);
   };
   const handleSubmit = async (e) => {
@@ -121,9 +122,10 @@ const Profile = () => {
 
     // console.log(photo + "dj");
     // console.log(formdata);
-    axios.post("http://localhost:5011/upload/add", formdata).then((res) => {
-      setImages(`http://localhost:5011/${res.data.name}`);
-      console.log(res.data.name);
+    axios.post("https://fsdproject2.onrender.com/upload/add", formdata).then((res) => {
+      console.log(res.data.files);
+      setImages(`${res.data.files}`);
+      // console.log(res.data.name);
       setExist(true);
     });
   };
@@ -160,6 +162,7 @@ const Profile = () => {
         <div className="container-fluid">
           <div className="row">
             {exist && <img className="image" src={img} />}
+            {console.log(img)}
             {!exist && <p>{msg}</p>}
             <div className="ppbutt">
               <button onClick={handler}>Upload Profile Picture</button>

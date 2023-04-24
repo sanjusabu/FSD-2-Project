@@ -20,7 +20,7 @@ const UserList = () => {
     setchg(true);
     const Details = async () => {
       const resp = await sendRequest(
-        "http://localhost:5011/users/getusers",
+        "https://fsdproject2.onrender.com/users/getusers",
         "POST",
         JSON.stringify({ u: "jrkljg" }),
         { "Content-Type": "application/json" }
@@ -36,7 +36,7 @@ const UserList = () => {
     setchg(false);
     console.log(e.target.value);
     const res = await sendRequest(
-      "http://localhost:5011/users/deleteusers",
+      "https://fsdproject2.onrender.com/users/deleteusers",
       "POST",
       JSON.stringify({
         email: e.target.value,

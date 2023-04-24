@@ -17,7 +17,7 @@ const ForgotPassword = () => {
   const [err, setErr] = useState(false);
   useEffect(() => {
     setPass(location.state.code);
-    console.log();
+    // console.log();
   }, []);
 
   const {
@@ -40,10 +40,10 @@ const ForgotPassword = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(location.state);
+    // console.log(location.state);
     if (numberValue == location.state.code) {
       const response = await sendRequest(
-        "http://localhost:5011/users/resetPassword",
+        "https://fsdproject2.onrender.com/users/resetPassword",
         "POST",
         JSON.stringify({
           email: location.state.email,
@@ -51,7 +51,7 @@ const ForgotPassword = () => {
         }),
         { "Content-Type": "application/json" }
       );
-      console.log(response);
+      // console.log(response);
       setErr(true);
       setRes(response.message);
       resetpassword();
@@ -66,8 +66,8 @@ const ForgotPassword = () => {
     <div className="backgroundimg">
       <NavBar />
       <div className="formcontainer-forgotpassword">
-      <form onSubmit={submitHandler}>
-      <div className="form-forgotpassword">
+        <form onSubmit={submitHandler}>
+          <div className="form-forgotpassword">
             <div className="img">
               <img
                 src="https://www.linkpicture.com/q/logo_356.png"
@@ -77,38 +77,38 @@ const ForgotPassword = () => {
             </div>
             <div className="title">Forgot Password</div>
             <div className="input-container ic1">
-        {/* <label>Enter Code</label> */}
-        <input
-          type="number"
-          className="input"
-          onChange={numberChangeHandler}
-          onBlur={numberBlurHandler}
-          value={numberValue}
-          placeholder="Code Received through Email"
-        />
-        </div>
+              {/* <label>Enter Code</label> */}
+              <input
+                type="number"
+                className="input"
+                onChange={numberChangeHandler}
+                onBlur={numberBlurHandler}
+                value={numberValue}
+                placeholder="Code Received through Email"
+              />
+            </div>
 
-        <div className="input-container ic2">
-        {/* <label>Enter New Password</label> */}
-        <input
-          type="text"
-          className="input"
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          value={passwordValue}
-            placeholder="New Password"
-        />
-        </div>
-        {/* <button type="submit">Submit</button> */}
-        <button type="submit"  className="submit">
+            <div className="input-container ic2">
+              {/* <label>Enter New Password</label> */}
+              <input
+                type="text"
+                className="input"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                value={passwordValue}
+                placeholder="New Password"
+              />
+            </div>
+            {/* <button type="submit">Submit</button> */}
+            <button type="submit" className="submit">
               Submit
             </button>
-            <br/>
-            <br/>
-        {err && text && <h5 style={{ color: "red" }}>{text}</h5>}
-        {err && res && <h5 style={{ color: "red" }}>{res}</h5>}
-        </div>
-      </form>
+            <br />
+            <br />
+            {err && text && <h5 style={{ color: "red" }}>{text}</h5>}
+            {err && res && <h5 style={{ color: "red" }}>{res}</h5>}
+          </div>
+        </form>
       </div>
     </div>
   );

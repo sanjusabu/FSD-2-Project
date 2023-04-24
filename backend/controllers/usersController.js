@@ -5,8 +5,11 @@ const bcrypt = require("bcrypt");
 const { ObjectId } = require("mongodb");
 const AdminModel = require("../models/admin");
 const nodemailer = require("nodemailer");
+const redis = require('redis');
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const client = redis.createClient({url: "rediss://red-ch3djktgk4qarqmkffpg:68yqeaebrdwL4r6NQfgnzGUhO939y4RL@singapore-redis.render.com:6379"});
+client.connect()
 
 const signup = async (req, res, next) => {
   // const errors = validationResult(req);
@@ -193,14 +196,24 @@ const checkProfile = async (req, res) => {
   const { id } = req.body;
   const _id = ObjectId(id);
   let existingUser;
-
-  existingUser = await UserModel.findOne({ _id });
-
-  if (existingUser && existingUser.photo != null) {
-    res.json({ photo: existingUser.photo });
-  } else {
-    res.json({ message: "Add Profile Photo" });
+  let result;
+  const exist = await client.get(`photos=${id}`);
+  if(exist){
+    result = (JSON.parse(exist))
   }
+  else{
+    try{
+      existingUser = await UserModel.findOne({ _id });
+      result = existingUser.photo
+      client.setEx(`photos=${id}`,10000,JSON.stringify(result))
+    }
+    catch(error){
+      res.status(500).json({ error: error.message });
+      return next(error);
+    }
+  }
+  // console.log(existingUser);
+    res.json({ photo: result });
 };
 
 exports.signup = signup;

@@ -15,7 +15,6 @@ const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(
   "/api-docs",
@@ -71,8 +70,8 @@ app.use((error, req, res, next) => {
   res.status(error.code || 500);
   res.json({ message: error.message || "An unknown error occurred!" });
 });
-
-const dbUrl = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.kc91knb.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
+// console.log(process.env.USER,process.env.PASSWORD,process.env.DATABASE);
+const dbUrl = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.f8yjf.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`
 
 mongoose
   .connect(dbUrl,{ useNewUrlParser: true, useUnifiedTopology: true })

@@ -80,6 +80,7 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/" element={<Profile />}></Route>
             <Route path="/news" element={<News />}></Route>
+            <Route path="*" element={<Error />}></Route>
           </Routes>
         </Router>
       </Provider>

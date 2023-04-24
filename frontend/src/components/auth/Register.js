@@ -72,7 +72,7 @@ const Register = () => {
       return;
     }
     const response = await sendRequest(
-      "http://localhost:5011/users/signup",
+      "https://fsdproject2.onrender.com/users/signup",
       "POST",
       JSON.stringify({
         name: nameValue,
