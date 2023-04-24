@@ -7,7 +7,7 @@ const client = redis.createClient();
 // client.on('error', err => console.log('Redis Client Error', err));
 client.connect()
 
-const postdata = async (req, res) => {
+const postdata = async (req, res, next) => {
   console.log(req.body);
   const { portfolio, ticker, date, quantity, price, action, total, id } =
     req.body;
@@ -101,6 +101,7 @@ const csvdata = async (req, res, next) => {
   // result = await TransactionsModel.find({ id });
   // client.setEx(`transLists?transid=${id}`, 10000 ,JSON.stringify(result));
 };
+
 exports.postdata = postdata;
 exports.getTrans = getTrans;
 exports.getnum = getnum;
