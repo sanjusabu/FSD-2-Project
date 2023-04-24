@@ -5,7 +5,7 @@ import { useRequest } from "../../hooks/request-hook";
 import { FaRegTrashAlt } from "react-icons/fa";
 import useInput from "../../hooks/useInput";
 import ReactPaginate from "react-paginate";
-import './ProfileTable.css'
+import "./ProfileTable.css";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
@@ -47,7 +47,7 @@ const ProfileTable = () => {
       // res.map((data) => setportData(data));
     };
     Details();
-  }, [chg,del]);
+  }, [chg, del]);
   // console.log(transData);
   const [tblColor, setTblColor] = useState("");
 
@@ -64,7 +64,7 @@ const ProfileTable = () => {
       { "Content-Type": "application/json" }
     );
     setChg(true);
-    resetName()
+    resetName();
     // console.log(res, "getformdata");
     // setTransData(res);
     // setportData((prevstate)=>{
@@ -72,21 +72,21 @@ const ProfileTable = () => {
     // })
     // res.map((data) => setportData(data));
   };
-  const deleteAll = async(e)=>{
-      //  console.log("HGJHJJKKHKHJKLHJKHK");
-       e.preventDefault();
-       setdel(false)
-      //  window.location.reload()
-       const res = await sendRequest(
-        "https://fsdproject2.onrender.com/trans/deleteAll",
-        "POST",
-        JSON.stringify({
-          id: localStorage.getItem("user"),
-        }),
-        { "Content-Type": "application/json" }
-      );
-      setdel(true)
-  }
+  const deleteAll = async (e) => {
+    //  console.log("HGJHJJKKHKHJKLHJKHK");
+    e.preventDefault();
+    setdel(false);
+    //  window.location.reload()
+    const res = await sendRequest(
+      "https://fsdproject2.onrender.com/trans/deleteAll",
+      "POST",
+      JSON.stringify({
+        id: localStorage.getItem("user"),
+      }),
+      { "Content-Type": "application/json" }
+    );
+    setdel(true);
+  };
 
   const tbldata = () => {
     return transData.map((data) => {
@@ -141,23 +141,25 @@ const ProfileTable = () => {
                 Transaction Table
               </span>
 
-              <div style={{ marginLeft: "55%" }}>
-              <form onSubmit={deleteAll}>
-                  <button type="submit">
-                    Delete All
-                  </button>
-                </form>
-                <form onSubmit={deleteHandler}>
-                  <input
-                    placeholder="DeleteTicker"
-                    type="text"
-                    onChange={nameChangeHandler}
-                    value={nameValue}
-                  />{" "}
-                  <button type="submit">
-                    <FaRegTrashAlt />
-                  </button>
-                </form>
+              <div className="delete">
+                <div>
+                  <form onSubmit={deleteAll}>
+                    <button type="submit" style={{backgroundColor: "#EA4C46"}}>Delete All</button>
+                  </form>
+                </div>
+                <div style={{marginLeft: "55%"}}>
+                  <form onSubmit={deleteHandler}>
+                    <input
+                      placeholder="DeleteTicker"
+                      type="text"
+                      onChange={nameChangeHandler}
+                      value={nameValue}
+                    />{" "}
+                    <button type="submit">
+                      <FaRegTrashAlt />
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
