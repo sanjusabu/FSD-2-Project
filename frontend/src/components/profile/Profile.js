@@ -108,8 +108,9 @@ const Profile = () => {
   }, []);
 
   const imageHandler = (e) => {
+
     e.preventDefault();
-    console.log(e.target.files[0].name);
+    console.log(e.target.files[0]);
     setPhoto(e.target.files[0]);
   };
   const handleSubmit = async (e) => {
@@ -161,6 +162,7 @@ const Profile = () => {
         <div className="container-fluid">
           <div className="row">
             {exist && <img className="image" src={img} />}
+            {console.log(img)}
             {!exist && <p>{msg}</p>}
             <div className="ppbutt">
               <button onClick={handler}>Upload Profile Picture</button>

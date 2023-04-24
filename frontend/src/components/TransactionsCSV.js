@@ -31,7 +31,7 @@ function TransactionsCSV() {
   const port = useContext(Portfoliocontext);
   const [portData, setportData] = useState([]);
   const [colors, setColor] = useState("");
-  const [ref, setref] = useState(false);
+  // const [ref, setref] = useState(false);
 
   // console.log(port.portfolio);
   const trans = useContext(Transcontext);
@@ -42,7 +42,7 @@ function TransactionsCSV() {
   useEffect(() => {
     const Details = async () => {
       const res = await sendRequest(
-        "http://localhost:5011/port/getform",
+        "https://fsdproject2.onrender.com/port/getform",
         "POST",
         JSON.stringify({
           id: localStorage.getItem("user"),
@@ -53,7 +53,7 @@ function TransactionsCSV() {
       setportData(res);
     };
     Details();
-  }, [ref]);
+  }, []);
   const {
     value: Portfolio,
     valueChangeHandler: PortfolioChange,
@@ -83,7 +83,7 @@ function TransactionsCSV() {
       }),
       { "Content-Type": "application/json" }
     );
-    setref(true)
+    // setref(true)
     // resetPortfolio();
     // setPage(0);
   };

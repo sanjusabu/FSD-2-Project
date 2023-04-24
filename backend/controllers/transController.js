@@ -3,7 +3,7 @@ const TransactionsModel = require("../models/TransactionsModel");
 const HttpError = require("../models/http-error");
 const REDIS_PORT = 6379;
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({url : "rediss://red-ch3djktgk4qarqmkffpg:68yqeaebrdwL4r6NQfgnzGUhO939y4RL@singapore-redis.render.com:6379"});
 // client.on('error', err => console.log('Redis Client Error', err));
 client.connect()
 

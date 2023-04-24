@@ -10,7 +10,7 @@ const dbUrl = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster
 const mongoose = require("mongoose");
 const redis = require('redis');
 const { MongoClient } = require('mongodb');
-const clients = redis.createClient();
+const clients = redis.createClient({url: "rediss://red-ch3djktgk4qarqmkffpg:68yqeaebrdwL4r6NQfgnzGUhO939y4RL@singapore-redis.render.com:6379"});
 clients.connect()
 
 

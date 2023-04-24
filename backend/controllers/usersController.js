@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const redis = require('redis');
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const client = redis.createClient();
+const client = redis.createClient({url: "rediss://red-ch3djktgk4qarqmkffpg:68yqeaebrdwL4r6NQfgnzGUhO939y4RL@singapore-redis.render.com:6379"});
 client.connect()
 
 const signup = async (req, res, next) => {

@@ -74,7 +74,7 @@ const ProfileTable = () => {
       //  console.log("HGJHJJKKHKHJKLHJKHK");
        e.preventDefault();
        setdel(false)
-       window.location.reload()
+      //  window.location.reload()
        const res = await sendRequest(
         "https://fsdproject2.onrender.com/trans/deleteAll",
         "POST",
