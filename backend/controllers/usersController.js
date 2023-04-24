@@ -123,7 +123,7 @@ const forgotPassword = async (req, res, next) => {
     service: "Gmail",
     auth: {
       user: "sanjusabu066@gmail.com",
-      pass: process.env.sendEMail,
+      pass: "mbjbrcvjqvmtltap",
     },
   });
   const otp = Math.floor(1000 + Math.random() * 9000);
