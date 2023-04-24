@@ -196,20 +196,10 @@ const checkProfile = async (req, res) => {
   const { id } = req.body;
   const _id = ObjectId(id);
   let existingUser;
-<<<<<<< HEAD
   let result;
   const exist = await client.get(`photos=${id}`);
   if(exist){
     result = (JSON.parse(exist))
-=======
-
-  existingUser = await UserModel.findOne({ _id });
-
-  if (existingUser && existingUser.photo != null) {
-    res.json({ photo: existingUser.photo });
-  } else {
-    res.json({ message: "Add Profile Photo" });
->>>>>>> 3ecc07b300c515ce9a9485ae8196fd35d6265c95
   }
   else{
     try{

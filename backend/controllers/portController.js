@@ -34,7 +34,7 @@ const form = async (req, res, next) => {
   });
   try {
     await portModel.save();
-    await client.del(`postLists?postid=${id}`)
+    // await client.del(`postLists?postid=${id}`)
     // const transLists = await client.get(`postLists?postid=${id}`);
   } catch (err) {
     console.log(err);
