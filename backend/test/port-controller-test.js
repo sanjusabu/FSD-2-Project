@@ -12,11 +12,13 @@ chai.use(sinonCHai);
 chai.should();
 
 describe("Port Controller", () => {
+  // mongodb+srv://SANJU:sanju_123456@cluster0.f8yjf.mongodb.net/FSD2Project?retryWrites=true&w=majority
   before((done) => {
     mongoose
       .connect(
         // dont use the original databse name instead use the test database name ex. WBD_Project-test
-        "mongodb://127.0.0.1:27017/WBD_Project-test",
+        "mongodb+srv://vikyaths20:vikyath_123@cluster0.f8yjf.mongodb.net/WBD_Project-test?retryWrites=true&w=majority"
+        ,
         // "mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/WBD_Project-test?retryWrites=true&w=majority",
         { useNewUrlParser: true, useUnifiedTopology: true }
       )
