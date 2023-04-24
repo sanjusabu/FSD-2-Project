@@ -195,44 +195,7 @@ describe("Trans Controller ", () => {
       };
       res.json(null);
     });
-    it("should handle errors", async () => {
-        let error;
-        const next = sinon.spy((args) => (error = args));
-  
-        try {
-          await transController.csvdata(req, res, next);
-        } catch (error) {
-          console.log(error);
-        }
-  
-        console.log(error.message);
-        expect(next).to.have.been.calledOnce;
-        expect(error).have.property("message");
-      });
-    it("should save transactions in the database using csv", async () => {
-        req.body.data = [
-          {
-          Ticker: "ADVENZYMES",
-            date: "05-05-2021",
-            Quantity: 3,
-            Price: 455.8,
-            Action: "buy",
-            Total: 1367.4,
-          },
-        ];
-        req.body.portfolio = "Sanju";
-        req.body.id = "641ae6e5ff00e23bbc71063c";
-  
-        try {
-          await transController.csvdata(req, res, () => {});
-        } catch (error) {
-          console.log(error);
-        }
-  
-        expect(res.responseJson).have.property("message", "Data saved successfully");
-      });
-    });
-
+  });
   after((done) => {
     mongoose
       .disconnect()

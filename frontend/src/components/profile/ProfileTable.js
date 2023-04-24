@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useRequest } from "../../hooks/request-hook";
 import { FaRegTrashAlt } from "react-icons/fa";
 import useInput from "../../hooks/useInput";
+import ReactPaginate from "react-paginate";
+import './ProfileTable.css'
 
 const isNotEmpty = (value) => value.trim() !== "";
 
@@ -118,6 +120,8 @@ const ProfileTable = () => {
       }
     });
   };
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
   return (
     <div className="row">
       <div className="col-md-12 mb-3">
@@ -137,7 +141,7 @@ const ProfileTable = () => {
                 Transaction Table
               </span>
 
-              <div style={{ marginLeft: "32rem" }}>
+              <div style={{ marginLeft: "55%" }}>
               <form onSubmit={deleteAll}>
                   <button type="submit">
                     Delete All
@@ -172,9 +176,32 @@ const ProfileTable = () => {
                     <th>Price</th>
                     <th>Total</th>
                   </tr>
-                  {tbldata()}
+                  {tbldata().slice(
+                    currentPage * itemsPerPage,
+                    (currentPage + 1) * itemsPerPage
+                  )}
                 </tbody>
               </table>
+              <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                breakClassName={"page-item"}
+                breakLinkClassName={"page-link"}
+                pageCount={Math.ceil(tbldata().length / itemsPerPage)}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={({ selected }) => setCurrentPage(selected)}
+                containerClassName={"pagination"}
+                pageClassName={"page-item"}
+                pageLinkClassName={"page-link"}
+                previousClassName={"page-item"}
+                previousLinkClassName={"page-link"}
+                nextClassName={"page-item"}
+                nextLinkClassName={"page-link"}
+                activeClassName={"active"}
+                activeLinkClassName={"active-link"}
+              />
             </div>
           </div>
         </div>
