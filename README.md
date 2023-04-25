@@ -28,3 +28,5 @@ sendEmail = **\*\*\***
 where, user, password,database are the credentials for your mongoDB cloud
 
 Open Docker Desktop and then run the docker-compose.yaml file by running docker compose up.
+
+Deployed Link : https://legendary-praline-417e36.netlify.app/
