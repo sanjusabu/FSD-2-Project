@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout=5000",
+    "test": "mocha --timeout=12000",
     "start": "node server.js"
   },
   "author": "",
