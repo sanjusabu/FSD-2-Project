@@ -16,7 +16,8 @@ const { expect } = chai;
 describe("Trans Controller ", () => {
   before((done) => {
     mongoose
-      .connect("mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority", {
+      .connect(//"mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority"
+      "mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
