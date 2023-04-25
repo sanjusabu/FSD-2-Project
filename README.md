@@ -26,3 +26,5 @@ PASSWORD=****\*****
 DATABASE=**\*\*\***
 sendEmail = **\*\*\***
 where, user, password,database are the credentials for your mongoDB cloud
+
+Open Docker Desktop and then run the docker-compose.yaml file by running docker compose up.
