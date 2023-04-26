@@ -3,7 +3,6 @@ const { expect } = require("chai");
 const sinon = require("sinon");
 const sinonCHai = require("sinon-chai");
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true);
 const PortfolioModel = require("../models/PortfolioModel");
 const portController = require("../controllers/portController");
 const chaiHttp = require("chai-http");
@@ -18,9 +17,8 @@ describe("Port Controller", () =>{
     mongoose
       .connect(
         // dont use the original databse name instead use the test database name ex. WBD_Project-test
-        //"mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority"
-        "mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/?retryWrites=true&w=majority",
-        // "mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/WBD_Project-test?retryWrites=true&w=majority",
+        "mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority",
+        //"mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/?retryWrites=true&w=majority",
         { useNewUrlParser: true, useUnifiedTopology: true }
       )
       .then(() => {

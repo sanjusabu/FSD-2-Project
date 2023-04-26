@@ -3,25 +3,23 @@ const { expect } = require("chai");
 const sinon = require("sinon");
 const sinonCHai = require("sinon-chai");
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true);
+mongoose.set("strictQuery", true);
 const UserModel = require("../models/UserModel");
-const userController = require("../controllers/usersController");
 const chaiHttp = require("chai-http");
 const { response } = require("express");
+const userController = require("../controllers/usersController");
 
 chai.use(chaiHttp);
 chai.use(sinonCHai);
 chai.should();
 
-describe("userController", () =>{
-  
+describe("userController", () => {
   before((done) => {
     mongoose
       .connect(
         // dont use the original databse name instead use the test database name ex. WBD_Project-test
-        //"mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority",
-         //"mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/WBD_Project-test?retryWrites=true&w=majority"
-         "mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/?retryWrites=true&w=majority",
+        "mongodb+srv://vikyaths20:vikyath_123@cluster0.6qut1qv.mongodb.net/WBD_Project-test?retryWrites=true&w=majority",
+        //"mongodb+srv://vikyaths20:vikyath_123@cluster0.kc91knb.mongodb.net/?retryWrites=true&w=majority",
         { useNewUrlParser: true, useUnifiedTopology: true }
       )
       .then((result) => {
@@ -31,7 +29,7 @@ describe("userController", () =>{
           email: "lavanyasanka525@gmail.com",
           password: "123456789",
           mobilenumber: 9857697894,
-          _v : 0,
+          _v: 0,
           photo: "vikyath.jpg",
           id: "641ae6e5ff00e23bbc71063c",
         });
@@ -45,8 +43,8 @@ describe("userController", () =>{
         return done();
       });
   });
-   
-  describe("signup", () =>{
+
+  describe("signup", () => {
     let req = {
       body: {
         name: null,
@@ -88,8 +86,7 @@ describe("userController", () =>{
       res.send(null);
     });
 
-    it("should create a new user and return 201 status code with user data", async () =>
-    {
+    it("should create a new user and return 201 status code with user data", async () => {
       const req = {
         body: {
           name: "John Doe",
@@ -111,14 +108,13 @@ describe("userController", () =>{
       const next = function (error) {
         throw error;
       };
-      try{
-      await userController.signup(req, res, next);
-      }catch(err){
+      try {
+        await userController.signup(req, res, next);
+      } catch (err) {
         console.log(err);
       }
       console.log(res.responseData);
       expect(res.statusCode).to.equal(201);
-      
     });
 
     it("should return an error of HttpError: Signing up failed, please try again later. with code 500", async () => {
@@ -160,7 +156,7 @@ describe("userController", () =>{
     });
   });
 
-  describe("login", () =>{
+  describe("login", () => {
     let req = {
       body: {
         email: null,
@@ -198,14 +194,14 @@ describe("userController", () =>{
       res.send(null);
     });
 
-    it("should return a token with 200 status code", async () =>{
+    it("should return a token with 200 status code", async () => {
       const newUser = await UserModel.create({
         name: "test user",
         email: "testuser@example.com",
         password: "testpassword",
         mobilenumber: 1234567890,
       });
-    
+
       const req = {
         body: {
           email: "testuser@example.com",
@@ -224,19 +220,19 @@ describe("userController", () =>{
           return this;
         },
       };
-    
+
       const next = sinon.spy();
-      try{
-      await userController.login(req, res, next);
-      }catch(err){
+      try {
+        await userController.login(req, res, next);
+      } catch (err) {
         console.log(err);
       }
       console.log(res.responseData);
       expect(res.statusCode).to.equal(200);
       expect(res.data).to.have.property("token");
 
-     // delete the new user
-     await UserModel.deleteOne({ _id: newUser._id });
+      // delete the new user
+      await UserModel.deleteOne({ _id: newUser._id });
     });
 
     it("should return an error of HttpError: Invalid email or password, please try again. with code 401", async () => {
@@ -257,7 +253,7 @@ describe("userController", () =>{
       expect(error).have.property("code");
       expect(error.code).to.equal(401);
     });
-});
+  });
 
   after((done) => {
     UserModel.deleteMany({})
@@ -271,6 +267,5 @@ describe("userController", () =>{
         console.log(err);
         return done();
       });
-  });  
-
+  });
 });
